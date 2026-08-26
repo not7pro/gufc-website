@@ -7,7 +7,91 @@
   <meta name="description" content="Explore all Gulf Union Foods Co. brands — Original®, KLASSE, COBRA, Captain, Splash, Ori, and Al Qobtan. Premium beverages for every taste and every moment." />
   <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="brand-showcase.css" />
+  <style>
+    /* ── Pure Image Brand Sections ── */
+    body { background: #050a1f; color: #fff; }
+    
+    .brand-image-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh; /* Make it take the full screen */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000; /* Fallback */
+    }
+
+    /* Individual section backgrounds to match the image edges if needed */
+    #original { background: #0c2049; } /* Deep blue from Original image */
+    #klasse { background: #111; }
+    #cobra { background: #1a0000; }
+    #captain { background: #00224d; }
+    #splash { background: #003d33; }
+    #ori { background: #2a0c50; }
+    #alqobtan { background: #2a1a00; }
+
+    .brand-full-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Cover the whole section */
+      object-position: center;
+      z-index: 1;
+    }
+
+    /* For images that need to be contained without cropping */
+    .brand-contain-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      object-fit: contain;
+      z-index: 1;
+    }
+
+    .btn-discover {
+      position: absolute;
+      bottom: 8%; /* Placed near the bottom */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      background: var(--c-gold);
+      color: var(--c-dark);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-discover:hover {
+      background: #fff;
+      transform: translateX(-50%) translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+
+    /* Placeholder style if image is missing */
+    .img-placeholder-box {
+      position: absolute;
+      inset: 20px;
+      border: 2px dashed rgba(255,255,255,0.3);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      z-index: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -30,7 +114,7 @@
 </nav>
 
 <!-- STICKY BRAND TABS -->
-<div class="brand-tabs" role="navigation">
+<div class="brand-tabs" role="navigation" style="z-index: 100;">
   <div class="brand-tabs-inner">
     <a href="#original"  class="brand-tab active" data-target="original">🧃 Original®</a>
     <a href="#klasse"    class="brand-tab" data-target="klasse">🍺 KLASSE</a>
@@ -43,215 +127,76 @@
 </div>
 
 <!-- ORIGINAL -->
-<section class="brand-showcase-section" id="original">
-  <div class="brand-showcase-bg"></div>
-  <div class="brand-showcase-inner reveal">
-    <div class="brand-showcase-logo" style="color: #fff;">Original<sup style="font-size:0.5em;top:-0.5em;position:relative;">®</sup></div>
-    
-    <div class="brand-showcase-composition">
-      <!-- PLACEHOLDER for the user's uploaded image -->
-      <div class="brand-image-placeholder">
-        <span>🍹</span>
-        Insert 'Original' Composition Image Here<br>
-        (Products with liquid splashes)
-      </div>
-      <!-- If you have the image, replace the div above with: 
-           <img src="path/to/image.jpg" alt="Original Products" style="width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));" />
-      -->
-    </div>
-
-    <div class="brand-showcase-content">
-      <div class="brand-showcase-tagline" style="color:var(--c-gold);">"Enjoy the Taste of Quality!"</div>
-      <p class="brand-showcase-desc">GUFC's flagship brand, Original® has been delivering premium, authentic fruit juices to families across the GCC since 1999.</p>
-      
-      <div class="brand-showcase-flavors">
-        <span class="flavor-chip">🥭 Mango</span>
-        <span class="flavor-chip">🍊 Orange</span>
-        <span class="flavor-chip">🍈 Guava</span>
-        <span class="flavor-chip">🍑 Peach</span>
-        <span class="flavor-chip">🍹 Mixed Fruit</span>
-        <span class="flavor-chip">🍋 Lemon</span>
-        <span class="flavor-chip">🍇 Grape</span>
-        <span class="flavor-chip">🍓 Strawberry</span>
-      </div>
-
-      <div style="display:flex;gap:1rem;justify-content:center;">
-        <a href="original.html" class="btn btn-gold">Explore Original® →</a>
-      </div>
-    </div>
+<section class="brand-image-section" id="original">
+  <!-- The image you uploaded (Make sure it is saved in the folder as original-hero.png or original-hero.jpg) -->
+  <img src="original-hero.jpg" alt="Original" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  
+  <div class="img-placeholder-box" style="display:none;">
+    <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
+    Save your image as <strong>original-hero.jpg</strong> in this folder to see it here.
   </div>
+
+  <a href="original.html" class="btn-discover">Discover</a>
 </section>
 
 <!-- KLASSE -->
-<section class="brand-showcase-section" id="klasse">
-  <div class="brand-showcase-bg"></div>
-  <div class="brand-showcase-inner reveal">
-    <div class="brand-showcase-logo" style="color: var(--c-gold);">KLASSE</div>
-    
-    <div class="brand-showcase-composition">
-      <div class="brand-image-placeholder">
-        <span>🍺</span>
-        Insert 'KLASSE' Composition Image Here<br>
-        (Malt bottles with splashing effects)
-      </div>
-    </div>
-
-    <div class="brand-showcase-content">
-      <div class="brand-showcase-tagline" style="color:rgba(255,255,255,0.7);">"The True German Taste!"</div>
-      <p class="brand-showcase-desc">KLASSE delivers the authentic taste of German-style malt beverages without alcohol, bringing a premium, sophisticated experience.</p>
-      
-      <div class="brand-showcase-flavors">
-        <span class="flavor-chip">🌾 Classic Malt</span>
-        <span class="flavor-chip">🍋 Lemon</span>
-        <span class="flavor-chip">🍎 Apple</span>
-        <span class="flavor-chip">🍓 Strawberry</span>
-      </div>
-    </div>
+<section class="brand-image-section" id="klasse">
+  <img src="klasse-hero.jpg" alt="KLASSE" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <div class="img-placeholder-box" style="display:none;">
+    <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
+    Save your image as <strong>klasse-hero.jpg</strong>
   </div>
+  <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- COBRA -->
-<section class="brand-showcase-section" id="cobra">
-  <div class="brand-showcase-bg"></div>
-  <div class="brand-showcase-inner reveal">
-    <div class="brand-showcase-logo" style="color: #fff; text-shadow:0 0 40px rgba(227,6,19,0.8);">COBRA</div>
-    
-    <div class="brand-showcase-composition">
-      <div class="brand-image-placeholder" style="border-color:rgba(227,6,19,0.5);">
-        <span>⚡</span>
-        Insert 'COBRA' Composition Image Here<br>
-        (Energy drink cans with lightning/energy splashes)
-      </div>
-    </div>
-
-    <div class="brand-showcase-content">
-      <div class="brand-showcase-tagline" style="color:#ff6b6b;">"Stronger Than You Imagine."</div>
-      <p class="brand-showcase-desc">COBRA is the bold energy drink that pushes your limits. Packed with powerful ingredients and a fierce attitude.</p>
-      
-      <div class="brand-showcase-flavors">
-        <span class="flavor-chip">🔴 Original</span>
-        <span class="flavor-chip">🔵 Sugar Free</span>
-        <span class="flavor-chip">🟡 Tropical</span>
-      </div>
-    </div>
+<section class="brand-image-section" id="cobra">
+  <img src="cobra-hero.jpg" alt="COBRA" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <div class="img-placeholder-box" style="display:none;">
+    <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
+    Save your image as <strong>cobra-hero.jpg</strong>
   </div>
+  <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- CAPTAIN -->
-<section class="brand-showcase-section" id="captain">
-  <div class="brand-showcase-bg"></div>
-  <div class="brand-showcase-inner reveal">
-    <div class="brand-showcase-logo" style="color: #60a5fa;">Captain</div>
-    
-    <div class="brand-showcase-composition">
-      <div class="brand-image-placeholder" style="border-color:rgba(96,165,250,0.5);">
-        <span>⚓</span>
-        Insert 'Captain' Composition Image Here<br>
-        (Sparkling cans with water splashes)
-      </div>
-    </div>
-
-    <div class="brand-showcase-content">
-      <div class="brand-showcase-tagline" style="color:#93c5fd;">"Sail to the Taste!"</div>
-      <p class="brand-showcase-desc">Captain brings the refreshing spirit of the open seas to every sip. A premium sparkling beverage with bold, invigorating flavors.</p>
-      
-      <div class="brand-showcase-flavors">
-        <span class="flavor-chip">🍋 Lemon</span>
-        <span class="flavor-chip">🍊 Orange</span>
-        <span class="flavor-chip">🍇 Grape</span>
-      </div>
-    </div>
+<section class="brand-image-section" id="captain">
+  <img src="captain-hero.jpg" alt="Captain" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <div class="img-placeholder-box" style="display:none;">
+    <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
+    Save your image as <strong>captain-hero.jpg</strong>
   </div>
+  <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- SPLASH -->
-<section class="brand-showcase-section" id="splash">
-  <div class="brand-showcase-bg"></div>
-  <div class="brand-showcase-inner reveal">
-    <div class="brand-showcase-logo" style="color: #4dd0e1;">Splash</div>
-    
-    <div class="brand-showcase-composition">
-      <div class="brand-image-placeholder" style="border-color:rgba(77,208,225,0.5);">
-        <span>💦</span>
-        Insert 'Splash' Composition Image Here<br>
-        (Soft drinks with vibrant liquid splashes)
-      </div>
-    </div>
-
-    <div class="brand-showcase-content">
-      <div class="brand-showcase-tagline" style="color:#80deea;">"Refreshing Every Moment!"</div>
-      <p class="brand-showcase-desc">Splash delivers pure, refreshing hydration with a burst of natural fruit flavor in every sip.</p>
-      
-      <div class="brand-showcase-flavors">
-        <span class="flavor-chip">💧 Original</span>
-        <span class="flavor-chip">🍋 Lemon Mint</span>
-        <span class="flavor-chip">🍈 Watermelon</span>
-      </div>
-    </div>
+<section class="brand-image-section" id="splash">
+  <img src="splash-hero.jpg" alt="Splash" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <div class="img-placeholder-box" style="display:none;">
+    <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
+    Save your image as <strong>splash-hero.jpg</strong>
   </div>
+  <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- ORI -->
-<section class="brand-showcase-section" id="ori">
-  <div class="brand-showcase-bg"></div>
-  <div class="brand-showcase-inner reveal">
-    <div class="brand-showcase-logo" style="color: #c4b5fd;">Ori</div>
-    
-    <div class="brand-showcase-composition">
-      <div class="brand-image-placeholder" style="border-color:rgba(196,181,253,0.5);">
-        <span>✨</span>
-        Insert 'Ori' Composition Image Here<br>
-        (Light juices with elegant splashes)
-      </div>
-    </div>
-
-    <div class="brand-showcase-content">
-      <div class="brand-showcase-tagline" style="color:#ddd6fe;">"Pure. Light. Refreshing."</div>
-      <p class="brand-showcase-desc">Ori is GUFC's lightest and freshest beverage offering — a delicate, refined juice drink designed for those who prefer a lighter touch.</p>
-      
-      <div class="brand-showcase-flavors">
-        <span class="flavor-chip">🍏 Green Apple</span>
-        <span class="flavor-chip">🍑 White Peach</span>
-      </div>
-    </div>
+<section class="brand-image-section" id="ori">
+  <img src="ori-hero.jpg" alt="Ori" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <div class="img-placeholder-box" style="display:none;">
+    <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
+    Save your image as <strong>ori-hero.jpg</strong>
   </div>
+  <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- AL QOBTAN -->
-<section class="brand-showcase-section" id="alqobtan">
-  <div class="brand-showcase-bg"></div>
-  <div class="brand-showcase-inner reveal">
-    <div class="brand-showcase-logo" style="color: var(--c-gold);">Al Qobtan</div>
-    
-    <div class="brand-showcase-composition">
-      <div class="brand-image-placeholder" style="border-color:rgba(245,166,35,0.5);">
-        <span>🏺</span>
-        Insert 'Al Qobtan' Composition Image Here<br>
-        (Heritage beverages with traditional aesthetic)
-      </div>
-    </div>
-
-    <div class="brand-showcase-content">
-      <div class="brand-showcase-tagline" style="color:rgba(245,166,35,0.8);">"A Heritage of Taste"</div>
-      <p class="brand-showcase-desc">Al Qobtan embodies the rich heritage and traditions of the Arabian Gulf. A premium beverage rooted in authenticity.</p>
-      
-      <div class="brand-showcase-flavors">
-        <span class="flavor-chip">🌿 Traditional Herb</span>
-        <span class="flavor-chip">🫒 Tamarind</span>
-        <span class="flavor-chip">🌹 Rose</span>
-      </div>
-    </div>
+<section class="brand-image-section" id="alqobtan">
+  <img src="alqobtan-hero.jpg" alt="Al Qobtan" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <div class="img-placeholder-box" style="display:none;">
+    <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
+    Save your image as <strong>alqobtan-hero.jpg</strong>
   </div>
-</section>
-
-<!-- CTA -->
-<section style="background:var(--c-off-white);padding:var(--sp-2xl) 0;text-align:center;">
-  <div class="container">
-    <h2 class="section-title reveal" style="margin-bottom:1rem;">Become a GUFC Distributor</h2>
-    <div class="reveal delay-1">
-      <a href="contact.html" class="btn btn-blue">Submit Distributor Inquiry →</a>
-    </div>
-  </div>
+  <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <script src="main.js"></script>
