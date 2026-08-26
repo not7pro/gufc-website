@@ -5,136 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Brands | Gulf Union Foods Co.</title>
   <meta name="description" content="Explore all Gulf Union Foods Co. brands — Original®, KLASSE, COBRA, Captain, Splash, Ori, and Al Qobtan. Premium beverages for every taste and every moment." />
-  <meta property="og:title" content="Our Brands | Gulf Union Foods Co." />
-  <meta property="og:image" content="https://gulf-union.com/images/logo.png" />
   <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* ── Brands page specifics ── */
-    body { overflow-x: hidden; }
-
-    .brand-section {
-      min-height: 680px;
-      display: flex;
-      align-items: center;
-      cursor: default;
-    }
-
-    .brand-section-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: var(--sp-3xl) var(--sp-lg);
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .brand-section.reverse .brand-section-inner {
-      direction: rtl;
-    }
-    .brand-section.reverse .brand-section-inner > * {
-      direction: ltr;
-    }
-
-    .brand-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .brand-visual-placeholder {
-      width: 320px;
-      height: 380px;
-      border-radius: var(--r-xl);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 8rem;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      transition: var(--t-base);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .brand-visual-placeholder:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4);
-    }
-
-    .brand-title-big {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: var(--c-white);
-      text-shadow: 0 4px 30px rgba(0,0,0,0.5);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .brand-flavors-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin: 1.5rem 0;
-    }
-
-    .flavor-chip {
-      padding: 0.4rem 1rem;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: var(--r-full);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      backdrop-filter: blur(4px);
-      transition: var(--t-fast);
-      cursor: default;
-    }
-
-    .flavor-chip:hover {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.4);
-    }
-
-    .brand-desc {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.75;
-      max-width: 480px;
-      margin: 1rem 0 2rem;
-    }
-
-    /* Brand-specific overlays */
-    #original  .brand-section-overlay { background: linear-gradient(135deg, rgba(13,16,69,0.92) 0%, rgba(26,28,117,0.75) 60%, rgba(43,57,144,0.5) 100%); }
-    #klasse    .brand-section-overlay { background: linear-gradient(135deg, rgba(5,5,5,0.95) 0%, rgba(30,30,30,0.8) 100%); }
-    #cobra     .brand-section-overlay { background: linear-gradient(135deg, rgba(90,0,0,0.95) 0%, rgba(227,6,19,0.7) 100%); }
-    #captain   .brand-section-overlay { background: linear-gradient(135deg, rgba(0,20,80,0.95) 0%, rgba(0,80,190,0.7) 100%); }
-    #splash    .brand-section-overlay { background: linear-gradient(135deg, rgba(0,60,50,0.95) 0%, rgba(0,140,120,0.7) 100%); }
-    #ori       .brand-section-overlay { background: linear-gradient(135deg, rgba(30,0,80,0.95) 0%, rgba(100,30,180,0.7) 100%); }
-    #alqobtan  .brand-section-overlay { background: linear-gradient(135deg, rgba(50,35,0,0.95) 0%, rgba(150,100,0,0.7) 100%); }
-
-    @media (max-width: 900px) {
-      .brand-section-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .brand-section.reverse .brand-section-inner { direction: ltr; }
-      .brand-visual { order: -1; }
-      .brand-visual-placeholder { width: 220px; height: 260px; font-size: 5rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="brand-showcase.css" />
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     NAVBAR
-══════════════════════════════════════ -->
-<nav class="navbar light-nav" role="navigation" aria-label="Main Navigation">
+<!-- NAVBAR -->
+<nav class="navbar transparent" role="navigation" aria-label="Main Navigation">
   <div class="navbar-inner">
     <a href="index.html" class="nav-logo">
       <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. Logo" />
@@ -145,73 +23,14 @@
         <a href="brands.html" class="nav-link active">Our Brands
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
-        <div class="nav-dropdown">
-          <a href="original.html">Original®</a>
-          <a href="brands.html#klasse">KLASSE</a>
-          <a href="brands.html#cobra">COBRA</a>
-          <a href="brands.html#captain">Captain</a>
-          <a href="brands.html#splash">Splash</a>
-          <a href="brands.html#ori">Ori</a>
-          <a href="brands.html#alqobtan">Al Qobtan</a>
-        </div>
       </li>
-      <li class="nav-item"><a href="about.html#sustainability" class="nav-link">Sustainability</a></li>
-      <li class="nav-item"><a href="index.html#newsroom" class="nav-link">Newsroom</a></li>
       <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
     </ul>
-    <div class="nav-actions">
-      <button class="lang-toggle" style="border-color:rgba(0,0,0,0.2);color:#333;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-        </svg>
-        عربي
-      </button>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-    </div>
   </div>
 </nav>
 
-<div class="mobile-overlay" id="mobile-overlay"></div>
-<nav class="mobile-menu" id="mobile-menu">
-  <a href="index.html" class="mobile-nav-link">Home</a>
-  <a href="about.html" class="mobile-nav-link">Who We Are</a>
-  <a href="brands.html" class="mobile-nav-link active">Our Brands</a>
-  <div class="mobile-sub-links">
-    <a href="original.html">Original®</a>
-    <a href="brands.html#klasse">KLASSE</a>
-    <a href="brands.html#cobra">COBRA</a>
-    <a href="brands.html#captain">Captain</a>
-    <a href="brands.html#splash">Splash</a>
-    <a href="brands.html#ori">Ori</a>
-    <a href="brands.html#alqobtan">Al Qobtan</a>
-  </div>
-  <a href="about.html#sustainability" class="mobile-nav-link">Sustainability</a>
-  <a href="index.html#newsroom" class="mobile-nav-link">Newsroom</a>
-  <a href="contact.html" class="mobile-nav-link">Contact Us</a>
-</nav>
-
-<!-- ══════════════════════════════════════
-     PAGE BANNER
-══════════════════════════════════════ -->
-<div class="page-banner" role="banner">
-  <div class="page-banner-bg" style="background:linear-gradient(135deg,#0d1045,#2b3990);opacity:1;"></div>
-  <div class="grid-overlay"></div>
-  <div class="page-banner-overlay"></div>
-  <div style="position:absolute;top:50%;right:8%;transform:translateY(-50%);font-size:10rem;opacity:0.04;pointer-events:none;font-family:'Outfit',sans-serif;font-weight:900;color:#fff;">BRANDS</div>
-  <div class="page-banner-content">
-    <nav class="page-banner-breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">Home</a><span>›</span><span>Our Brands</span>
-    </nav>
-    <h1 class="page-banner-title">Our Brands</h1>
-    <p class="page-banner-sub">Seven iconic brands. One unwavering commitment to quality, innovation, and extraordinary taste experiences.</p>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     STICKY BRAND TABS
-══════════════════════════════════════ -->
-<div class="brand-tabs" role="navigation" aria-label="Brand navigation">
+<!-- STICKY BRAND TABS -->
+<div class="brand-tabs" role="navigation">
   <div class="brand-tabs-inner">
     <a href="#original"  class="brand-tab active" data-target="original">🧃 Original®</a>
     <a href="#klasse"    class="brand-tab" data-target="klasse">🍺 KLASSE</a>
@@ -223,26 +42,29 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     BRAND: ORIGINAL®
-══════════════════════════════════════ -->
-<section class="brand-section" id="original" aria-label="Original brand">
-  <div class="brand-section-bg" style="background: linear-gradient(160deg, #060830 0%, #1a1c75 40%, #2b3990 70%, #0a0e60 100%);"></div>
-  <div class="brand-section-overlay"></div>
-  <!-- Decorative circles -->
-  <div style="position:absolute;width:700px;height:700px;border-radius:50%;border:1px solid rgba(245,166,35,0.06);top:-200px;right:-150px;pointer-events:none;"></div>
-  <div style="position:absolute;width:450px;height:450px;border-radius:50%;border:1px solid rgba(245,166,35,0.06);top:-100px;right:-50px;pointer-events:none;"></div>
-  <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,0.1) 0%,transparent 70%);top:10%;right:20%;pointer-events:none;"></div>
+<!-- ORIGINAL -->
+<section class="brand-showcase-section" id="original">
+  <div class="brand-showcase-bg"></div>
+  <div class="brand-showcase-inner reveal">
+    <div class="brand-showcase-logo" style="color: #fff;">Original<sup style="font-size:0.5em;top:-0.5em;position:relative;">®</sup></div>
+    
+    <div class="brand-showcase-composition">
+      <!-- PLACEHOLDER for the user's uploaded image -->
+      <div class="brand-image-placeholder">
+        <span>🍹</span>
+        Insert 'Original' Composition Image Here<br>
+        (Products with liquid splashes)
+      </div>
+      <!-- If you have the image, replace the div above with: 
+           <img src="path/to/image.jpg" alt="Original Products" style="width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));" />
+      -->
+    </div>
 
-  <div class="brand-section-inner">
-    <!-- Text -->
-    <div class="reveal-left">
-      <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;">🧃 Since 1999</div>
-      <div class="brand-title-big">Original<sup style="font-size:0.4em;top:-0.6em;position:relative;">®</sup></div>
-      <div style="font-size:1.15rem;color:var(--c-gold);font-style:italic;font-weight:600;margin-bottom:0.5rem;">"Enjoy the Taste of Quality!"</div>
-      <p class="brand-desc">GUFC's flagship brand, Original® has been delivering premium, authentic fruit juices to families across the GCC since 1999. With an ever-expanding range of flavors and formats, Original® embodies the perfect balance of great taste, natural goodness, and refreshing quality.</p>
-
-      <div class="brand-flavors-list">
+    <div class="brand-showcase-content">
+      <div class="brand-showcase-tagline" style="color:var(--c-gold);">"Enjoy the Taste of Quality!"</div>
+      <p class="brand-showcase-desc">GUFC's flagship brand, Original® has been delivering premium, authentic fruit juices to families across the GCC since 1999.</p>
+      
+      <div class="brand-showcase-flavors">
         <span class="flavor-chip">🥭 Mango</span>
         <span class="flavor-chip">🍊 Orange</span>
         <span class="flavor-chip">🍈 Guava</span>
@@ -251,359 +73,186 @@
         <span class="flavor-chip">🍋 Lemon</span>
         <span class="flavor-chip">🍇 Grape</span>
         <span class="flavor-chip">🍓 Strawberry</span>
-        <span class="flavor-chip">🌪️ Chunks</span>
-        <span class="flavor-chip">🥤 Cans</span>
       </div>
 
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+      <div style="display:flex;gap:1rem;justify-content:center;">
         <a href="original.html" class="btn btn-gold">Explore Original® →</a>
-        <a href="contact.html" class="btn btn-secondary">Distributor Inquiry</a>
-      </div>
-
-      <div style="display:flex;gap:2rem;margin-top:2.5rem;">
-        <div>
-          <div style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:var(--c-gold);">25+</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;">Flavors</div>
-        </div>
-        <div>
-          <div style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:var(--c-gold);">#1</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;">GCC Choice</div>
-        </div>
-        <div>
-          <div style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:var(--c-gold);">1999</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;">Est.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Visual -->
-    <div class="brand-visual reveal-right">
-      <div class="brand-visual-placeholder" style="background:rgba(245,166,35,0.08);border-color:rgba(245,166,35,0.2);">
-        <span style="font-size:7rem;filter:drop-shadow(0 4px 20px rgba(245,166,35,0.4));">🧃</span>
-        <div style="text-align:center;">
-          <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:900;color:var(--c-gold);">Original®</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.25rem;">Premium Fruit Juices</div>
-        </div>
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;padding:0 1rem;">
-          <span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#ffd700);box-shadow:0 4px 10px rgba(255,140,0,0.4);"></span>
-          <span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ff6b35,#ffa500);box-shadow:0 4px 10px rgba(255,107,53,0.4);"></span>
-          <span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2d8b2d,#56d656);box-shadow:0 4px 10px rgba(45,139,45,0.4);"></span>
-          <span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#9b59b6,#e056d7);box-shadow:0 4px 10px rgba(155,89,182,0.4);"></span>
-          <span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#e74c3c,#ff6b6b);box-shadow:0 4px 10px rgba(231,76,60,0.4);"></span>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BRAND: KLASSE
-══════════════════════════════════════ -->
-<section class="brand-section reverse" id="klasse" aria-label="KLASSE brand">
-  <div class="brand-section-bg" style="background: linear-gradient(160deg, #050505 0%, #111111 40%, #1a1a1a 70%, #0a0a0a 100%);"></div>
-  <div class="brand-section-overlay"></div>
-  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(247,141,0,0.08) 0%,transparent 70%);bottom:-100px;left:10%;pointer-events:none;"></div>
+<!-- KLASSE -->
+<section class="brand-showcase-section" id="klasse">
+  <div class="brand-showcase-bg"></div>
+  <div class="brand-showcase-inner reveal">
+    <div class="brand-showcase-logo" style="color: var(--c-gold);">KLASSE</div>
+    
+    <div class="brand-showcase-composition">
+      <div class="brand-image-placeholder">
+        <span>🍺</span>
+        Insert 'KLASSE' Composition Image Here<br>
+        (Malt bottles with splashing effects)
+      </div>
+    </div>
 
-  <div class="brand-section-inner">
-    <div class="reveal-left">
-      <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-amber);margin-bottom:1rem;">🍺 Non-Alcoholic Malt</div>
-      <div class="brand-title-big" style="color:var(--c-gold);">KLASSE</div>
-      <div style="font-size:1.15rem;color:rgba(255,255,255,0.6);font-style:italic;font-weight:600;margin-bottom:0.5rem;">"The True German Taste!"</div>
-      <p class="brand-desc">KLASSE delivers the authentic taste of German-style malt beverages without alcohol, bringing a premium, sophisticated experience to consumers who appreciate the finer things in life.</p>
-      <div class="brand-flavors-list">
+    <div class="brand-showcase-content">
+      <div class="brand-showcase-tagline" style="color:rgba(255,255,255,0.7);">"The True German Taste!"</div>
+      <p class="brand-showcase-desc">KLASSE delivers the authentic taste of German-style malt beverages without alcohol, bringing a premium, sophisticated experience.</p>
+      
+      <div class="brand-showcase-flavors">
         <span class="flavor-chip">🌾 Classic Malt</span>
         <span class="flavor-chip">🍋 Lemon</span>
         <span class="flavor-chip">🍎 Apple</span>
-        <span class="flavor-chip">🍊 Orange</span>
         <span class="flavor-chip">🍓 Strawberry</span>
-        <span class="flavor-chip">🍇 Grape</span>
-      </div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-gold">Distributor Inquiry →</a>
-        <a href="brands.html" class="btn btn-secondary">Back to Brands</a>
-      </div>
-    </div>
-    <div class="brand-visual reveal-right">
-      <div class="brand-visual-placeholder" style="background:rgba(247,141,0,0.05);border-color:rgba(247,141,0,0.15);">
-        <span style="font-size:6rem;">🍺</span>
-        <div style="text-align:center;">
-          <div style="font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:900;color:var(--c-gold);letter-spacing:0.1em;">KLASSE</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);margin-top:0.25rem;">German Non-Alcoholic Malt</div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BRAND: COBRA
-══════════════════════════════════════ -->
-<section class="brand-section" id="cobra" aria-label="COBRA brand">
-  <div class="brand-section-bg" style="background: linear-gradient(160deg, #1a0000 0%, #5a0000 30%, #e30613 70%, #8b0000 100%);"></div>
-  <div class="brand-section-overlay"></div>
-  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,50,50,0.1) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none;animation:floatOrb 8s ease-in-out infinite;"></div>
+<!-- COBRA -->
+<section class="brand-showcase-section" id="cobra">
+  <div class="brand-showcase-bg"></div>
+  <div class="brand-showcase-inner reveal">
+    <div class="brand-showcase-logo" style="color: #fff; text-shadow:0 0 40px rgba(227,6,19,0.8);">COBRA</div>
+    
+    <div class="brand-showcase-composition">
+      <div class="brand-image-placeholder" style="border-color:rgba(227,6,19,0.5);">
+        <span>⚡</span>
+        Insert 'COBRA' Composition Image Here<br>
+        (Energy drink cans with lightning/energy splashes)
+      </div>
+    </div>
 
-  <div class="brand-section-inner">
-    <div class="reveal-left">
-      <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#ff6b6b;margin-bottom:1rem;">⚡ Energy Drink</div>
-      <div class="brand-title-big" style="color:var(--c-white);text-shadow:0 0 40px rgba(227,6,19,0.5);">COBRA</div>
-      <div style="font-size:1.15rem;color:rgba(255,150,150,0.8);font-style:italic;font-weight:600;margin-bottom:0.5rem;">"Stronger Than You Imagine."</div>
-      <p class="brand-desc">COBRA is the bold energy drink that pushes your limits. Packed with powerful ingredients and a fierce attitude, COBRA delivers the energy you need to conquer every challenge.</p>
-      <div class="brand-flavors-list">
+    <div class="brand-showcase-content">
+      <div class="brand-showcase-tagline" style="color:#ff6b6b;">"Stronger Than You Imagine."</div>
+      <p class="brand-showcase-desc">COBRA is the bold energy drink that pushes your limits. Packed with powerful ingredients and a fierce attitude.</p>
+      
+      <div class="brand-showcase-flavors">
         <span class="flavor-chip">🔴 Original</span>
         <span class="flavor-chip">🔵 Sugar Free</span>
         <span class="flavor-chip">🟡 Tropical</span>
-        <span class="flavor-chip">🟢 Green Apple</span>
-        <span class="flavor-chip">🟣 Berry Blast</span>
-      </div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-primary">Distributor Inquiry →</a>
-        <a href="brands.html" class="btn btn-secondary">Back to Brands</a>
-      </div>
-    </div>
-    <div class="brand-visual reveal-right">
-      <div class="brand-visual-placeholder" style="background:rgba(227,6,19,0.1);border-color:rgba(227,6,19,0.25);">
-        <span style="font-size:6rem;filter:drop-shadow(0 0 20px rgba(255,50,50,0.6));">⚡</span>
-        <div style="text-align:center;">
-          <div style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:var(--c-red);letter-spacing:0.08em;text-shadow:0 0 20px rgba(227,6,19,0.5);">COBRA</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);margin-top:0.25rem;">Premium Energy Drink</div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BRAND: CAPTAIN
-══════════════════════════════════════ -->
-<section class="brand-section reverse" id="captain" aria-label="Captain brand">
-  <div class="brand-section-bg" style="background: linear-gradient(160deg, #001428 0%, #003366 40%, #005cbf 70%, #001f4d 100%);"></div>
-  <div class="brand-section-overlay"></div>
-  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,100,200,0.12) 0%,transparent 70%);top:-100px;right:5%;pointer-events:none;"></div>
+<!-- CAPTAIN -->
+<section class="brand-showcase-section" id="captain">
+  <div class="brand-showcase-bg"></div>
+  <div class="brand-showcase-inner reveal">
+    <div class="brand-showcase-logo" style="color: #60a5fa;">Captain</div>
+    
+    <div class="brand-showcase-composition">
+      <div class="brand-image-placeholder" style="border-color:rgba(96,165,250,0.5);">
+        <span>⚓</span>
+        Insert 'Captain' Composition Image Here<br>
+        (Sparkling cans with water splashes)
+      </div>
+    </div>
 
-  <div class="brand-section-inner">
-    <div class="reveal-left">
-      <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#60a5fa;margin-bottom:1rem;">⚓ Sparkling Beverage</div>
-      <div class="brand-title-big" style="color:var(--c-white);">Captain</div>
-      <div style="font-size:1.15rem;color:rgba(150,200,255,0.8);font-style:italic;font-weight:600;margin-bottom:0.5rem;">"Sail to the Taste!"</div>
-      <p class="brand-desc">Captain brings the refreshing spirit of the open seas to every sip. A premium sparkling beverage with bold, invigorating flavors that take you on a voyage of taste.</p>
-      <div class="brand-flavors-list">
+    <div class="brand-showcase-content">
+      <div class="brand-showcase-tagline" style="color:#93c5fd;">"Sail to the Taste!"</div>
+      <p class="brand-showcase-desc">Captain brings the refreshing spirit of the open seas to every sip. A premium sparkling beverage with bold, invigorating flavors.</p>
+      
+      <div class="brand-showcase-flavors">
         <span class="flavor-chip">🍋 Lemon</span>
         <span class="flavor-chip">🍊 Orange</span>
         <span class="flavor-chip">🍇 Grape</span>
-        <span class="flavor-chip">🍎 Apple</span>
-        <span class="flavor-chip">🍓 Strawberry</span>
-        <span class="flavor-chip">🏖️ Tropical</span>
-      </div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-blue">Distributor Inquiry →</a>
-        <a href="brands.html" class="btn btn-secondary">Back to Brands</a>
-      </div>
-    </div>
-    <div class="brand-visual reveal-right">
-      <div class="brand-visual-placeholder" style="background:rgba(0,92,191,0.1);border-color:rgba(0,92,191,0.25);">
-        <span style="font-size:6rem;">⚓</span>
-        <div style="text-align:center;">
-          <div style="font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:900;color:#60a5fa;">Captain</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);margin-top:0.25rem;">Sparkling Beverage</div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BRAND: SPLASH
-══════════════════════════════════════ -->
-<section class="brand-section" id="splash" aria-label="Splash brand">
-  <div class="brand-section-bg" style="background: linear-gradient(160deg, #003d33 0%, #00796b 40%, #26c6da 70%, #004d40 100%);"></div>
-  <div class="brand-section-overlay"></div>
+<!-- SPLASH -->
+<section class="brand-showcase-section" id="splash">
+  <div class="brand-showcase-bg"></div>
+  <div class="brand-showcase-inner reveal">
+    <div class="brand-showcase-logo" style="color: #4dd0e1;">Splash</div>
+    
+    <div class="brand-showcase-composition">
+      <div class="brand-image-placeholder" style="border-color:rgba(77,208,225,0.5);">
+        <span>💦</span>
+        Insert 'Splash' Composition Image Here<br>
+        (Soft drinks with vibrant liquid splashes)
+      </div>
+    </div>
 
-  <div class="brand-section-inner">
-    <div class="reveal-left">
-      <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#4dd0e1;margin-bottom:1rem;">💦 Refreshing Soft Drinks</div>
-      <div class="brand-title-big" style="color:var(--c-white);">Splash</div>
-      <div style="font-size:1.15rem;color:rgba(150,240,230,0.8);font-style:italic;font-weight:600;margin-bottom:0.5rem;">"Refreshing Every Moment!"</div>
-      <p class="brand-desc">Splash delivers pure, refreshing hydration with a burst of natural fruit flavor in every sip. Light, vibrant, and always refreshing — Splash is the perfect drink for any occasion.</p>
-      <div class="brand-flavors-list">
+    <div class="brand-showcase-content">
+      <div class="brand-showcase-tagline" style="color:#80deea;">"Refreshing Every Moment!"</div>
+      <p class="brand-showcase-desc">Splash delivers pure, refreshing hydration with a burst of natural fruit flavor in every sip.</p>
+      
+      <div class="brand-showcase-flavors">
         <span class="flavor-chip">💧 Original</span>
         <span class="flavor-chip">🍋 Lemon Mint</span>
-        <span class="flavor-chip">🍊 Orange Citrus</span>
-        <span class="flavor-chip">🍓 Berry</span>
         <span class="flavor-chip">🍈 Watermelon</span>
-        <span class="flavor-chip">🥝 Kiwi</span>
-      </div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="contact.html" class="btn" style="background:linear-gradient(135deg,#00796b,#26c6da);color:#fff;">Distributor Inquiry →</a>
-        <a href="brands.html" class="btn btn-secondary">Back to Brands</a>
-      </div>
-    </div>
-    <div class="brand-visual reveal-right">
-      <div class="brand-visual-placeholder" style="background:rgba(38,198,218,0.1);border-color:rgba(38,198,218,0.25);">
-        <span style="font-size:6rem;">💦</span>
-        <div style="text-align:center;">
-          <div style="font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:900;color:#4dd0e1;">Splash</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);margin-top:0.25rem;">Refreshing Soft Drinks</div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BRAND: ORI
-══════════════════════════════════════ -->
-<section class="brand-section reverse" id="ori" aria-label="Ori brand">
-  <div class="brand-section-bg" style="background: linear-gradient(160deg, #1a0033 0%, #4a0080 40%, #7c3aed 70%, #2d006b 100%);"></div>
-  <div class="brand-section-overlay"></div>
+<!-- ORI -->
+<section class="brand-showcase-section" id="ori">
+  <div class="brand-showcase-bg"></div>
+  <div class="brand-showcase-inner reveal">
+    <div class="brand-showcase-logo" style="color: #c4b5fd;">Ori</div>
+    
+    <div class="brand-showcase-composition">
+      <div class="brand-image-placeholder" style="border-color:rgba(196,181,253,0.5);">
+        <span>✨</span>
+        Insert 'Ori' Composition Image Here<br>
+        (Light juices with elegant splashes)
+      </div>
+    </div>
 
-  <div class="brand-section-inner">
-    <div class="reveal-left">
-      <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4b5fd;margin-bottom:1rem;">✨ Light & Fresh</div>
-      <div class="brand-title-big" style="color:var(--c-white);">Ori</div>
-      <div style="font-size:1.15rem;color:rgba(196,181,253,0.8);font-style:italic;font-weight:600;margin-bottom:0.5rem;">"Pure. Light. Refreshing."</div>
-      <p class="brand-desc">Ori is GUFC's lightest and freshest beverage offering — a delicate, refined juice drink designed for those who prefer a lighter touch without compromising on taste or quality.</p>
-      <div class="brand-flavors-list">
+    <div class="brand-showcase-content">
+      <div class="brand-showcase-tagline" style="color:#ddd6fe;">"Pure. Light. Refreshing."</div>
+      <p class="brand-showcase-desc">Ori is GUFC's lightest and freshest beverage offering — a delicate, refined juice drink designed for those who prefer a lighter touch.</p>
+      
+      <div class="brand-showcase-flavors">
         <span class="flavor-chip">🍏 Green Apple</span>
-        <span class="flavor-chip">🍋 Lemon</span>
         <span class="flavor-chip">🍑 White Peach</span>
-        <span class="flavor-chip">🥝 Kiwi</span>
-        <span class="flavor-chip">🍇 White Grape</span>
-      </div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="contact.html" class="btn" style="background:linear-gradient(135deg,#4a0080,#7c3aed);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,0.4);">Distributor Inquiry →</a>
-        <a href="brands.html" class="btn btn-secondary">Back to Brands</a>
-      </div>
-    </div>
-    <div class="brand-visual reveal-right">
-      <div class="brand-visual-placeholder" style="background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.25);">
-        <span style="font-size:6rem;">✨</span>
-        <div style="text-align:center;">
-          <div style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:#c4b5fd;">Ori</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);margin-top:0.25rem;">Light & Fresh Juice</div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BRAND: AL QOBTAN
-══════════════════════════════════════ -->
-<section class="brand-section" id="alqobtan" aria-label="Al Qobtan brand">
-  <div class="brand-section-bg" style="background: linear-gradient(160deg, #2a1a00 0%, #7a5200 40%, #c4952a 70%, #4a3000 100%);"></div>
-  <div class="brand-section-overlay"></div>
-  <div style="position:absolute;font-size:16rem;font-weight:900;color:rgba(255,200,80,0.04);top:50%;right:5%;transform:translateY(-50%);pointer-events:none;font-family:'Outfit',sans-serif;">الربان</div>
+<!-- AL QOBTAN -->
+<section class="brand-showcase-section" id="alqobtan">
+  <div class="brand-showcase-bg"></div>
+  <div class="brand-showcase-inner reveal">
+    <div class="brand-showcase-logo" style="color: var(--c-gold);">Al Qobtan</div>
+    
+    <div class="brand-showcase-composition">
+      <div class="brand-image-placeholder" style="border-color:rgba(245,166,35,0.5);">
+        <span>🏺</span>
+        Insert 'Al Qobtan' Composition Image Here<br>
+        (Heritage beverages with traditional aesthetic)
+      </div>
+    </div>
 
-  <div class="brand-section-inner">
-    <div class="reveal-left">
-      <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;">🏛️ Heritage & Tradition</div>
-      <div class="brand-title-big" style="color:var(--c-gold);">Al Qobtan</div>
-      <div style="font-size:1.4rem;color:rgba(255,200,100,0.8);font-weight:700;margin-bottom:0.25rem;font-family:'Tajawal',sans-serif;">الربان</div>
-      <div style="font-size:1rem;color:rgba(255,200,100,0.7);font-style:italic;margin-bottom:1rem;">"A Heritage of Taste · عراقة الطعم"</div>
-      <p class="brand-desc">Al Qobtan — The Captain — embodies the rich heritage and traditions of the Arabian Gulf. A premium beverage rooted in authenticity, crafted for those who honor their roots while savoring the finest flavors.</p>
-      <div class="brand-flavors-list">
+    <div class="brand-showcase-content">
+      <div class="brand-showcase-tagline" style="color:rgba(245,166,35,0.8);">"A Heritage of Taste"</div>
+      <p class="brand-showcase-desc">Al Qobtan embodies the rich heritage and traditions of the Arabian Gulf. A premium beverage rooted in authenticity.</p>
+      
+      <div class="brand-showcase-flavors">
         <span class="flavor-chip">🌿 Traditional Herb</span>
-        <span class="flavor-chip">🍊 Citrus Blend</span>
-        <span class="flavor-chip">🍇 Dark Grape</span>
         <span class="flavor-chip">🫒 Tamarind</span>
         <span class="flavor-chip">🌹 Rose</span>
       </div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-gold">Distributor Inquiry →</a>
-        <a href="brands.html" class="btn btn-secondary">Back to Brands</a>
-      </div>
-    </div>
-    <div class="brand-visual reveal-right">
-      <div class="brand-visual-placeholder" style="background:rgba(196,149,42,0.1);border-color:rgba(196,149,42,0.25);">
-        <span style="font-size:6rem;">🏺</span>
-        <div style="text-align:center;">
-          <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:900;color:var(--c-gold);">Al Qobtan</div>
-          <div style="font-family:'Tajawal',sans-serif;font-size:1.1rem;color:rgba(245,166,35,0.7);">الربان</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.35);margin-top:0.25rem;">Heritage Beverages</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     DISTRIBUTOR CTA
-══════════════════════════════════════ -->
-<section style="background:var(--c-off-white);padding:var(--sp-2xl) 0;">
-  <div class="container text-center">
-    <div class="section-eyebrow reveal" style="justify-content:center;">Partner With Us</div>
-    <h2 class="section-title reveal delay-1" style="margin-bottom:1rem;">Become a GUFC Distributor</h2>
-    <p class="section-desc reveal delay-2" style="margin-bottom:2rem;">Join our global network of distribution partners and bring world-class GUFC beverages to your market.</p>
-    <div class="reveal delay-3">
+<!-- CTA -->
+<section style="background:var(--c-off-white);padding:var(--sp-2xl) 0;text-align:center;">
+  <div class="container">
+    <h2 class="section-title reveal" style="margin-bottom:1rem;">Become a GUFC Distributor</h2>
+    <div class="reveal delay-1">
       <a href="contact.html" class="btn btn-blue">Submit Distributor Inquiry →</a>
     </div>
   </div>
 </section>
-
-<!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
-<footer class="footer">
-  <div class="footer-main">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <img src="https://gulf-union.com/images/logo.png" alt="GUFC Logo" style="height:52px;margin-bottom:1rem;filter:brightness(10);" />
-          <p class="footer-brand-desc">Gulf Union Foods Co. — A premier beverage manufacturer delivering world-class quality drinks since 1999.</p>
-          <div class="footer-socials">
-            <a href="https://www.instagram.com/gulfunionfoods/" class="social-icon" target="_blank">📸</a>
-            <a href="https://twitter.com/GulfUnionFoods" class="social-icon" target="_blank">𝕏</a>
-            <a href="https://www.facebook.com/GulfUnionFoods" class="social-icon" target="_blank">f</a>
-            <a href="https://www.linkedin.com/company/gulf-union-foods-co" class="social-icon" target="_blank">in</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-heading">Quick Links</div>
-          <ul class="footer-links">
-            <li><a href="about.html">Who We Are</a></li>
-            <li><a href="brands.html">Our Brands</a></li>
-            <li><a href="about.html#sustainability">Sustainability</a></li>
-            <li><a href="index.html#newsroom">Newsroom</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="footer-heading">Our Brands</div>
-          <ul class="footer-links">
-            <li><a href="original.html">Original®</a></li>
-            <li><a href="#klasse">KLASSE</a></li>
-            <li><a href="#cobra">COBRA</a></li>
-            <li><a href="#captain">Captain</a></li>
-            <li><a href="#splash">Splash</a></li>
-            <li><a href="#ori">Ori</a></li>
-            <li><a href="#alqobtan">Al Qobtan</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="footer-heading">Contact Us</div>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon">📍</div>
-            <div class="footer-contact-text">Gulf Union Foods Co.<br>Kingdom of Saudi Arabia</div>
-          </div>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon">✉️</div>
-            <div class="footer-contact-text"><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <p class="footer-copy">© 2026 Gulf Union Foods Co. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-      </div>
-    </div>
-  </div>
-</footer>
 
 <script src="main.js"></script>
 </body>
