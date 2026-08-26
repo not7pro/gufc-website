@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Original® | Gulf Union Foods Co.</title>
+  <meta name="description" content="Explore Original® by GUFC — the GCC's most loved premium fruit juice brand since 1999. Discover all flavors, product lines, and our iconic packaging evolution." />
+  <meta property="og:title" content="Original® | Gulf Union Foods Co." />
+  <meta property="og:image" content="https://gulf-union.com/images/logo.png" />
+  <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Original page specifics ── */
+    .original-hero {
+      min-height: 100vh;
+      background: linear-gradient(150deg, #060830 0%, #0f1350 25%, #1a1c75 55%, #2b3990 80%, #060830 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .original-hero::before {
+      content: '';
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,166,35,0.07);
+      top: -300px;
+      right: -200px;
+    }
+    .original-hero::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,166,35,0.05);
+      top: -150px;
+      right: -50px;
+    }
+    .hero-gold-orb {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 70%);
+      top: 10%;
+      right: 15%;
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+    .hero-red-orb {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(227,6,19,0.08) 0%, transparent 70%);
+      bottom: 10%;
+      left: 5%;
+      animation: floatOrb 10s ease-in-out infinite reverse;
+    }
+
+    /* Product sections */
+    .product-section {
+      padding: var(--sp-3xl) 0;
+    }
+    .product-section:nth-child(even) {
+      background: var(--c-off-white);
+    }
+
+    .product-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .flavor-card {
+      background: var(--c-white);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: var(--t-spring);
+      cursor: pointer;
+      text-align: center;
+      padding: 1.5rem 1rem 1.25rem;
+    }
+    .flavor-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+    .flavor-card-emoji {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .flavor-card:hover .flavor-card-emoji { transform: scale(1.2) rotate(-5deg); }
+    .flavor-card-name { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .flavor-card-vol { font-size: 0.78rem; color: var(--c-muted); }
+    .flavor-card-badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--r-full);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Flavors grid */
+    .flavors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Evolution timeline (horizontal) */
+    .evolution-section {
+      background: linear-gradient(135deg, #080c1a, #0f1630, #080c1a);
+      padding: var(--sp-2xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .evolution-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at center, rgba(26,28,117,0.25) 0%, transparent 70%);
+    }
+
+    .evo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      width: 180px;
+      flex-shrink: 0;
+      text-align: center;
+      padding: 0 1.25rem;
+      position: relative;
+    }
+
+    .evo-bottle-icon {
+      width: 100px;
+      height: 200px;
+      border-radius: 40px 40px 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      transition: var(--t-spring);
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
+      position: relative;
+    }
+
+    .evo-item:hover .evo-bottle-icon {
+      transform: translateY(-12px) scale(1.08);
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    }
+
+    .evo-year {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--c-gold);
+    }
+
+    .evo-label {
+      font-size: 0.78rem;
+      color: var(--c-muted);
+      line-height: 1.4;
+    }
+
+    /* Video/media section */
+    .brand-story-section {
+      background: var(--g-hero);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .original-hero { min-height: auto; padding: 8rem 1.5rem 4rem; }
+      .flavors-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .flavors-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar transparent" role="navigation" aria-label="Main Navigation">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. Logo" />
+    </a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="about.html" class="nav-link">Who We Are</a></li>
+      <li class="nav-item">
+        <a href="brands.html" class="nav-link active">Our Brands
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="original.html" style="color:var(--c-gold);">Original® ✓</a>
+          <a href="brands.html#klasse">KLASSE</a>
+          <a href="brands.html#cobra">COBRA</a>
+          <a href="brands.html#captain">Captain</a>
+          <a href="brands.html#splash">Splash</a>
+          <a href="brands.html#ori">Ori</a>
+          <a href="brands.html#alqobtan">Al Qobtan</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="about.html#sustainability" class="nav-link">Sustainability</a></li>
+      <li class="nav-item"><a href="index.html#newsroom" class="nav-link">Newsroom</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="lang-toggle">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        عربي
+      </button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="about.html" class="mobile-nav-link">Who We Are</a>
+  <a href="brands.html" class="mobile-nav-link active">Our Brands</a>
+  <div class="mobile-sub-links">
+    <a href="original.html" style="color:var(--c-gold);">Original® ✓</a>
+    <a href="brands.html#klasse">KLASSE</a>
+    <a href="brands.html#cobra">COBRA</a>
+    <a href="brands.html#captain">Captain</a>
+    <a href="brands.html#splash">Splash</a>
+  </div>
+  <a href="contact.html" class="mobile-nav-link">Contact Us</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="original-hero" aria-label="Original brand hero">
+  <div class="hero-gold-orb"></div>
+  <div class="hero-red-orb"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="container" style="position:relative;z-index:2;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;min-height:80vh;padding:6rem 0 4rem;">
+      <!-- Left: content -->
+      <div>
+        <!-- Breadcrumb -->
+        <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;">
+          <a href="index.html" style="color:rgba(255,255,255,0.5);">Home</a>
+          <span>›</span>
+          <a href="brands.html" style="color:rgba(255,255,255,0.5);">Brands</a>
+          <span>›</span>
+          <span style="color:var(--c-gold);">Original®</span>
+        </div>
+
+        <div class="reveal">
+          <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.25);border-radius:var(--r-full);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1.5rem;">
+            🧃 GUFC Flagship Brand · Est. 1999
+          </div>
+        </div>
+
+        <h1 class="reveal delay-1" style="font-family:'Outfit',sans-serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:900;color:var(--c-white);line-height:1;letter-spacing:-0.03em;margin-bottom:0.5rem;">
+          Original<sup style="font-size:0.35em;top:-0.6em;position:relative;color:var(--c-gold);">®</sup>
+        </h1>
+
+        <div class="reveal delay-2" style="font-size:1.3rem;color:var(--c-gold);font-style:italic;font-weight:600;margin-bottom:1.5rem;">
+          "Enjoy the Taste of Quality!"
+        </div>
+
+        <p class="reveal delay-3" style="font-size:1.05rem;color:rgba(255,255,255,0.75);line-height:1.8;max-width:520px;margin-bottom:2rem;">
+          GUFC's flagship brand and the GCC's most loved fruit juice — Original® has been delivering premium, authentic, refreshing fruit juices to families across the region since 1999. With over 25 flavors and multiple product formats, there's an Original® for every moment.
+        </p>
+
+        <div class="reveal delay-4" style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;">
+          <a href="#products" class="btn btn-gold">Explore Products →</a>
+          <a href="#evolution" class="btn btn-secondary">Brand Evolution</a>
+          <a href="contact.html" class="btn btn-secondary">Distributor Inquiry</a>
+        </div>
+
+        <div class="reveal delay-5" style="display:flex;gap:2.5rem;">
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:900;color:var(--c-gold);">25+</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;">Flavors</div>
+          </div>
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:900;color:var(--c-gold);">1999</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;">Est.</div>
+          </div>
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:900;color:var(--c-gold);">#1</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;">GCC Choice</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: visual showcase -->
+      <div class="reveal-right" style="display:flex;align-items:center;justify-content:center;">
+        <div style="position:relative;width:420px;height:480px;">
+          <!-- Central bottle -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:160px;height:340px;background:linear-gradient(170deg,#1a1c75,#2b3990,#1a1c75);border-radius:60px 60px 30px 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 30px 80px rgba(26,28,117,0.6),inset 0 2px 10px rgba(255,255,255,0.15);z-index:3;animation:floatOrb 4s ease-in-out infinite;">
+            <span style="font-size:3rem;">🧃</span>
+            <div style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:900;color:var(--c-gold);margin-top:0.5rem;">Original</div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;">MANGO</div>
+            <div style="position:absolute;bottom:20px;font-size:0.7rem;color:rgba(255,255,255,0.4);">1 Litre</div>
+          </div>
+
+          <!-- Surrounding flavor orbs -->
+          <div style="position:absolute;top:0;left:20px;width:110px;height:230px;background:linear-gradient(170deg,#e65100,#ff8f00,#ff6f00);border-radius:40px 40px 20px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(230,81,0,0.4);transform:rotate(-8deg);z-index:2;">
+            <span style="font-size:2rem;">🍊</span>
+            <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;color:#fff;margin-top:0.3rem;letter-spacing:0.05em;">ORANGE</div>
+          </div>
+
+          <div style="position:absolute;top:20px;right:20px;width:110px;height:230px;background:linear-gradient(170deg,#1b5e20,#388e3c,#2e7d32);border-radius:40px 40px 20px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(27,94,32,0.4);transform:rotate(8deg);z-index:2;">
+            <span style="font-size:2rem;">🍈</span>
+            <div style="font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;color:#fff;margin-top:0.3rem;letter-spacing:0.05em;">GUAVA</div>
+          </div>
+
+          <div style="position:absolute;bottom:10px;left:40px;width:100px;height:200px;background:linear-gradient(170deg,#880e4f,#c2185b,#e91e63);border-radius:35px 35px 18px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(136,14,79,0.4);transform:rotate(-5deg);z-index:2;">
+            <span style="font-size:2rem;">🍓</span>
+            <div style="font-family:'Outfit',sans-serif;font-size:0.65rem;font-weight:700;color:#fff;margin-top:0.3rem;letter-spacing:0.05em;">STRAWBERRY</div>
+          </div>
+
+          <div style="position:absolute;bottom:10px;right:40px;width:100px;height:200px;background:linear-gradient(170deg,#f57f17,#f9a825,#fbc02d);border-radius:35px 35px 18px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(245,127,23,0.4);transform:rotate(5deg);z-index:2;">
+            <span style="font-size:2rem;">🍑</span>
+            <div style="font-family:'Outfit',sans-serif;font-size:0.65rem;font-weight:700;color:#fff;margin-top:0.3rem;letter-spacing:0.05em;">PEACH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRODUCTS — ORIGINAL JUICES
+══════════════════════════════════════ -->
+<section class="product-section" id="products">
+  <div class="container">
+    <div class="product-section-header reveal">
+      <div>
+        <div class="section-eyebrow">Classic Line</div>
+        <h2 class="section-title" style="font-size:2rem;">Original® Juice Range</h2>
+      </div>
+      <p style="font-size:0.9rem;color:var(--c-muted);max-width:340px;">Premium fruit juices in multiple sizes — 125ml, 250ml, 500ml, 1L, 1.5L, and 2L formats.</p>
+    </div>
+
+    <div class="flavors-grid">
+      <div class="flavor-card reveal delay-1">
+        <span class="flavor-card-emoji">🥭</span>
+        <div class="flavor-card-name">Mango</div>
+        <div class="flavor-card-vol">1L · 500ml · 250ml</div>
+        <span class="flavor-card-badge" style="background:rgba(255,140,0,0.1);color:#ff8c00;border:1px solid rgba(255,140,0,0.2);">Bestseller</span>
+      </div>
+      <div class="flavor-card reveal delay-2">
+        <span class="flavor-card-emoji">🍊</span>
+        <div class="flavor-card-name">Orange</div>
+        <div class="flavor-card-vol">1L · 500ml · 250ml</div>
+        <span class="flavor-card-badge" style="background:rgba(245,166,35,0.1);color:var(--c-amber);border:1px solid rgba(245,166,35,0.2);">Popular</span>
+      </div>
+      <div class="flavor-card reveal delay-3">
+        <span class="flavor-card-emoji">🍈</span>
+        <div class="flavor-card-name">Guava</div>
+        <div class="flavor-card-vol">1L · 500ml · 250ml</div>
+        <span class="flavor-card-badge" style="background:rgba(45,139,45,0.1);color:#2d8b2d;border:1px solid rgba(45,139,45,0.2);">Fan Fave</span>
+      </div>
+      <div class="flavor-card reveal delay-1">
+        <span class="flavor-card-emoji">🍑</span>
+        <div class="flavor-card-name">Peach</div>
+        <div class="flavor-card-vol">1L · 500ml · 250ml</div>
+      </div>
+      <div class="flavor-card reveal delay-2">
+        <span class="flavor-card-emoji">🍹</span>
+        <div class="flavor-card-name">Mixed Fruit</div>
+        <div class="flavor-card-vol">1L · 500ml · 250ml</div>
+      </div>
+      <div class="flavor-card reveal delay-3">
+        <span class="flavor-card-emoji">🍋</span>
+        <div class="flavor-card-name">Lemon</div>
+        <div class="flavor-card-vol">1L · 500ml · 250ml</div>
+      </div>
+      <div class="flavor-card reveal delay-1">
+        <span class="flavor-card-emoji">🍇</span>
+        <div class="flavor-card-name">Grape</div>
+        <div class="flavor-card-vol">1L · 500ml · 250ml</div>
+      </div>
+      <div class="flavor-card reveal delay-2">
+        <span class="flavor-card-emoji">🍓</span>
+        <div class="flavor-card-name">Strawberry</div>
+        <div class="flavor-card-vol">500ml · 250ml</div>
+        <span class="flavor-card-badge" style="background:rgba(227,6,19,0.1);color:var(--c-red);border:1px solid rgba(227,6,19,0.2);">New</span>
+      </div>
+      <div class="flavor-card reveal delay-3">
+        <span class="flavor-card-emoji">🥝</span>
+        <div class="flavor-card-name">Kiwi</div>
+        <div class="flavor-card-vol">500ml · 250ml</div>
+      </div>
+      <div class="flavor-card reveal delay-1">
+        <span class="flavor-card-emoji">🍈</span>
+        <div class="flavor-card-name">Pineapple</div>
+        <div class="flavor-card-vol">1L · 500ml</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRODUCTS — CHUNKS
+══════════════════════════════════════ -->
+<section class="product-section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div class="reveal-left">
+        <div class="section-eyebrow">New Launch</div>
+        <h2 class="section-title" style="margin-bottom:1rem;">
+          Original® Chunks 🌪️<br><span style="color:var(--c-blue);">Fruit Tornado</span>
+        </h2>
+        <div class="divider-gold left"></div>
+        <p style="color:var(--c-muted);line-height:1.8;margin:1.5rem 0;">
+          Introducing the boldest new addition to the Original® family — Chunks! Real fruit pieces suspended in premium juice, delivering an extraordinary texture experience with zero added sugar. Available in the iconic Fruit Tornado can design.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:var(--c-text);">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--c-gold);flex-shrink:0;"></span>
+            Zero Added Sugar — Pure Fruit Goodness
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:var(--c-text);">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--c-gold);flex-shrink:0;"></span>
+            Real Fruit Chunks in Every Can
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:var(--c-text);">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--c-gold);flex-shrink:0;"></span>
+            Bold New "Fruit Tornado" Packaging
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:var(--c-text);">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--c-gold);flex-shrink:0;"></span>
+            Available in 330ml Can Format
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-gold">Order Inquiry →</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
+          <div class="flavor-card">
+            <span class="flavor-card-emoji">🥭</span>
+            <div class="flavor-card-name">Mango Tornado</div>
+            <div class="flavor-card-vol">330ml Can</div>
+            <span class="flavor-card-badge" style="background:rgba(245,166,35,0.1);color:var(--c-amber);border:1px solid rgba(245,166,35,0.2);">Zero Sugar</span>
+          </div>
+          <div class="flavor-card">
+            <span class="flavor-card-emoji">🍊</span>
+            <div class="flavor-card-name">Orange Tornado</div>
+            <div class="flavor-card-vol">330ml Can</div>
+            <span class="flavor-card-badge" style="background:rgba(245,166,35,0.1);color:var(--c-amber);border:1px solid rgba(245,166,35,0.2);">Zero Sugar</span>
+          </div>
+          <div class="flavor-card">
+            <span class="flavor-card-emoji">🍓</span>
+            <div class="flavor-card-name">Mixed Berry</div>
+            <div class="flavor-card-vol">330ml Can</div>
+            <span class="flavor-card-badge" style="background:rgba(227,6,19,0.1);color:var(--c-red);border:1px solid rgba(227,6,19,0.2);">New!</span>
+          </div>
+          <div class="flavor-card">
+            <span class="flavor-card-emoji">🍹</span>
+            <div class="flavor-card-name">Tropical Blast</div>
+            <div class="flavor-card-vol">330ml Can</div>
+          </div>
+          <div class="flavor-card">
+            <span class="flavor-card-emoji">🍇</span>
+            <div class="flavor-card-name">Grape Storm</div>
+            <div class="flavor-card-vol">330ml Can</div>
+          </div>
+          <div class="flavor-card">
+            <span class="flavor-card-emoji">🥝</span>
+            <div class="flavor-card-name">Kiwi Twist</div>
+            <div class="flavor-card-vol">330ml Can</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PACKAGING EVOLUTION TIMELINE
+══════════════════════════════════════ -->
+<section class="evolution-section" id="evolution" aria-label="Brand Evolution Timeline">
+  <div class="grid-overlay"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-header reveal" style="margin-bottom:3rem;">
+      <div class="section-eyebrow" style="justify-content:center;">Brand Evolution</div>
+      <h2 class="section-title light">Original® Through the Years</h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc light" style="margin-top:1rem;">
+        From our first bottle in 1999 to today's iconic packaging — a journey of design, innovation, and enduring taste.
+      </p>
+    </div>
+
+    <div class="evolution-track-wrap" style="cursor:grab;">
+      <div style="display:flex;gap:0;padding:2rem 2rem 1.5rem;min-width:max-content;position:relative;">
+        <!-- Timeline line -->
+        <div style="position:absolute;left:2rem;right:2rem;top:calc(2rem + 100px);height:2px;background:linear-gradient(to right,transparent,rgba(245,166,35,0.4),var(--c-gold),rgba(245,166,35,0.4),transparent);pointer-events:none;"></div>
+
+        <!-- 1999 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#0a0d4a,#1a1c75,#2b3990);">🧃</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">1999</div>
+          <div class="evo-label">Original Launch<br>Classic Tetra</div>
+        </div>
+
+        <!-- 2002 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#3d0000,#8b0000,#c62828);">🥤</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">2002</div>
+          <div class="evo-label">Updated Branding<br>Vibrant Colors</div>
+        </div>
+
+        <!-- 2006 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#1a4a00,#2d8b00,#43a047);">🧴</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">2006</div>
+          <div class="evo-label">PET Bottle<br>Introduced</div>
+        </div>
+
+        <!-- 2010 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#4a2800,#8b5000,#c4952a);">🍶</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">2010</div>
+          <div class="evo-label">Premium Redesign<br>Gold Accent</div>
+        </div>
+
+        <!-- 2014 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#0a0d4a,#1a1c75,#4a1c75);">🥛</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">2014</div>
+          <div class="evo-label">Family Pack<br>Range Launch</div>
+        </div>
+
+        <!-- 2017 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#1a4a1a,#2e7d32,#66bb6a);">🫙</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">2017</div>
+          <div class="evo-label">Eco-Pack<br>Slim Design</div>
+        </div>
+
+        <!-- 2020 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#4a0000,#c62828,#ef5350);">🥤</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">2020</div>
+          <div class="evo-label">Modern Rebranding<br>Bold Typography</div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#f57f17,#fbc02d,#fff176);border:2px solid rgba(245,166,35,0.3);">✨</div>
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 4px rgba(245,166,35,0.2);z-index:1;margin-top:-6px;"></div>
+          <div class="evo-year">2023</div>
+          <div class="evo-label">Premium Gold<br>Edition</div>
+        </div>
+
+        <!-- 2025 — Present -->
+        <div class="evo-item">
+          <div class="evo-bottle-icon" style="background:linear-gradient(170deg,#0a0d4a,#1a1c75,#f5a623);border:2px solid rgba(245,166,35,0.4);box-shadow:0 0 0 4px rgba(245,166,35,0.15),0 20px 50px rgba(0,0,0,0.5);">🏆</div>
+          <div style="width:16px;height:16px;border-radius:50%;background:var(--c-gold);box-shadow:0 0 0 6px rgba(245,166,35,0.25);z-index:1;margin-top:-8px;"></div>
+          <div class="evo-year" style="font-size:1.3rem;">2025</div>
+          <div class="evo-label" style="color:var(--c-gold);font-weight:600;">Current<br>Chunks + Cans</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center reveal" style="margin-top:1.5rem;">
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.3);">← Drag to explore the full timeline →</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BACK TO SCHOOL CAMPAIGN
+══════════════════════════════════════ -->
+<section class="product-section">
+  <div class="container">
+    <div style="background:linear-gradient(135deg,#1a1c75,#2b3990);border-radius:var(--r-xl);padding:var(--sp-2xl);position:relative;overflow:hidden;">
+      <div class="grid-overlay"></div>
+      <div style="position:absolute;top:50%;right:-50px;transform:translateY(-50%);font-size:15rem;opacity:0.04;pointer-events:none;">🎒</div>
+      <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+        <div class="reveal-left">
+          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;">🎒 Campaign 2025</div>
+          <h2 style="font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:900;color:var(--c-white);margin-bottom:1rem;line-height:1.1;">
+            "A New Start to<br>a <span style="color:var(--c-gold);">Tasty Story</span>"
+          </h2>
+          <p style="color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:2rem;font-size:0.98rem;">
+            As the Back-to-School season arrives with fresh beginnings, GUFC is proud to announce Original®'s new campaign. Celebrate every new chapter with the taste that families have loved for over 25 years.
+          </p>
+          <a href="contact.html" class="btn btn-gold">Learn More →</a>
+        </div>
+        <div class="reveal-right" style="display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <div style="width:120px;height:250px;background:linear-gradient(170deg,#e65100,#ff8f00);border-radius:40px 40px 20px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(230,81,0,0.3);transform:rotate(-5deg);">
+            <span style="font-size:2.5rem;">🥭</span>
+            <div style="font-size:0.65rem;font-weight:700;color:#fff;margin-top:0.5rem;letter-spacing:0.05em;">MANGO</div>
+          </div>
+          <div style="width:120px;height:250px;background:linear-gradient(170deg,#0a0d4a,#1a1c75);border-radius:40px 40px 20px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(26,28,117,0.4);">
+            <span style="font-size:2.5rem;">🧃</span>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--c-gold);margin-top:0.5rem;letter-spacing:0.05em;">ORIGINAL®</div>
+          </div>
+          <div style="width:120px;height:250px;background:linear-gradient(170deg,#1b5e20,#388e3c);border-radius:40px 40px 20px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(27,94,32,0.3);transform:rotate(5deg);">
+            <span style="font-size:2.5rem;">🍈</span>
+            <div style="font-size:0.65rem;font-weight:700;color:#fff;margin-top:0.5rem;letter-spacing:0.05em;">GUAVA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     DISTRIBUTOR CTA
+══════════════════════════════════════ -->
+<section style="background:var(--c-off-white);padding:var(--sp-2xl) 0;text-align:center;">
+  <div class="container">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Grow With Us</div>
+    <h2 class="section-title reveal delay-1" style="margin-bottom:1rem;">Distribute Original® in Your Market</h2>
+    <p class="section-desc reveal delay-2" style="margin-bottom:2rem;">Join our growing network of international distributors and bring the GCC's most loved juice brand to your consumers.</p>
+    <div class="reveal delay-3" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-blue">Submit Distributor Inquiry →</a>
+      <a href="brands.html" class="btn btn-outline-white" style="color:var(--c-text);border-color:rgba(0,0,0,0.2);">View All Brands</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="https://gulf-union.com/images/logo.png" alt="GUFC Logo" style="height:52px;margin-bottom:1rem;filter:brightness(10);" />
+          <p class="footer-brand-desc">Gulf Union Foods Co. — A premier beverage manufacturer delivering world-class quality drinks since 1999.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/gulfunionfoods/" class="social-icon" target="_blank">📸</a>
+            <a href="https://twitter.com/GulfUnionFoods" class="social-icon" target="_blank">𝕏</a>
+            <a href="https://www.facebook.com/GulfUnionFoods" class="social-icon" target="_blank">f</a>
+            <a href="https://www.linkedin.com/company/gulf-union-foods-co" class="social-icon" target="_blank">in</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="brands.html">Our Brands</a></li>
+            <li><a href="about.html#sustainability">Sustainability</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Original® Products</div>
+          <ul class="footer-links">
+            <li><a href="#products">Classic Juice Range</a></li>
+            <li><a href="#products">Original® Chunks</a></li>
+            <li><a href="#evolution">Brand Evolution</a></li>
+            <li><a href="contact.html">Distributor Inquiry</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact Us</div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📍</div>
+            <div class="footer-contact-text">Gulf Union Foods Co.<br>Kingdom of Saudi Arabia</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">✉️</div>
+            <div class="footer-contact-text"><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p class="footer-copy">© 2026 Gulf Union Foods Co. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

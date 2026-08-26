@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who We Are | Gulf Union Foods Co.</title>
+  <meta name="description" content="Learn about Gulf Union Foods Co. — our mission, vision, values, history, and the milestones that shaped us into the premier beverage company we are today." />
+  <meta property="og:title" content="Who We Are | Gulf Union Foods Co." />
+  <meta property="og:image" content="https://gulf-union.com/images/logo.png" />
+  <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── About-page specifics ── */
+    .pillars-section {
+      background: var(--g-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .pillars-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 10% 40%, rgba(26,28,117,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 90% 60%, rgba(227,6,19,0.08) 0%, transparent 60%);
+    }
+    .pillars-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pillar-card-large {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      transition: var(--t-base);
+      position: relative;
+    }
+    .pillar-card-large::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--g-gold);
+      transition: width 0.5s ease;
+      border-radius: var(--r-full);
+    }
+    .pillar-card-large:hover::after { width: 80%; }
+    .pillar-card-large:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    .pillar-card-large .pillar-big-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      filter: drop-shadow(0 4px 15px rgba(245,166,35,0.3));
+    }
+
+    /* Sustainability */
+    .sustainability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .sustain-card {
+      background: var(--c-white);
+      border-radius: var(--r-lg);
+      padding: 2rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow-sm);
+      transition: var(--t-base);
+    }
+    .sustain-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(16,185,129,0.2);
+    }
+    .sustain-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--r-md);
+      background: linear-gradient(135deg, #064e3b, #10b981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .pillars-cards            { grid-template-columns: 1fr; }
+      .sustainability-grid      { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .sustainability-grid      { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR (light)
+══════════════════════════════════════ -->
+<nav class="navbar light-nav" role="navigation" aria-label="Main Navigation">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. Logo" />
+    </a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="about.html" class="nav-link active">Who We Are</a></li>
+      <li class="nav-item">
+        <a href="brands.html" class="nav-link">Our Brands
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="original.html">Original®</a>
+          <a href="brands.html#klasse">KLASSE</a>
+          <a href="brands.html#cobra">COBRA</a>
+          <a href="brands.html#captain">Captain</a>
+          <a href="brands.html#splash">Splash</a>
+          <a href="brands.html#ori">Ori</a>
+          <a href="brands.html#alqobtan">Al Qobtan</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="about.html#sustainability" class="nav-link">Sustainability</a></li>
+      <li class="nav-item"><a href="index.html#newsroom" class="nav-link">Newsroom</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="lang-toggle" style="border-color:rgba(0,0,0,0.2);color:#333;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        عربي
+      </button>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="about.html" class="mobile-nav-link active">Who We Are</a>
+  <a href="brands.html" class="mobile-nav-link">Our Brands</a>
+  <div class="mobile-sub-links">
+    <a href="original.html">Original®</a>
+    <a href="brands.html#klasse">KLASSE</a>
+    <a href="brands.html#cobra">COBRA</a>
+    <a href="brands.html#captain">Captain</a>
+    <a href="brands.html#splash">Splash</a>
+  </div>
+  <a href="about.html#sustainability" class="mobile-nav-link">Sustainability</a>
+  <a href="index.html#newsroom" class="mobile-nav-link">Newsroom</a>
+  <a href="contact.html" class="mobile-nav-link">Contact Us</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE BANNER
+══════════════════════════════════════ -->
+<div class="page-banner" role="banner">
+  <div class="page-banner-bg" style="background-image: linear-gradient(135deg, #0d1045 0%, #2b3990 100%); opacity:1;"></div>
+  <div class="grid-overlay"></div>
+  <div class="page-banner-overlay"></div>
+  <div style="position:absolute;top:50%;right:10%;transform:translateY(-50%);font-size:12rem;opacity:0.04;pointer-events:none;font-family:'Outfit',sans-serif;font-weight:900;color:#fff;">GUFC</div>
+  <div class="page-banner-content">
+    <nav class="page-banner-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Who We Are</span>
+    </nav>
+    <h1 class="page-banner-title" data-en="Who We Are" data-ar="من نحن">Who We Are</h1>
+    <p class="page-banner-sub">A premier beverage company built on passion, quality, and a relentless pursuit of innovation.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     INTRO PARAGRAPH
+══════════════════════════════════════ -->
+<section class="section-pad-sm">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Our Company</div>
+    <h2 class="section-title reveal delay-1" style="margin-bottom:1.5rem;">Beverages Crafted with<br><span style="color:var(--c-blue);">Purpose & Passion</span></h2>
+    <div class="divider-gold reveal delay-1"></div>
+    <p class="reveal delay-2" style="font-size:1.08rem;color:var(--c-muted);line-height:1.85;margin-top:1.5rem;">
+      Gulf Union Foods Co. (GUFC) is a trusted name in the beverage industry, focused on delivering diverse, high-quality beverages across various categories. Our portfolio spans juices, energy drinks, non-alcoholic malt, soft drinks, and sparkling juices — crafted to suit every consumer, and to share every moment. Founded in 1999 in the Kingdom of Saudi Arabia, GUFC has grown into a regional powerhouse with a presence spanning over 30 markets across the Middle East, Africa, and beyond.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     MISSION / VISION / VALUES PILLARS
+══════════════════════════════════════ -->
+<section class="pillars-section section-pad">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Our Pillars</div>
+      <h2 class="section-title light">What Drives Us Every Day</h2>
+      <div class="divider-gold"></div>
+    </div>
+
+    <div class="pillars-cards">
+      <!-- Mission -->
+      <div class="pillar-card-large reveal delay-1">
+        <span class="pillar-big-icon">🎯</span>
+        <div style="font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;" data-en="OUR MISSION" data-ar="مهمتنا">OUR MISSION</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:var(--c-white);margin-bottom:1rem;">Refreshing Moments for Everyone</h3>
+        <p style="font-size:0.95rem;color:var(--c-muted);line-height:1.75;" data-en="To make refreshing moments available to everyone, across all touchpoints, offering products that people love and trust." data-ar="إتاحة اللحظات المنعشة للجميع، عبر جميع نقاط التواصل، وتقديم منتجات يحبها الناس ويثقون بها.">
+          To make refreshing moments available to everyone, across all touchpoints, offering products that people love and trust.
+        </p>
+      </div>
+
+      <!-- Vision -->
+      <div class="pillar-card-large reveal delay-2" style="background:rgba(245,166,35,0.05);border-color:rgba(245,166,35,0.15);">
+        <span class="pillar-big-icon">👁️</span>
+        <div style="font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;" data-en="OUR VISION" data-ar="رؤيتنا">OUR VISION</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:var(--c-white);margin-bottom:1rem;">The Region's Most Loved Beverage Company</h3>
+        <p style="font-size:0.95rem;color:var(--c-muted);line-height:1.75;" data-en="To be the most loved and trusted beverage company in the region, recognized for innovation, quality, and our commitment to consumers." data-ar="أن نكون شركة المشروبات الأكثر محبة وثقة في المنطقة، المعروفة بالابتكار والجودة والالتزام تجاه المستهلكين.">
+          To be the most loved and trusted beverage company in the region, recognized for innovation, quality, and our commitment to consumers.
+        </p>
+      </div>
+
+      <!-- Values -->
+      <div class="pillar-card-large reveal delay-3">
+        <span class="pillar-big-icon">💎</span>
+        <div style="font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;" data-en="OUR VALUES" data-ar="قيمنا">OUR VALUES</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:var(--c-white);margin-bottom:1rem;">Quality · Innovation · Integrity</h3>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;text-align:left;margin-top:1rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--c-muted);">
+            <span style="color:var(--c-gold);">✓</span> Uncompromising quality standards
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--c-muted);">
+            <span style="color:var(--c-gold);">✓</span> Continuous innovation & creativity
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--c-muted);">
+            <span style="color:var(--c-gold);">✓</span> Integrity in every interaction
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--c-muted);">
+            <span style="color:var(--c-gold);">✓</span> Consumer-first approach
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--c-muted);">
+            <span style="color:var(--c-gold);">✓</span> Community & sustainability
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     VERTICAL TIMELINE
+══════════════════════════════════════ -->
+<section class="section-pad" id="history">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Our History</div>
+      <h2 class="section-title">Milestones That Shaped <span style="color:var(--c-blue);">Our Legacy</span></h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">From a humble beginning in 1999 to becoming a regional powerhouse — every year marks a new chapter in our journey.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- 1999 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">1999</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">🚀 Gulf Union Foods Co. Founded</div>
+            <p class="timeline-text">Gulf Union Foods Co. was established in the Kingdom of Saudi Arabia with a bold vision: to deliver world-class beverages that bring people together. The Original® brand was born, introducing premium fruit juices to the GCC market.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2002 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2002</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">📦 First GCC Distribution Network</div>
+            <p class="timeline-text">GUFC expanded its distribution network across the GCC, reaching consumers in Saudi Arabia, UAE, Kuwait, Bahrain, Qatar, and Oman. Original® became a household name for quality fruit juices.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2005 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2005</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">🏭 State-of-the-Art Manufacturing Facility</div>
+            <p class="timeline-text">GUFC inaugurated its advanced manufacturing facility equipped with the latest food-grade technology, significantly increasing production capacity and setting new quality benchmarks in the industry.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2008 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2008</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">🍺 KLASSE Brand Launch</div>
+            <p class="timeline-text">The KLASSE brand was introduced — a premium non-alcoholic malt beverage with authentic German taste, extending GUFC's portfolio beyond fruit juices and capturing a new consumer segment.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2012 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2012</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">🏅 ISO & HACCP Certifications Achieved</div>
+            <p class="timeline-text">GUFC earned ISO 9001 and HACCP certifications, reinforcing our commitment to the highest international food safety and quality management standards. Halal certification was also obtained for all product lines.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2015 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2015</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">⚡ COBRA Energy Drink Launch</div>
+            <p class="timeline-text">COBRA — the bold energy drink brand — was launched, bringing powerful energy and dynamic branding to a rapidly growing consumer segment. "Stronger Than You Imagine" became the rallying call for a new generation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2018 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2018</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">🌍 Regional Expansion — 30+ Markets</div>
+            <p class="timeline-text">GUFC reached a historic milestone by establishing distribution in over 30 countries across the Middle East, Africa, and Asia. Captain, Splash, Ori, and Al Qobtan brands were all launched during this expansion phase.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2021</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">🏆 500 Million Litres Annual Production</div>
+            <p class="timeline-text">GUFC crossed the landmark of 500 million litres of annual production, a testament to the immense trust consumers place in our brands. The workforce grew to over 1,500 dedicated employees.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2024</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card">
+            <div class="timeline-title">🍹 Original® Chunks — Zero Added Sugar</div>
+            <p class="timeline-text">GUFC launched Original® Chunks — a bold new product line featuring real fruit chunks with zero added sugar. The "Fruit Tornado" concept set new standards for healthy indulgence in the beverage sector.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2026 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-year">2026</div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node" style="background:var(--c-red);box-shadow: 0 0 0 6px rgba(227,6,19,0.2), var(--shadow-glow-red);"></div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-card" style="border-color:rgba(26,28,117,0.2);box-shadow:0 8px 30px rgba(26,28,117,0.1);">
+            <div class="badge badge-red" style="margin-bottom:0.75rem;">Present</div>
+            <div class="timeline-title">🌟 Gulfood 2026 & Continued Innovation</div>
+            <p class="timeline-text">GUFC participated in Gulfood 2026 in Dubai — the world's premier food & beverage exhibition — showcasing its expanding portfolio and commitment to building the future of beverages in the region and beyond.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ACHIEVEMENTS COUNTER
+══════════════════════════════════════ -->
+<section class="achievements-section section-pad-sm" aria-label="GUFC Achievements">
+  <div class="container" style="position:relative;z-index:1;text-align:center;margin-bottom:3rem;">
+    <div class="section-eyebrow reveal" style="justify-content:center;">By The Numbers</div>
+    <h2 class="section-title light reveal delay-1">Our Achievements</h2>
+    <div class="divider-gold reveal"></div>
+  </div>
+  <div class="achievements-grid" style="position:relative;z-index:1;">
+    <div class="achievement-item reveal delay-1">
+      <div class="achievement-num">
+        <span data-counter="26" data-suffix="+" data-duration="2000">0</span>
+      </div>
+      <div class="achievement-label">Years of<br>Excellence</div>
+    </div>
+    <div class="achievement-item reveal delay-2">
+      <div class="achievement-num">
+        <span data-counter="1500" data-suffix="+" data-duration="2200">0</span>
+      </div>
+      <div class="achievement-label">Dedicated<br>Employees</div>
+    </div>
+    <div class="achievement-item reveal delay-3">
+      <div class="achievement-num">
+        <span data-counter="500" data-suffix="M+" data-duration="2500">0</span>
+      </div>
+      <div class="achievement-label">Litres Produced<br>Annually</div>
+    </div>
+    <div class="achievement-item reveal delay-4">
+      <div class="achievement-num">
+        <span data-counter="30" data-suffix="+" data-duration="1800">0</span>
+      </div>
+      <div class="achievement-label">Global<br>Markets</div>
+    </div>
+  </div>
+  <!-- Extra stats row -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);max-width:900px;margin:0 auto;margin-top:2px;position:relative;z-index:1;">
+    <div class="achievement-item reveal delay-1">
+      <div class="achievement-num">
+        <span data-counter="7" data-suffix="" data-duration="1000">0</span>
+      </div>
+      <div class="achievement-label">Iconic<br>Brands</div>
+    </div>
+    <div class="achievement-item reveal delay-2">
+      <div class="achievement-num">
+        <span data-counter="50" data-suffix="+" data-duration="1600">0</span>
+      </div>
+      <div class="achievement-label">Product<br>Variants</div>
+    </div>
+    <div class="achievement-item reveal delay-3">
+      <div class="achievement-num">
+        <span data-counter="5" data-suffix="" data-duration="800">0</span>
+      </div>
+      <div class="achievement-label">International<br>Certifications</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CERTIFICATIONS
+══════════════════════════════════════ -->
+<section class="section-pad-sm" style="background:var(--c-off-white);">
+  <div class="container text-center">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Quality Assurance</div>
+    <h2 class="section-title reveal delay-1" style="margin-bottom:2.5rem;">Certified to the Highest International Standards</h2>
+    <div class="cert-grid">
+      <div class="cert-card reveal delay-1">
+        <div class="cert-icon">🏅</div>
+        <div class="cert-name">ISO 9001:2015</div>
+        <div class="cert-desc">Quality Management Systems</div>
+      </div>
+      <div class="cert-card reveal delay-2">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-name">HACCP</div>
+        <div class="cert-desc">Hazard Analysis & Critical Control Points</div>
+      </div>
+      <div class="cert-card reveal delay-3">
+        <div class="cert-icon">☪️</div>
+        <div class="cert-name">Halal Certified</div>
+        <div class="cert-desc">All Products Internationally Certified</div>
+      </div>
+      <div class="cert-card reveal delay-4">
+        <div class="cert-icon">🌿</div>
+        <div class="cert-name">ISO 14001</div>
+        <div class="cert-desc">Environmental Management System</div>
+      </div>
+      <div class="cert-card reveal delay-5">
+        <div class="cert-icon">🔬</div>
+        <div class="cert-name">GMP</div>
+        <div class="cert-desc">Good Manufacturing Practice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SUSTAINABILITY
+══════════════════════════════════════ -->
+<section class="section-pad" id="sustainability">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Sustainability</div>
+      <h2 class="section-title">Committed to a <span style="color:#10b981;">Greener</span> Future</h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">GUFC's sustainability strategy is built on three pillars: environmental stewardship, community engagement, and responsible governance.</p>
+    </div>
+
+    <div class="sustainability-grid">
+      <div class="sustain-card reveal delay-1">
+        <div class="sustain-icon">🌱</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Eco-Friendly Packaging</h3>
+        <p style="font-size:0.9rem;color:var(--c-muted);line-height:1.65;">Transitioning to recyclable and reduced-plastic packaging across all product lines, contributing to a circular economy and reducing our environmental footprint.</p>
+      </div>
+      <div class="sustain-card reveal delay-2">
+        <div class="sustain-icon">💧</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Water Conservation</h3>
+        <p style="font-size:0.9rem;color:var(--c-muted);line-height:1.65;">Implementing advanced water recycling systems in our manufacturing facilities to minimize waste and reduce our total water consumption by 30% by 2030.</p>
+      </div>
+      <div class="sustain-card reveal delay-3">
+        <div class="sustain-icon">☀️</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Renewable Energy</h3>
+        <p style="font-size:0.9rem;color:var(--c-muted);line-height:1.65;">Integrating solar energy solutions into our production facilities, targeting 40% renewable energy usage by 2028 in alignment with Saudi Vision 2030.</p>
+      </div>
+      <div class="sustain-card reveal delay-4">
+        <div class="sustain-icon">🤝</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Community Investment</h3>
+        <p style="font-size:0.9rem;color:var(--c-muted);line-height:1.65;">GUFC invests in local communities through educational scholarships, youth employment initiatives, and health awareness programs across all markets we serve.</p>
+      </div>
+      <div class="sustain-card reveal delay-5">
+        <div class="sustain-icon">📊</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Responsible Sourcing</h3>
+        <p style="font-size:0.9rem;color:var(--c-muted);line-height:1.65;">Sourcing raw materials from certified, sustainable suppliers and ensuring our entire supply chain upholds ethical labor, environmental, and quality standards.</p>
+      </div>
+      <div class="sustain-card reveal delay-6">
+        <div class="sustain-icon">🏛️</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Corporate Governance</h3>
+        <p style="font-size:0.9rem;color:var(--c-muted);line-height:1.65;">Maintaining the highest standards of transparency, accountability, and ethical business conduct across all levels of the organization and our global supply chain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA STRIP
+══════════════════════════════════════ -->
+<section style="background:var(--g-hero);padding:var(--sp-2xl) 0;text-align:center;">
+  <div class="container">
+    <div class="grid-overlay"></div>
+    <div style="position:relative;z-index:1;">
+      <h2 class="section-title light reveal" style="margin-bottom:1rem;">Explore Our World-Class Brands</h2>
+      <p class="section-desc light reveal delay-1" style="margin-bottom:2rem;">7 iconic brands crafted with passion — there's a GUFC product for every moment.</p>
+      <div class="reveal delay-2" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="brands.html" class="btn btn-gold">View All Brands →</a>
+        <a href="contact.html" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="https://gulf-union.com/images/logo.png" alt="GUFC Logo" style="height:52px;margin-bottom:1rem;filter:brightness(10);" />
+          <p class="footer-brand-desc">Gulf Union Foods Co. — A premier beverage manufacturer delivering world-class quality drinks to consumers across 30+ global markets since 1999.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/gulfunionfoods/" class="social-icon" aria-label="Instagram" target="_blank">📸</a>
+            <a href="https://twitter.com/GulfUnionFoods" class="social-icon" aria-label="Twitter" target="_blank">𝕏</a>
+            <a href="https://www.facebook.com/GulfUnionFoods" class="social-icon" aria-label="Facebook" target="_blank">f</a>
+            <a href="https://www.linkedin.com/company/gulf-union-foods-co" class="social-icon" aria-label="LinkedIn" target="_blank">in</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="brands.html">Our Brands</a></li>
+            <li><a href="about.html#sustainability">Sustainability</a></li>
+            <li><a href="index.html#newsroom">Newsroom</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Our Brands</div>
+          <ul class="footer-links">
+            <li><a href="original.html">Original®</a></li>
+            <li><a href="brands.html#klasse">KLASSE</a></li>
+            <li><a href="brands.html#cobra">COBRA</a></li>
+            <li><a href="brands.html#captain">Captain</a></li>
+            <li><a href="brands.html#splash">Splash</a></li>
+            <li><a href="brands.html#ori">Ori</a></li>
+            <li><a href="brands.html#alqobtan">Al Qobtan</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact Us</div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📍</div>
+            <div class="footer-contact-text">Gulf Union Foods Co.<br>Kingdom of Saudi Arabia</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">✉️</div>
+            <div class="footer-contact-text"><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">🌐</div>
+            <div class="footer-contact-text"><a href="https://gulf-union.com" target="_blank">gulf-union.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p class="footer-copy">© 2026 Gulf Union Foods Co. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

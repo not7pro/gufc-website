@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Gulf Union Foods Co.</title>
+  <meta name="description" content="Get in touch with Gulf Union Foods Co. — for general inquiries, distributor partnerships, careers, or media requests. We'd love to hear from you." />
+  <meta property="og:title" content="Contact Us | Gulf Union Foods Co." />
+  <meta property="og:image" content="https://gulf-union.com/images/logo.png" />
+  <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Contact page specifics ── */
+    .contact-hero {
+      background: var(--g-hero);
+      min-height: 360px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      margin-top: 76px;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 20% 60%, rgba(227,6,19,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 60% at 80% 40%, rgba(245,166,35,0.08) 0%, transparent 60%);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info-card {
+      background: var(--c-dark-2);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      border: 1px solid var(--c-border);
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .contact-method:last-child { border-bottom: none; }
+
+    .contact-method-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-md);
+      background: linear-gradient(135deg, var(--c-blue), var(--c-blue-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(26,28,117,0.3);
+    }
+
+    .contact-method-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-method-value {
+      font-size: 0.98rem;
+      color: var(--c-white);
+      line-height: 1.5;
+    }
+
+    .contact-method-value a {
+      color: var(--c-gold);
+      transition: var(--t-fast);
+    }
+    .contact-method-value a:hover { color: var(--c-white); }
+
+    /* Form card */
+    .form-card {
+      background: var(--c-white);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .form-card-dark {
+      background: var(--c-dark-2);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      border: 1px solid var(--c-border);
+    }
+
+    /* Tabs */
+    .form-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+
+    .form-tab {
+      padding: 0.75rem 1.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--c-muted);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: var(--t-fast);
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .form-tab.active,
+    .form-tab:hover {
+      color: var(--c-blue);
+      border-bottom-color: var(--c-blue);
+    }
+
+    .form-pane { display: none; }
+    .form-pane.active { display: block; }
+
+    /* Map placeholder */
+    .map-placeholder {
+      background: linear-gradient(135deg, #0f1630, #1a2040);
+      border-radius: var(--r-xl);
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      border: 1px solid var(--c-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at center, rgba(26,28,117,0.3) 0%, transparent 70%);
+    }
+
+    /* Distributor section */
+    .dist-section {
+      background: linear-gradient(135deg, #0d1045, #1a1c75, #2b3990);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dist-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .dist-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+      text-align: center;
+      transition: var(--t-base);
+    }
+    .dist-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
+    .dist-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .dist-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--c-white);
+      margin-bottom: 0.5rem;
+    }
+    .dist-card-text { font-size: 0.85rem; color: var(--c-muted); line-height: 1.6; }
+
+    /* Careers section */
+    .career-card {
+      background: var(--c-white);
+      border-radius: var(--r-md);
+      padding: 1.5rem 2rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: var(--t-base);
+    }
+    .career-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(26,28,117,0.15);
+    }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .dist-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .dist-grid { grid-template-columns: 1fr; }
+      .career-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar light-nav" role="navigation" aria-label="Main Navigation">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. Logo" />
+    </a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="about.html" class="nav-link">Who We Are</a></li>
+      <li class="nav-item">
+        <a href="brands.html" class="nav-link">Our Brands
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="original.html">Original®</a>
+          <a href="brands.html#klasse">KLASSE</a>
+          <a href="brands.html#cobra">COBRA</a>
+          <a href="brands.html#captain">Captain</a>
+          <a href="brands.html#splash">Splash</a>
+          <a href="brands.html#ori">Ori</a>
+          <a href="brands.html#alqobtan">Al Qobtan</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="about.html#sustainability" class="nav-link">Sustainability</a></li>
+      <li class="nav-item"><a href="index.html#newsroom" class="nav-link">Newsroom</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link active">Contact Us</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="lang-toggle" style="border-color:rgba(0,0,0,0.2);color:#333;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        عربي
+      </button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="about.html" class="mobile-nav-link">Who We Are</a>
+  <a href="brands.html" class="mobile-nav-link">Our Brands</a>
+  <a href="about.html#sustainability" class="mobile-nav-link">Sustainability</a>
+  <a href="index.html#newsroom" class="mobile-nav-link">Newsroom</a>
+  <a href="contact.html" class="mobile-nav-link active">Contact Us</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<div class="contact-hero" role="banner">
+  <div class="grid-overlay"></div>
+  <div style="position:absolute;top:50%;right:8%;transform:translateY(-50%);font-size:12rem;opacity:0.04;pointer-events:none;font-family:'Outfit',sans-serif;font-weight:900;color:#fff;">✉️</div>
+  <div class="container" style="position:relative;z-index:2;padding-bottom:3rem;">
+    <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.4);margin-bottom:1rem;">
+      <a href="index.html" style="color:rgba(255,255,255,0.5);">Home</a>
+      <span>›</span>
+      <span style="color:var(--c-gold);">Contact Us</span>
+    </nav>
+    <h1 style="font-family:'Outfit',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;color:var(--c-white);line-height:1.05;margin-bottom:0.75rem;">Let's Connect</h1>
+    <p style="font-size:1.1rem;color:rgba(255,255,255,0.65);max-width:560px;">Whether you're a consumer, distributor, media partner, or future team member — we'd love to hear from you.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CONTACT SECTION
+══════════════════════════════════════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- LEFT: Form with tabs -->
+      <div class="form-card reveal-left">
+        <div class="form-tabs" role="tablist">
+          <button class="form-tab active" role="tab" id="tab-general" aria-controls="pane-general" aria-selected="true"
+            onclick="switchTab('general', this)">📧 General Inquiry</button>
+          <button class="form-tab" role="tab" id="tab-distributor" aria-controls="pane-distributor" aria-selected="false"
+            onclick="switchTab('distributor', this)">🤝 Distributor Inquiry</button>
+          <button class="form-tab" role="tab" id="tab-media" aria-controls="pane-media" aria-selected="false"
+            onclick="switchTab('media', this)">📰 Media</button>
+        </div>
+
+        <!-- General inquiry -->
+        <div class="form-pane active" id="pane-general" role="tabpanel" aria-labelledby="tab-general">
+          <form id="contact-form" novalidate>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="first-name">First Name *</label>
+                <input class="form-input" id="first-name" type="text" placeholder="Your first name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="last-name">Last Name *</label>
+                <input class="form-input" id="last-name" type="text" placeholder="Your last name" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input class="form-input" id="email" type="email" placeholder="your.email@example.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input class="form-input" id="phone" type="tel" placeholder="+966 5X XXX XXXX" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject *</label>
+              <select class="form-select form-input" id="subject" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="product">Product Inquiry</option>
+                <option value="quality">Quality / Feedback</option>
+                <option value="careers">Careers</option>
+                <option value="media">Media / Press</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Your Message *</label>
+              <textarea class="form-textarea" id="message" placeholder="How can we help you?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-blue" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">
+              Send Message →
+            </button>
+          </form>
+        </div>
+
+        <!-- Distributor inquiry -->
+        <div class="form-pane" id="pane-distributor" role="tabpanel" aria-labelledby="tab-distributor">
+          <form id="distributor-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="company-name">Company Name *</label>
+              <input class="form-input" id="company-name" type="text" placeholder="Your company name" required />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Contact Person *</label>
+                <input class="form-input" id="contact-name" type="text" placeholder="Full name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-title">Job Title</label>
+                <input class="form-input" id="contact-title" type="text" placeholder="e.g. CEO, Sales Manager" />
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="dist-email">Email *</label>
+                <input class="form-input" id="dist-email" type="email" placeholder="company@email.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="dist-phone">Phone *</label>
+                <input class="form-input" id="dist-phone" type="tel" placeholder="+XX XXXX XXXX" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dist-country">Target Market / Country *</label>
+              <select class="form-select form-input" id="dist-country" required>
+                <option value="" disabled selected>Select your market</option>
+                <optgroup label="GCC">
+                  <option>Saudi Arabia</option>
+                  <option>UAE</option>
+                  <option>Kuwait</option>
+                  <option>Qatar</option>
+                  <option>Bahrain</option>
+                  <option>Oman</option>
+                </optgroup>
+                <optgroup label="Middle East">
+                  <option>Jordan</option>
+                  <option>Lebanon</option>
+                  <option>Egypt</option>
+                  <option>Iraq</option>
+                  <option>Yemen</option>
+                  <option>Palestine</option>
+                </optgroup>
+                <optgroup label="Africa">
+                  <option>Sudan</option>
+                  <option>Libya</option>
+                  <option>Morocco</option>
+                  <option>Somalia</option>
+                  <option>Ethiopia</option>
+                  <option>Other African Market</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option>Europe</option>
+                  <option>North America</option>
+                  <option>Asia Pacific</option>
+                  <option>Other</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dist-brands">Brands of Interest</label>
+              <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+                <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.88rem;"><input type="checkbox" /> Original®</label>
+                <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.88rem;"><input type="checkbox" /> KLASSE</label>
+                <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.88rem;"><input type="checkbox" /> COBRA</label>
+                <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.88rem;"><input type="checkbox" /> Captain</label>
+                <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.88rem;"><input type="checkbox" /> Splash</label>
+                <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.88rem;"><input type="checkbox" /> Ori</label>
+                <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.88rem;"><input type="checkbox" /> Al Qobtan</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dist-channels">Distribution Channels</label>
+              <select class="form-select form-input" id="dist-channels">
+                <option value="" disabled selected>Select channel type</option>
+                <option>Wholesale / Retail</option>
+                <option>Horeca (Hotels, Restaurants, Cafes)</option>
+                <option>Supermarkets / Hypermarkets</option>
+                <option>Convenience Stores</option>
+                <option>Online / E-Commerce</option>
+                <option>All Channels</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dist-message">Additional Information</label>
+              <textarea class="form-textarea" id="dist-message" placeholder="Tell us about your distribution network, volume estimates, or any questions..." style="min-height:100px;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">
+              Submit Distributor Inquiry →
+            </button>
+          </form>
+        </div>
+
+        <!-- Media -->
+        <div class="form-pane" id="pane-media" role="tabpanel" aria-labelledby="tab-media">
+          <form novalidate>
+            <div class="form-group">
+              <label class="form-label" for="media-name">Full Name *</label>
+              <input class="form-input" id="media-name" type="text" placeholder="Your full name" required />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="media-outlet">Media Outlet / Organization *</label>
+                <input class="form-input" id="media-outlet" type="text" placeholder="e.g. Arabian Business" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="media-role">Role</label>
+                <input class="form-input" id="media-role" type="text" placeholder="e.g. Journalist, Editor" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="media-email">Email *</label>
+              <input class="form-input" id="media-email" type="email" placeholder="press@youroutlet.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="media-subject">Inquiry Type</label>
+              <select class="form-select form-input" id="media-subject">
+                <option value="" disabled selected>Select inquiry type</option>
+                <option>Press Release Request</option>
+                <option>Interview Request</option>
+                <option>Photography / Video</option>
+                <option>Product Review</option>
+                <option>Partnership / Sponsorship</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="media-message">Message *</label>
+              <textarea class="form-textarea" id="media-message" placeholder="Describe your media inquiry in detail..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-blue" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">
+              Send Media Inquiry →
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- RIGHT: Contact info + map -->
+      <div>
+        <!-- Info card -->
+        <div class="contact-info-card reveal-right">
+          <div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:var(--c-white);margin-bottom:1.5rem;">
+            Get In Touch
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">📍</div>
+            <div>
+              <div class="contact-method-label">Headquarters</div>
+              <div class="contact-method-value">Gulf Union Foods Co.<br>Kingdom of Saudi Arabia</div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">📞</div>
+            <div>
+              <div class="contact-method-label">Phone</div>
+              <div class="contact-method-value"><a href="tel:+966">+966 (KSA)</a></div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">✉️</div>
+            <div>
+              <div class="contact-method-label">General Inquiries</div>
+              <div class="contact-method-value"><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">🤝</div>
+            <div>
+              <div class="contact-method-label">Distributor Relations</div>
+              <div class="contact-method-value"><a href="mailto:distributors@gulf-union.com">distributors@gulf-union.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">📰</div>
+            <div>
+              <div class="contact-method-label">Media & Press</div>
+              <div class="contact-method-value"><a href="mailto:media@gulf-union.com">media@gulf-union.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">🌐</div>
+            <div>
+              <div class="contact-method-label">Official Website</div>
+              <div class="contact-method-value"><a href="https://gulf-union.com" target="_blank" rel="noopener">gulf-union.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Office hours -->
+        <div class="reveal-right delay-2" style="background:var(--c-dark-2);border-radius:var(--r-lg);padding:1.5rem 2rem;margin-top:1.5rem;border:1px solid var(--c-border);">
+          <div style="font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;">🕒 Office Hours</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <div style="display:flex;justify-content:space-between;font-size:0.9rem;">
+              <span style="color:rgba(255,255,255,0.6);">Sunday – Thursday</span>
+              <span style="color:var(--c-white);font-weight:600;">8:00 AM – 5:00 PM</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.9rem;">
+              <span style="color:rgba(255,255,255,0.6);">Friday – Saturday</span>
+              <span style="color:var(--c-muted);">Closed</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.9rem;">
+              <span style="color:rgba(255,255,255,0.6);">Time Zone</span>
+              <span style="color:var(--c-white);font-weight:600;">AST (GMT+3)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div class="reveal-right delay-3" style="background:var(--c-dark-2);border-radius:var(--r-lg);padding:1.5rem 2rem;margin-top:1.5rem;border:1px solid var(--c-border);">
+          <div style="font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1rem;">📲 Follow GUFC</div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <a href="https://www.instagram.com/gulfunionfoods/" target="_blank" class="btn" style="padding:0.6rem 1.2rem;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;font-size:0.82rem;border-radius:var(--r-sm);">📸 Instagram</a>
+            <a href="https://twitter.com/GulfUnionFoods" target="_blank" class="btn" style="padding:0.6rem 1.2rem;background:#000;color:#fff;font-size:0.82rem;border-radius:var(--r-sm);">𝕏 Twitter</a>
+            <a href="https://www.facebook.com/GulfUnionFoods" target="_blank" class="btn" style="padding:0.6rem 1.2rem;background:#1877f2;color:#fff;font-size:0.82rem;border-radius:var(--r-sm);">f Facebook</a>
+            <a href="https://www.youtube.com/GulfUnionFoods" target="_blank" class="btn" style="padding:0.6rem 1.2rem;background:#ff0000;color:#fff;font-size:0.82rem;border-radius:var(--r-sm);">▶ YouTube</a>
+            <a href="https://www.linkedin.com/company/gulf-union-foods-co" target="_blank" class="btn" style="padding:0.6rem 1.2rem;background:#0077b5;color:#fff;font-size:0.82rem;border-radius:var(--r-sm);">in LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Map placeholder -->
+        <div class="map-placeholder reveal-right delay-4" style="margin-top:1.5rem;">
+          <div style="position:relative;z-index:1;text-align:center;">
+            <div style="font-size:3rem;margin-bottom:0.75rem;">📍</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--c-white);">Gulf Union Foods Co.</div>
+            <div style="font-size:0.85rem;color:var(--c-muted);margin-top:0.25rem;">Kingdom of Saudi Arabia</div>
+            <a href="https://www.google.com/maps/search/Gulf+Union+Foods" target="_blank" class="btn btn-gold" style="margin-top:1.25rem;font-size:0.85rem;padding:0.65rem 1.5rem;">
+              Open in Google Maps →
+            </a>
+          </div>
+          <!-- Decorative grid dots -->
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(245,166,35,0.15) 1px,transparent 1px);background-size:30px 30px;opacity:0.5;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     DISTRIBUTOR BENEFITS
+══════════════════════════════════════ -->
+<section class="dist-section section-pad" aria-label="Distributor Benefits">
+  <div class="grid-overlay"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Partner Program</div>
+      <h2 class="section-title light">Why Partner With GUFC?</h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc light" style="margin-top:1rem;">Join a network of over 30 international distributor partners and access world-class brands, full marketing support, and exclusive territories.</p>
+    </div>
+
+    <div class="dist-grid">
+      <div class="dist-card reveal delay-1">
+        <div class="dist-card-icon">🏆</div>
+        <div class="dist-card-title">Proven Brands</div>
+        <div class="dist-card-text">Distribute 7 established brands with decades of consumer trust and recognition across the GCC and beyond.</div>
+      </div>
+      <div class="dist-card reveal delay-2">
+        <div class="dist-card-icon">📈</div>
+        <div class="dist-card-title">Market Support</div>
+        <div class="dist-card-text">Full marketing collateral, POS materials, digital assets, campaign support, and dedicated account management.</div>
+      </div>
+      <div class="dist-card reveal delay-3">
+        <div class="dist-card-icon">🔒</div>
+        <div class="dist-card-title">Exclusive Territory</div>
+        <div class="dist-card-text">Work with us to secure exclusive distribution rights in your target market with protected territory agreements.</div>
+      </div>
+      <div class="dist-card reveal delay-4">
+        <div class="dist-card-icon">🚚</div>
+        <div class="dist-card-title">Reliable Supply Chain</div>
+        <div class="dist-card-text">State-of-the-art manufacturing with 500M+ litres annual capacity ensures consistent, reliable product availability.</div>
+      </div>
+      <div class="dist-card reveal delay-5">
+        <div class="dist-card-icon">📦</div>
+        <div class="dist-card-title">Flexible MOQs</div>
+        <div class="dist-card-text">Competitive minimum order quantities tailored to your market size and distribution channel requirements.</div>
+      </div>
+      <div class="dist-card reveal delay-6">
+        <div class="dist-card-icon">🤝</div>
+        <div class="dist-card-title">Long-Term Partnership</div>
+        <div class="dist-card-text">We build lasting relationships based on mutual growth, transparency, and shared success in your market.</div>
+      </div>
+    </div>
+
+    <div class="text-center reveal" style="margin-top:3rem;">
+      <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;margin-bottom:1.25rem;">Ready to bring GUFC beverages to your market?</p>
+      <a href="#pane-distributor" onclick="document.getElementById('tab-distributor').click();window.scrollTo({top:0,behavior:'smooth'});" class="btn btn-gold" style="font-size:1rem;padding:1rem 2.5rem;">
+        Apply as Distributor →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CAREERS
+══════════════════════════════════════ -->
+<section class="section-pad" id="careers">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Join Our Team</div>
+      <h2 class="section-title">Build Your Career at GUFC</h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">We're always looking for talented, passionate individuals to join our growing team. Check out our current openings:</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <!-- Career listings -->
+      <div class="career-card reveal delay-1">
+        <div style="flex:1;">
+          <div style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--c-text);margin-bottom:0.35rem;">Regional Sales Manager — GCC</div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <span class="badge badge-blue">Sales</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">📍 Saudi Arabia</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">💼 Full Time</span>
+          </div>
+        </div>
+        <a href="mailto:careers@gulf-union.com?subject=Application: Regional Sales Manager" class="btn btn-blue" style="font-size:0.85rem;padding:0.65rem 1.25rem;white-space:nowrap;">Apply Now →</a>
+      </div>
+
+      <div class="career-card reveal delay-2">
+        <div style="flex:1;">
+          <div style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--c-text);margin-bottom:0.35rem;">Brand Manager — Original®</div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <span class="badge badge-red">Marketing</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">📍 Saudi Arabia</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">💼 Full Time</span>
+          </div>
+        </div>
+        <a href="mailto:careers@gulf-union.com?subject=Application: Brand Manager Original" class="btn btn-blue" style="font-size:0.85rem;padding:0.65rem 1.25rem;white-space:nowrap;">Apply Now →</a>
+      </div>
+
+      <div class="career-card reveal delay-3">
+        <div style="flex:1;">
+          <div style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--c-text);margin-bottom:0.35rem;">Quality Control Technician</div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <span class="badge badge-green">Operations</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">📍 Manufacturing Plant</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">💼 Full Time</span>
+          </div>
+        </div>
+        <a href="mailto:careers@gulf-union.com?subject=Application: QC Technician" class="btn btn-blue" style="font-size:0.85rem;padding:0.65rem 1.25rem;white-space:nowrap;">Apply Now →</a>
+      </div>
+
+      <div class="career-card reveal delay-4">
+        <div style="flex:1;">
+          <div style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--c-text);margin-bottom:0.35rem;">Export Sales Executive — Africa</div>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <span class="badge badge-gold">Export</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">📍 Remote / KSA</span>
+            <span style="font-size:0.82rem;color:var(--c-muted);">💼 Full Time</span>
+          </div>
+        </div>
+        <a href="mailto:careers@gulf-union.com?subject=Application: Export Sales Africa" class="btn btn-blue" style="font-size:0.85rem;padding:0.65rem 1.25rem;white-space:nowrap;">Apply Now →</a>
+      </div>
+    </div>
+
+    <div class="text-center reveal" style="margin-top:2rem;">
+      <p style="color:var(--c-muted);font-size:0.9rem;">Don't see your role? Send your CV to <a href="mailto:careers@gulf-union.com" style="color:var(--c-blue);">careers@gulf-union.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="https://gulf-union.com/images/logo.png" alt="GUFC Logo" style="height:52px;margin-bottom:1rem;filter:brightness(10);" />
+          <p class="footer-brand-desc">Gulf Union Foods Co. — A premier beverage manufacturer delivering world-class quality drinks since 1999.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/gulfunionfoods/" class="social-icon" target="_blank">📸</a>
+            <a href="https://twitter.com/GulfUnionFoods" class="social-icon" target="_blank">𝕏</a>
+            <a href="https://www.facebook.com/GulfUnionFoods" class="social-icon" target="_blank">f</a>
+            <a href="https://www.linkedin.com/company/gulf-union-foods-co" class="social-icon" target="_blank">in</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="brands.html">Our Brands</a></li>
+            <li><a href="about.html#sustainability">Sustainability</a></li>
+            <li><a href="index.html#newsroom">Newsroom</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Our Brands</div>
+          <ul class="footer-links">
+            <li><a href="original.html">Original®</a></li>
+            <li><a href="brands.html#klasse">KLASSE</a></li>
+            <li><a href="brands.html#cobra">COBRA</a></li>
+            <li><a href="brands.html#captain">Captain</a></li>
+            <li><a href="brands.html#splash">Splash</a></li>
+            <li><a href="brands.html#ori">Ori</a></li>
+            <li><a href="brands.html#alqobtan">Al Qobtan</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📍</div>
+            <div class="footer-contact-text">Kingdom of Saudi Arabia</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">✉️</div>
+            <div class="footer-contact-text"><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">🌐</div>
+            <div class="footer-contact-text"><a href="https://gulf-union.com" target="_blank">gulf-union.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p class="footer-copy">© 2026 Gulf Union Foods Co. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  // Tab switching
+  function switchTab(tab, el) {
+    document.querySelectorAll('.form-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('pane-' + tab).classList.add('active');
+    el.classList.add('active');
+  }
+
+  // Handle forms
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const orig = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = '✓ Sent Successfully!';
+        btn.style.background = '#10b981';
+        form.reset();
+        setTimeout(() => { btn.textContent = orig; btn.disabled = false; btn.style.background = ''; }, 3500);
+      }, 1500);
+    });
+  });
+</script>
+</body>
+</html>

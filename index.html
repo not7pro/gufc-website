@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gulf Union Foods Co. | Premium Beverages Since 1999</title>
+  <meta name="description" content="Gulf Union Foods Co. (GUFC) — A premier beverage manufacturer delivering world-class juices, energy drinks, malt beverages and sparkling drinks across the GCC and beyond." />
+  <meta name="keywords" content="Gulf Union Foods, GUFC, Original juice, KLASSE malt, COBRA energy drink, Captain, Splash, Saudi Arabia beverages" />
+  <meta property="og:title" content="Gulf Union Foods Co." />
+  <meta property="og:description" content="Where quality meets passion, and taste meets innovation." />
+  <meta property="og:image" content="https://gulf-union.com/images/logo.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Homepage-specific overrides ── */
+    .hero-slider { height: 100vh; min-height: 600px; }
+
+    /* About teaser */
+    .about-teaser {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 580px;
+    }
+    .about-teaser-visual {
+      background: var(--g-hero);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-teaser-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      position: absolute;
+      inset: 0;
+    }
+    .about-teaser-visual-inner {
+      position: relative;
+      z-index: 2;
+      padding: var(--sp-2xl);
+      text-align: center;
+    }
+    .about-teaser-content {
+      background: var(--c-off-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--sp-2xl) var(--sp-xl);
+    }
+
+    /* Brands showcase grid */
+    .brands-home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1.5rem;
+    }
+    .brand-home-card {
+      position: relative;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      min-height: 300px;
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer;
+      transition: var(--t-base);
+    }
+    .brand-home-card:first-child {
+      grid-column: span 2;
+      min-height: 380px;
+    }
+    .brand-home-card:hover { transform: scale(1.02); }
+    .brand-home-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.8s ease;
+    }
+    .brand-home-card:hover .brand-home-card-bg { transform: scale(1.08); }
+    .brand-home-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,12,26,0.9) 0%, rgba(8,12,26,0.2) 60%, transparent 100%);
+    }
+    .brand-home-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.75rem;
+    }
+    .brand-home-card-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--c-white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .brand-home-card-tag {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1rem;
+    }
+    .brand-home-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: var(--t-base);
+    }
+    .brand-home-card:hover .brand-home-card-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Global reach section */
+    .reach-section {
+      background: var(--g-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .reach-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(26,28,117,0.3) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 60%, rgba(245,166,35,0.07) 0%, transparent 70%);
+    }
+    .reach-map-svg {
+      width: 100%;
+      max-width: 900px;
+      opacity: 0.5;
+      filter: drop-shadow(0 0 20px rgba(26,28,117,0.5));
+    }
+    .reach-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .reach-stat { text-align: center; }
+    .reach-stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: var(--g-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .reach-stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+    }
+
+    @media (max-width: 900px) {
+      .about-teaser { grid-template-columns: 1fr; }
+      .brands-home-grid { grid-template-columns: 1fr 1fr; }
+      .brand-home-card:first-child { grid-column: span 2; }
+    }
+    @media (max-width: 600px) {
+      .brands-home-grid { grid-template-columns: 1fr; }
+      .brand-home-card:first-child { grid-column: span 1; }
+      .reach-stats { justify-content: center; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar transparent" role="navigation" aria-label="Main Navigation">
+  <div class="navbar-inner">
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo" aria-label="GUFC Home">
+      <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. Logo" />
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="nav-links" role="menubar">
+      <li class="nav-item" role="none">
+        <a href="about.html" class="nav-link" role="menuitem"
+           data-en="Who We Are" data-ar="من نحن">Who We Are</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="brands.html" class="nav-link" role="menuitem"
+           data-en="Our Brands" data-ar="علاماتنا التجارية">
+          Our Brands
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown" role="menu">
+          <a href="original.html" role="menuitem">Original®</a>
+          <a href="brands.html#klasse" role="menuitem">KLASSE</a>
+          <a href="brands.html#cobra" role="menuitem">COBRA</a>
+          <a href="brands.html#captain" role="menuitem">Captain</a>
+          <a href="brands.html#splash" role="menuitem">Splash</a>
+          <a href="brands.html#ori" role="menuitem">Ori</a>
+          <a href="brands.html#alqobtan" role="menuitem">Al Qobtan</a>
+        </div>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="about.html#sustainability" class="nav-link" role="menuitem"
+           data-en="Sustainability" data-ar="الاستدامة">Sustainability</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="index.html#newsroom" class="nav-link" role="menuitem"
+           data-en="Newsroom" data-ar="غرفة الأخبار">Newsroom</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="contact.html" class="nav-link" role="menuitem"
+           data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+      </li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        عربي
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
+  <a href="index.html" class="mobile-nav-link active" data-en="Home" data-ar="الرئيسية">Home</a>
+  <a href="about.html" class="mobile-nav-link" data-en="Who We Are" data-ar="من نحن">Who We Are</a>
+  <a href="brands.html" class="mobile-nav-link" data-en="Our Brands" data-ar="علاماتنا التجارية">Our Brands</a>
+  <div class="mobile-sub-links">
+    <a href="original.html">Original®</a>
+    <a href="brands.html#klasse">KLASSE</a>
+    <a href="brands.html#cobra">COBRA</a>
+    <a href="brands.html#captain">Captain</a>
+    <a href="brands.html#splash">Splash</a>
+    <a href="brands.html#ori">Ori</a>
+    <a href="brands.html#alqobtan">Al Qobtan</a>
+  </div>
+  <a href="about.html#sustainability" class="mobile-nav-link" data-en="Sustainability" data-ar="الاستدامة">Sustainability</a>
+  <a href="index.html#newsroom" class="mobile-nav-link" data-en="Newsroom" data-ar="غرفة الأخبار">Newsroom</a>
+  <a href="contact.html" class="mobile-nav-link" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+  <div style="margin-top:auto;padding-top:1.5rem;">
+    <button class="lang-toggle" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      عربي
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO SLIDER
+══════════════════════════════════════ -->
+<section class="hero-slider" aria-label="Hero Slideshow">
+
+  <!-- Slide 1 — Welcome -->
+  <div class="slide active" aria-hidden="false">
+    <div class="slide-bg" style="background-image: linear-gradient(135deg, #0d1045 0%, #1a1c75 40%, #2b3990 70%, #0d1045 100%);"></div>
+    <div class="slide-overlay"></div>
+    <!-- Decorative circles -->
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+      <div style="position:absolute;width:700px;height:700px;border-radius:50%;border:1px solid rgba(245,166,35,0.08);top:-200px;right:-100px;"></div>
+      <div style="position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(245,166,35,0.06);top:-100px;right:0px;"></div>
+      <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,0.1) 0%,transparent 70%);top:10%;right:15%;"></div>
+      <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(227,6,19,0.08) 0%,transparent 70%);bottom:20%;left:10%;"></div>
+    </div>
+    <div class="slide-content">
+      <div class="slide-eyebrow">🌍 Est. 1999 · Saudi Arabia</div>
+      <h1 class="slide-title" data-en="Welcome to<br><span class='highlight'>Gulf Union</span><br>Foods Co." data-ar="مرحباً بكم في<br><span class='highlight'>خليج الاتحاد</span><br>للأغذية">
+        Welcome to<br><span class="highlight">Gulf Union</span><br>Foods Co.
+      </h1>
+      <p class="slide-desc" data-en="Where quality meets passion, and taste meets innovation. Discover a world of products crafted to elevate everyday moments." data-ar="حيث الجودة تلتقي بالشغف، والطعم يلتقي بالابتكار. اكتشف عالماً من المنتجات المصممة لتحسين لحظاتك اليومية.">
+        Where quality meets passion, and taste meets innovation. Discover a world of products crafted to elevate everyday moments.
+      </p>
+      <div class="slide-actions">
+        <a href="about.html" class="btn btn-primary" data-en="Discover Our Story" data-ar="اكتشف قصتنا">Discover Our Story</a>
+        <a href="brands.html" class="btn btn-secondary" data-en="Our Brands" data-ar="علاماتنا">Our Brands</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 — Original Campaign -->
+  <div class="slide" aria-hidden="true">
+    <div class="slide-bg" style="background: linear-gradient(135deg, #0a0a2e 0%, #1a1c75 30%, #8b0000 80%, #e30613 100%);"></div>
+    <div class="slide-overlay" style="background: linear-gradient(105deg, rgba(8,12,26,0.8) 0%, rgba(139,0,0,0.4) 100%);"></div>
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+      <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(227,6,19,0.15) 0%,transparent 70%);top:-100px;right:-50px;"></div>
+    </div>
+    <div class="slide-content">
+      <div class="slide-eyebrow">🧃 New Campaign 2025</div>
+      <h2 class="slide-title">
+        Original<sup style="font-size:0.5em;top:-0.5em;position:relative;">®</sup><br>
+        <span class="brand-red">Back-to-School</span><br>Campaign is Live!
+      </h2>
+      <p class="slide-desc">
+        "A New Start to a Tasty Story" — Celebrate fresh beginnings with Original®'s iconic fruit juices, loved by families across the GCC.
+      </p>
+      <div class="slide-actions">
+        <a href="original.html" class="btn btn-primary">Explore Original®</a>
+        <a href="brands.html" class="btn btn-secondary">All Brands</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 — Original Chunks -->
+  <div class="slide" aria-hidden="true">
+    <div class="slide-bg" style="background: linear-gradient(135deg, #0d2818 0%, #1a5c35 40%, #2d8653 70%, #f5a623 100%);"></div>
+    <div class="slide-overlay" style="background: linear-gradient(105deg, rgba(8,26,16,0.85) 0%, rgba(13,40,24,0.6) 100%);"></div>
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+      <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,0.12) 0%,transparent 70%);top:-50px;right:0;"></div>
+    </div>
+    <div class="slide-content">
+      <div class="slide-eyebrow">🌪️ New Product Launch</div>
+      <h2 class="slide-title">
+        Original<sup style="font-size:0.5em;top:-0.5em;position:relative;">®</sup> Chunks<br>
+        <span class="highlight">Fruit Tornado</span> 🌪️
+      </h2>
+      <p class="slide-desc">
+        Introducing Original® Chunks with a bold fresh new look and zero added sugar. Pure fruit power in every sip.
+      </p>
+      <div class="slide-actions">
+        <a href="original.html" class="btn btn-gold">Discover Chunks</a>
+        <a href="about.html" class="btn btn-secondary">Our Story</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4 — Gulfood 2026 -->
+  <div class="slide" aria-hidden="true">
+    <div class="slide-bg" style="background: linear-gradient(135deg, #080c1a 0%, #0f1630 30%, #1a1c75 70%, #2b3990 100%);"></div>
+    <div class="slide-overlay" style="background: linear-gradient(105deg, rgba(8,12,26,0.88) 0%, rgba(26,28,117,0.55) 100%);"></div>
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+      <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,0.1) 0%,transparent 70%);bottom:0;right:10%;"></div>
+    </div>
+    <div class="slide-content">
+      <div class="slide-eyebrow">🏆 Gulfood 2026 — Dubai</div>
+      <h2 class="slide-title">
+        GUFC at<br><span class="highlight">Gulfood 2026</span><br>Dubai, UAE
+      </h2>
+      <p class="slide-desc">
+        Gulf Union Foods Co. proudly participated in Gulfood 2026 — the world's leading annual food & beverage exhibition, showcasing our full portfolio to global markets.
+      </p>
+      <div class="slide-actions">
+        <a href="about.html" class="btn btn-primary">Learn More</a>
+        <a href="contact.html" class="btn btn-secondary">Become a Distributor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slider Controls -->
+  <button class="slider-nav slider-prev" id="slider-prev" aria-label="Previous slide">&#8592;</button>
+  <button class="slider-nav slider-next" id="slider-next" aria-label="Next slide">&#8594;</button>
+
+  <div class="slider-controls" role="tablist" aria-label="Slide indicators">
+    <button class="slider-dot active" role="tab" aria-label="Slide 1"></button>
+    <button class="slider-dot" role="tab" aria-label="Slide 2"></button>
+    <button class="slider-dot" role="tab" aria-label="Slide 3"></button>
+    <button class="slider-dot" role="tab" aria-label="Slide 4"></button>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BRAND STRIP (Marquee)
+══════════════════════════════════════ -->
+<div class="brand-strip" aria-hidden="true">
+  <div class="brand-strip-track">
+    <span class="brand-strip-item"><span class="dot"></span> Original®</span>
+    <span class="brand-strip-item"><span class="dot"></span> KLASSE</span>
+    <span class="brand-strip-item"><span class="dot"></span> COBRA</span>
+    <span class="brand-strip-item"><span class="dot"></span> Captain</span>
+    <span class="brand-strip-item"><span class="dot"></span> Splash</span>
+    <span class="brand-strip-item"><span class="dot"></span> Ori</span>
+    <span class="brand-strip-item"><span class="dot"></span> Al Qobtan</span>
+    <span class="brand-strip-item"><span class="dot"></span> Gulf Union Foods Co.</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="brand-strip-item"><span class="dot"></span> Original®</span>
+    <span class="brand-strip-item"><span class="dot"></span> KLASSE</span>
+    <span class="brand-strip-item"><span class="dot"></span> COBRA</span>
+    <span class="brand-strip-item"><span class="dot"></span> Captain</span>
+    <span class="brand-strip-item"><span class="dot"></span> Splash</span>
+    <span class="brand-strip-item"><span class="dot"></span> Ori</span>
+    <span class="brand-strip-item"><span class="dot"></span> Al Qobtan</span>
+    <span class="brand-strip-item"><span class="dot"></span> Gulf Union Foods Co.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ABOUT TEASER
+══════════════════════════════════════ -->
+<section class="about-teaser" aria-label="About Gulf Union Foods Co.">
+  <!-- Visual side -->
+  <div class="about-teaser-visual">
+    <div style="position:absolute;inset:0;background:var(--g-hero);"></div>
+    <div class="grid-overlay"></div>
+    <div class="about-teaser-visual-inner">
+      <div class="reveal">
+        <div style="font-size:5rem;margin-bottom:1rem;filter:drop-shadow(0 4px 20px rgba(245,166,35,0.4));">🏭</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:4rem;font-weight:900;color:var(--c-gold);line-height:1;">1999</div>
+        <div style="font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.5rem;">Year Founded</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;max-width:340px;">
+        <div class="reveal delay-1 card-glass" style="padding:1.5rem;border-radius:var(--r-md);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:900;color:var(--c-gold);">7</div>
+          <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Brands</div>
+        </div>
+        <div class="reveal delay-2 card-glass" style="padding:1.5rem;border-radius:var(--r-md);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:900;color:var(--c-gold);">30+</div>
+          <div style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Markets</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content side -->
+  <div class="about-teaser-content">
+    <div style="max-width:520px;">
+      <div class="section-eyebrow reveal">Our Company</div>
+      <h2 class="section-title reveal delay-1" style="margin-bottom:1.25rem;">
+        A Trusted Name in Premium Beverages
+      </h2>
+      <div class="divider-gold left reveal delay-2"></div>
+      <p class="reveal delay-2" style="color:var(--c-muted);line-height:1.8;margin-top:1.25rem;font-size:0.98rem;">
+        Gulf Union Foods Co. (GUFC) is a trusted name in the beverage industry, focused on delivering diverse, high-quality beverages across various categories. Our portfolio spans juices, energy drinks, non-alcoholic malt, soft drinks, and sparkling juices, crafted to suit every consumer and to share every moment.
+      </p>
+      <p class="reveal delay-3" style="color:var(--c-muted);line-height:1.8;margin-top:1rem;font-size:0.98rem;">
+        Founded in 1999 in the Kingdom of Saudi Arabia, GUFC has grown into a regional powerhouse with a presence spanning over 30 markets across the Middle East, Africa, and beyond.
+      </p>
+      <div class="pillars-grid reveal delay-4" style="grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;">
+        <div style="text-align:center;padding:1rem;background:white;border-radius:var(--r-md);border:1px solid rgba(0,0,0,0.06);box-shadow:var(--shadow-sm);">
+          <div style="font-size:1.75rem;margin-bottom:0.5rem;">🎯</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:700;color:var(--c-blue);">MISSION</div>
+        </div>
+        <div style="text-align:center;padding:1rem;background:white;border-radius:var(--r-md);border:1px solid rgba(0,0,0,0.06);box-shadow:var(--shadow-sm);">
+          <div style="font-size:1.75rem;margin-bottom:0.5rem;">👁️</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:700;color:var(--c-blue);">VISION</div>
+        </div>
+        <div style="text-align:center;padding:1rem;background:white;border-radius:var(--r-md);border:1px solid rgba(0,0,0,0.06);box-shadow:var(--shadow-sm);">
+          <div style="font-size:1.75rem;margin-bottom:0.5rem;">💎</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:700;color:var(--c-blue);">VALUES</div>
+        </div>
+      </div>
+      <div class="reveal delay-5" style="margin-top:2rem;">
+        <a href="about.html" class="btn btn-blue">Discover Our Story →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ACHIEVEMENTS COUNTER
+══════════════════════════════════════ -->
+<section class="achievements-section section-pad-sm" aria-label="Our Achievements">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Our Achievements</div>
+      <h2 class="section-title light">Numbers That Define Excellence</h2>
+      <div class="divider-gold"></div>
+    </div>
+  </div>
+  <div class="achievements-grid" style="position:relative;z-index:1;">
+    <div class="achievement-item reveal delay-1">
+      <div class="achievement-num">
+        <span data-counter="26" data-suffix="+" data-duration="2000">0</span>
+      </div>
+      <div class="achievement-label">Years of<br>Excellence</div>
+    </div>
+    <div class="achievement-item reveal delay-2">
+      <div class="achievement-num">
+        <span data-counter="1500" data-suffix="+" data-duration="2200">0</span>
+      </div>
+      <div class="achievement-label">Dedicated<br>Employees</div>
+    </div>
+    <div class="achievement-item reveal delay-3">
+      <div class="achievement-num">
+        <span data-counter="500" data-suffix="M+" data-duration="2500">0</span>
+      </div>
+      <div class="achievement-label">Litres Produced<br>Annually</div>
+    </div>
+    <div class="achievement-item reveal delay-4">
+      <div class="achievement-num">
+        <span data-counter="30" data-suffix="+" data-duration="1800">0</span>
+      </div>
+      <div class="achievement-label">Global<br>Markets</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BRANDS SHOWCASE
+══════════════════════════════════════ -->
+<section class="section-pad" aria-label="Our Brands">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Our Portfolio</div>
+      <h2 class="section-title">7 Iconic Brands, Countless Moments</h2>
+      <p class="section-desc">From beloved fruit juices to bold energy drinks — every GUFC brand is crafted to deliver an exceptional experience.</p>
+    </div>
+
+    <div class="brands-home-grid">
+      <!-- Original -->
+      <a href="original.html" class="brand-home-card" aria-label="Explore Original brand">
+        <div class="brand-home-card-bg" style="background: linear-gradient(135deg, #0d1045 0%, #1a1c75 50%, #2b3990 100%);"></div>
+        <div class="brand-home-card-overlay"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:8rem;opacity:0.08;pointer-events:none;">🧃</div>
+        <div class="brand-home-card-content">
+          <div class="brand-home-card-name">Original®</div>
+          <div class="brand-home-card-tag">Premium Fruit Juices · Since 1999</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+            <span class="brand-product-pill">Mango</span>
+            <span class="brand-product-pill">Orange</span>
+            <span class="brand-product-pill">Guava</span>
+            <span class="brand-product-pill">Mixed</span>
+            <span class="brand-product-pill">Chunks</span>
+          </div>
+          <div class="brand-home-card-link">Explore Brand → </div>
+        </div>
+      </a>
+
+      <!-- KLASSE -->
+      <a href="brands.html#klasse" class="brand-home-card" aria-label="Explore KLASSE brand">
+        <div class="brand-home-card-bg" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);"></div>
+        <div class="brand-home-card-overlay"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;opacity:0.08;pointer-events:none;">🍺</div>
+        <div class="brand-home-card-content">
+          <div class="brand-home-card-name">KLASSE</div>
+          <div class="brand-home-card-tag">The True German Taste · Non-Alcoholic Malt</div>
+          <div class="brand-home-card-link">Explore Brand →</div>
+        </div>
+      </a>
+
+      <!-- COBRA -->
+      <a href="brands.html#cobra" class="brand-home-card" aria-label="Explore COBRA brand">
+        <div class="brand-home-card-bg" style="background: linear-gradient(135deg, #1a0000 0%, #8b0000 50%, #e30613 100%);"></div>
+        <div class="brand-home-card-overlay"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;opacity:0.08;pointer-events:none;">⚡</div>
+        <div class="brand-home-card-content">
+          <div class="brand-home-card-name">COBRA</div>
+          <div class="brand-home-card-tag">Stronger Than You Imagine · Energy Drink</div>
+          <div class="brand-home-card-link">Explore Brand →</div>
+        </div>
+      </a>
+
+      <!-- Captain -->
+      <a href="brands.html#captain" class="brand-home-card" aria-label="Explore Captain brand">
+        <div class="brand-home-card-bg" style="background: linear-gradient(135deg, #001a33 0%, #003d7a 50%, #005cbf 100%);"></div>
+        <div class="brand-home-card-overlay"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;opacity:0.08;pointer-events:none;">⚓</div>
+        <div class="brand-home-card-content">
+          <div class="brand-home-card-name">Captain</div>
+          <div class="brand-home-card-tag">Sail to the Taste · Sparkling Beverage</div>
+          <div class="brand-home-card-link">Explore Brand →</div>
+        </div>
+      </a>
+
+      <!-- Splash -->
+      <a href="brands.html#splash" class="brand-home-card" aria-label="Explore Splash brand">
+        <div class="brand-home-card-bg" style="background: linear-gradient(135deg, #004d40 0%, #00897b 50%, #26c6da 100%);"></div>
+        <div class="brand-home-card-overlay"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;opacity:0.08;pointer-events:none;">💦</div>
+        <div class="brand-home-card-content">
+          <div class="brand-home-card-name">Splash</div>
+          <div class="brand-home-card-tag">Refreshing Every Moment · Soft Drinks</div>
+          <div class="brand-home-card-link">Explore Brand →</div>
+        </div>
+      </a>
+
+      <!-- Ori + Al Qobtan stacked -->
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <a href="brands.html#ori" class="brand-home-card" style="min-height:140px;" aria-label="Explore Ori brand">
+          <div class="brand-home-card-bg" style="background: linear-gradient(135deg, #1a0d33 0%, #4a1d96 100%);"></div>
+          <div class="brand-home-card-overlay"></div>
+          <div class="brand-home-card-content">
+            <div class="brand-home-card-name" style="font-size:1.2rem;">Ori</div>
+            <div class="brand-home-card-tag" style="font-size:0.72rem;">Light & Fresh</div>
+          </div>
+        </a>
+        <a href="brands.html#alqobtan" class="brand-home-card" style="min-height:140px;" aria-label="Explore Al Qobtan brand">
+          <div class="brand-home-card-bg" style="background: linear-gradient(135deg, #1a1400 0%, #7a6200 50%, #c4952a 100%);"></div>
+          <div class="brand-home-card-overlay"></div>
+          <div class="brand-home-card-content">
+            <div class="brand-home-card-name" style="font-size:1.2rem;">Al Qobtan</div>
+            <div class="brand-home-card-tag" style="font-size:0.72rem;">الربان · Heritage Flavor</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="text-center reveal" style="margin-top:3rem;">
+      <a href="brands.html" class="btn btn-blue">View All Brands →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GLOBAL REACH
+══════════════════════════════════════ -->
+<section class="reach-section section-pad" aria-label="Global Reach">
+  <div class="container" style="position:relative;z-index:1;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <!-- Left: text -->
+      <div>
+        <div class="section-eyebrow reveal">Global Presence</div>
+        <h2 class="section-title light reveal delay-1">Reaching Hearts Across <span style="color:var(--c-gold);">30+ Countries</span></h2>
+        <div class="divider-gold left reveal delay-2"></div>
+        <p class="section-desc reveal delay-2" style="margin-top:1.25rem;">
+          From the shores of the Arabian Gulf to the markets of Africa and beyond, GUFC products are enjoyed in over 30 countries worldwide. Our commitment to quality transcends borders.
+        </p>
+        <div class="reach-stats reveal delay-3" style="margin-top:2.5rem;">
+          <div class="reach-stat">
+            <div class="reach-stat-num">GCC</div>
+            <div class="reach-stat-label">Home Market</div>
+          </div>
+          <div class="reach-stat">
+            <div class="reach-stat-num">MENA</div>
+            <div class="reach-stat-label">Regional</div>
+          </div>
+          <div class="reach-stat">
+            <div class="reach-stat-num">AFR</div>
+            <div class="reach-stat-label">Africa</div>
+          </div>
+        </div>
+        <div class="reveal delay-4" style="margin-top:2rem;">
+          <a href="contact.html" class="btn btn-gold">Become a Distributor →</a>
+        </div>
+      </div>
+      <!-- Right: SVG world map placeholder -->
+      <div class="reveal-right" style="text-align:center;">
+        <svg class="reach-map-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" aria-label="World map showing GUFC distribution reach">
+          <!-- Simplified world map outlines -->
+          <defs>
+            <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#1a1c75" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#1a1c75" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="500" fill="url(#mapGlow)"/>
+          <!-- Continents simplified -->
+          <!-- Africa -->
+          <ellipse cx="475" cy="310" rx="80" ry="110" fill="rgba(245,166,35,0.25)" stroke="rgba(245,166,35,0.5)" stroke-width="1.5"/>
+          <!-- Middle East -->
+          <ellipse cx="570" cy="240" rx="55" ry="40" fill="rgba(245,166,35,0.4)" stroke="rgba(245,166,35,0.8)" stroke-width="2"/>
+          <!-- Europe -->
+          <ellipse cx="470" cy="175" rx="70" ry="50" fill="rgba(26,28,117,0.3)" stroke="rgba(100,120,220,0.5)" stroke-width="1"/>
+          <!-- Asia -->
+          <ellipse cx="680" cy="200" rx="120" ry="80" fill="rgba(26,28,117,0.2)" stroke="rgba(100,120,220,0.4)" stroke-width="1"/>
+          <!-- North America -->
+          <ellipse cx="185" cy="200" rx="100" ry="90" fill="rgba(26,28,117,0.15)" stroke="rgba(100,120,220,0.3)" stroke-width="1"/>
+          <!-- South America -->
+          <ellipse cx="230" cy="350" rx="60" ry="90" fill="rgba(26,28,117,0.1)" stroke="rgba(100,120,220,0.25)" stroke-width="1"/>
+          <!-- Australia -->
+          <ellipse cx="760" cy="370" rx="60" ry="40" fill="rgba(26,28,117,0.1)" stroke="rgba(100,120,220,0.25)" stroke-width="1"/>
+          <!-- Distribution points -->
+          <circle cx="570" cy="240" r="8" fill="var(--c-gold)" opacity="0.9">
+            <animate attributeName="r" values="8;14;8" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="475" cy="290" r="5" fill="var(--c-gold)" opacity="0.7">
+            <animate attributeName="r" values="5;10;5" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="490" cy="200" r="4" fill="var(--c-gold)" opacity="0.6">
+            <animate attributeName="r" values="4;8;4" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="650" cy="230" r="4" fill="var(--c-gold)" opacity="0.6">
+            <animate attributeName="r" values="4;8;4" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Connecting lines from Middle East -->
+          <line x1="570" y1="240" x2="475" y2="290" stroke="rgba(245,166,35,0.3)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="570" y1="240" x2="490" y2="200" stroke="rgba(245,166,35,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="570" y1="240" x2="650" y2="230" stroke="rgba(245,166,35,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+          <!-- Legend -->
+          <circle cx="60" cy="450" r="6" fill="var(--c-gold)"/>
+          <text x="75" y="455" fill="rgba(255,255,255,0.5)" font-size="12" font-family="Inter">GUFC Presence</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     NEWSROOM
+══════════════════════════════════════ -->
+<section class="section-pad" id="newsroom" aria-label="Latest News">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Newsroom</div>
+      <h2 class="section-title">Latest From GUFC</h2>
+      <p class="section-desc">Stay up to date with our newest campaigns, product launches, and corporate milestones.</p>
+    </div>
+
+    <div class="news-grid">
+      <!-- News 1 -->
+      <article class="news-card reveal delay-1">
+        <div class="news-card-image" style="background:linear-gradient(135deg,#1a1c75,#2b3990);">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;">🏆</div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta">
+            <span class="badge badge-blue">Exhibition</span>
+            <span class="news-card-date">Feb 2026</span>
+          </div>
+          <h3 class="news-card-title">GUFC Participation in Gulfood 2026, Dubai</h3>
+          <p class="news-card-excerpt">Gulf Union Food Company proudly participated in Gulfood 2026, the world's leading annual food and beverage exhibition, held in Dubai, UAE.</p>
+          <span class="news-card-link">Read More <span>→</span></span>
+        </div>
+      </article>
+
+      <!-- News 2 -->
+      <article class="news-card reveal delay-2">
+        <div class="news-card-image" style="background:linear-gradient(135deg,#8b0000,#e30613);">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;">🎒</div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta">
+            <span class="badge badge-red">Campaign</span>
+            <span class="news-card-date">Aug 2025</span>
+          </div>
+          <h3 class="news-card-title">Original® Back-to-School Campaign 2025</h3>
+          <p class="news-card-excerpt">As the Back-to-School season arrives, we're pleased to announce Original®'s new campaign: "A New Start to a Tasty Story."</p>
+          <span class="news-card-link">Read More <span>→</span></span>
+        </div>
+      </article>
+
+      <!-- News 3 -->
+      <article class="news-card reveal delay-3">
+        <div class="news-card-image" style="background:linear-gradient(135deg,#004d40,#26c6da);">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;">🌪️</div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta">
+            <span class="badge badge-green">New Product</span>
+            <span class="news-card-date">Jul 2025</span>
+          </div>
+          <h3 class="news-card-title">Introducing Original® Chunks — Fruit Tornado</h3>
+          <p class="news-card-excerpt">Introducing Original® Chunks with a fresh new look and zero added sugar. Pure fruit power, delivered with a bold new design.</p>
+          <span class="news-card-link">Read More <span>→</span></span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     QUALITY & CERTIFICATIONS
+══════════════════════════════════════ -->
+<section style="background:var(--c-off-white);padding:var(--sp-2xl) 0;" aria-label="Certifications">
+  <div class="container text-center">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Quality Assurance</div>
+    <h2 class="section-title reveal delay-1" style="margin-bottom:2.5rem;">Certified to the Highest Standards</h2>
+    <div class="cert-grid">
+      <div class="cert-card reveal delay-1">
+        <div class="cert-icon">🏅</div>
+        <div class="cert-name">ISO 9001</div>
+        <div class="cert-desc">Quality Management Systems</div>
+      </div>
+      <div class="cert-card reveal delay-2">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-name">HACCP</div>
+        <div class="cert-desc">Food Safety Management</div>
+      </div>
+      <div class="cert-card reveal delay-3">
+        <div class="cert-icon">☪️</div>
+        <div class="cert-name">Halal</div>
+        <div class="cert-desc">Internationally Certified</div>
+      </div>
+      <div class="cert-card reveal delay-4">
+        <div class="cert-icon">🌿</div>
+        <div class="cert-name">ISO 14001</div>
+        <div class="cert-desc">Environmental Management</div>
+      </div>
+      <div class="cert-card reveal delay-5">
+        <div class="cert-icon">🔬</div>
+        <div class="cert-name">GMP</div>
+        <div class="cert-desc">Good Manufacturing Practice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div>
+          <img src="https://gulf-union.com/images/logo.png" alt="GUFC Logo" style="height:56px;margin-bottom:1rem;filter:brightness(10);" />
+          <p class="footer-brand-desc">
+            Gulf Union Foods Co. — A premier beverage manufacturer delivering world-class quality drinks to consumers across 30+ global markets since 1999.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/gulfunionfoods/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener">📸</a>
+            <a href="https://twitter.com/GulfUnionFoods" class="social-icon" aria-label="Twitter/X" target="_blank" rel="noopener">𝕏</a>
+            <a href="https://www.facebook.com/GulfUnionFoods" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+            <a href="https://www.youtube.com/GulfUnionFoods" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener">▶</a>
+            <a href="https://www.linkedin.com/company/gulf-union-foods-co" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="brands.html">Our Brands</a></li>
+            <li><a href="about.html#sustainability">Sustainability</a></li>
+            <li><a href="index.html#newsroom">Newsroom</a></li>
+            <li><a href="contact.html#careers">Careers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Our Brands -->
+        <div>
+          <div class="footer-heading">Our Brands</div>
+          <ul class="footer-links">
+            <li><a href="original.html">Original®</a></li>
+            <li><a href="brands.html#klasse">KLASSE</a></li>
+            <li><a href="brands.html#cobra">COBRA</a></li>
+            <li><a href="brands.html#captain">Captain</a></li>
+            <li><a href="brands.html#splash">Splash</a></li>
+            <li><a href="brands.html#ori">Ori</a></li>
+            <li><a href="brands.html#alqobtan">Al Qobtan</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="footer-heading">Contact Us</div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📍</div>
+            <div class="footer-contact-text">Gulf Union Foods Co.<br>Kingdom of Saudi Arabia</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📞</div>
+            <div class="footer-contact-text"><a href="tel:+966">+966 (KSA)</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">✉️</div>
+            <div class="footer-contact-text"><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">🌐</div>
+            <div class="footer-contact-text"><a href="https://gulf-union.com" target="_blank">gulf-union.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p class="footer-copy">© 2026 Gulf Union Foods Co. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
