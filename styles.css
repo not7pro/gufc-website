@@ -1726,3 +1726,146 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
   .connect-actions { flex-direction: column; align-items: center; }
   .values-row { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   QUANTUM HOMEPAGE — additional shared utilities
+   ============================================================ */
+
+/* Page-level hero (used by about, brands) */
+.page-hero-section {
+  padding: calc(var(--nav-h) + 4rem) var(--sp-md) var(--sp-xl);
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* Glassmorphism card variant */
+.glass-card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gradient text utility */
+.t-gradient {
+  background: linear-gradient(135deg, var(--c-blue) 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Link with arrow that animates on hover */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--ts-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-blue);
+  transition: gap var(--t-fast);
+}
+.link-arrow:hover { gap: 14px; }
+
+/* Curved wave divider */
+.wave-divider {
+  line-height: 0;
+  overflow: hidden;
+  margin-top: -2px;
+}
+.wave-divider svg { display: block; width: 100%; }
+
+/* Better image loading state */
+img[src=""] { background: var(--c-surface); min-height: 100px; border-radius: var(--r-md); }
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* Smooth loading for images */
+img { transition: opacity 0.3s; }
+img:not([src]), img[src=""] { opacity: 0; }
+
+/* ============================================================
+   CONTACT PAGE ENHANCEMENTS
+   ============================================================ */
+.contact-hero {
+  padding: calc(var(--nav-h) + 3rem) var(--sp-md) var(--sp-xl);
+  background: linear-gradient(135deg, var(--c-surface-blue) 0%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -5%;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c-blue-pale) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Contact form layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-xl);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* Form field */
+.form-group { margin-bottom: var(--sp-md); }
+.form-label {
+  display: block;
+  font-size: var(--ts-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  margin-bottom: 8px;
+}
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: var(--ts-base);
+  color: var(--c-ink);
+  background: #fff;
+  border: 1.5px solid var(--c-border-md);
+  border-radius: var(--r-md);
+  outline: none;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--c-blue);
+  box-shadow: 0 0 0 3px rgba(27,75,154,0.1);
+}
+.form-textarea { resize: vertical; min-height: 140px; }
+
+/* ============================================================
+   ADDITIONAL RESPONSIVE POLISH
+   ============================================================ */
+@media (max-width: 640px) {
+  .discover-grid { grid-template-columns: 1fr 1fr; }
+  .product-line-grid { grid-template-columns: 1fr 1fr; }
+  .brand-social-bar__inner { flex-direction: column; align-items: flex-start; }
+  .brand-social-bar__links { flex-wrap: wrap; }
+  .mvv-grid { grid-template-columns: 1fr; }
+  .factories-grid { grid-template-columns: 1fr; }
+  .footer__grid { gap: var(--sp-lg); }
+  .footer__top { grid-template-columns: 1fr; }
+}
+
