@@ -4,26 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gulf Union Foods Co. — Crafting Moments Since 1995</title>
-  <meta name="description" content="Gulf Union Foods Co. is a leading FMCG powerhouse producing 500M+ liters per year across 7 iconic brands, exported to 42+ countries. Discover Original®, KLASSE, COBRA, Captain, Splash, Ori, and Al Qobtan." />
+  <meta name="description" content="Gulf Union Foods Co. — a leading FMCG powerhouse producing 500M+ liters per year across 7 iconic brands, exported to 42+ countries from the Kingdom of Saudi Arabia." />
   <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
 </head>
 <body>
 
 <!-- ══════════════════════════════════════════
-     NAVIGATION
+     NAV — white sticky, full-color logo
 ══════════════════════════════════════════ -->
 <nav class="nav" id="nav" aria-label="Main navigation">
   <div class="nav__inner">
 
-    <a href="index.html" class="nav__logo" aria-label="Gulf Union Foods Co. — Home">
-      <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." />
+    <a href="index.html" class="nav__logo" aria-label="Gulf Union Foods Co.">
+      <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. logo" />
     </a>
 
     <ul class="nav__links" role="list">
-      <li><a href="about.html" class="nav__link">Our Heritage</a></li>
+      <li><a href="about.html"  class="nav__link">Our Heritage</a></li>
       <li class="nav__item">
         <a href="brands.html" class="nav__link">The Portfolio</a>
         <ul class="nav__dropdown" role="list">
@@ -48,7 +46,6 @@
   </div>
 </nav>
 
-<!-- Mobile nav -->
 <div class="nav__mobile" id="mobileNav" aria-hidden="true">
   <ul class="nav__mobile-links" role="list">
     <li><a href="index.html">Home</a></li>
@@ -64,468 +61,553 @@
 
 
 <!-- ══════════════════════════════════════════
-     HERO
+     HERO — light, airy, editorial
 ══════════════════════════════════════════ -->
 <section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg-gradient" aria-hidden="true"></div>
+  <div class="hero__bg-grid"     aria-hidden="true"></div>
 
-  <!-- Animated background -->
-  <div class="hero__bg">
-    <div class="hero__orb hero__orb--1"></div>
-    <div class="hero__orb hero__orb--2"></div>
-    <div class="hero__orb hero__orb--3"></div>
-  </div>
-  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <!-- Left: copy -->
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">
+        <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+        <span class="t-label">Est. 1995 · Kingdom of Saudi Arabia</span>
+      </div>
 
-  <div class="hero__content">
-    <div class="hero__label">
-      <span class="hero__label-line" aria-hidden="true"></span>
-      <span class="hero__eyebrow">Est. 1995 · Kingdom of Saudi Arabia</span>
-      <span class="hero__label-line" aria-hidden="true"></span>
+      <h1 class="hero__title reveal reveal-delay-1" id="hero-title">
+        Where Every<br/>
+        Sip Tells<br/>
+        a <em>Story</em>
+      </h1>
+
+      <p class="hero__subtitle reveal reveal-delay-2">
+        From the heart of the Gulf to 42+ countries worldwide — seven iconic brands, one unwavering commitment to quality, taste, and refreshment.
+      </p>
+
+      <div class="hero__actions reveal reveal-delay-3">
+        <a href="brands.html" class="btn btn--primary btn--lg">
+          Explore The Portfolio &nbsp;→
+        </a>
+        <a href="about.html" class="btn btn--secondary btn--lg">
+          Our Heritage
+        </a>
+      </div>
+
+      <div class="hero__trust reveal reveal-delay-4">
+        <div class="hero__trust-item">
+          <svg class="hero__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          ISO 22000 Certified
+        </div>
+        <div class="hero__trust-item">
+          <svg class="hero__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Halal Certified
+        </div>
+        <div class="hero__trust-item">
+          <svg class="hero__trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          USFDA Approved
+        </div>
+      </div>
     </div>
 
-    <h1 class="hero__title t-display" id="hero-title">
-      Crafting<br/>
-      <em>Moments</em><br/>
-      That Last
-    </h1>
+    <!-- Right: visual -->
+    <div class="hero__visual reveal-scale reveal-delay-2">
+      <img
+        src="https://gulf-union.com/images/originalbanner.jpg"
+        alt="Original® juice brand hero visual"
+        class="hero__product-float hero__product-float--main"
+        onerror="this.src='original-hero.jpg';"
+      />
 
-    <p class="hero__subtitle">
-      From the heart of the Gulf to 42 countries worldwide — seven iconic brands, one unwavering commitment to quality.
-    </p>
+      <!-- Floating stat badge -->
+      <div class="hero__badge hero__badge--stats">
+        <div>
+          <div class="hero__badge-num">500M<span style="font-size:1rem;color:var(--c-gold);">+</span></div>
+          <div class="hero__badge-label">Liters / Year</div>
+        </div>
+      </div>
 
-    <div class="hero__actions">
-      <a href="brands.html" class="btn btn--primary">
-        Explore The Portfolio
-        <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
-      </a>
-      <a href="about.html" class="btn btn--outline">Our Heritage</a>
+      <!-- Floating cert badge -->
+      <div class="hero__badge hero__badge--cert">
+        <span class="hero__badge-icon">🏆</span>
+        <div>
+          <div class="hero__badge-num" style="font-size:1rem;">42+</div>
+          <div class="hero__badge-label">Countries</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-bar"></div>
     <span>Scroll</span>
-    <span class="hero__scroll-line"></span>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════
-     STATS COUNTER
+     STATS — blue bar
 ══════════════════════════════════════════ -->
-<section class="stats" aria-label="Company statistics">
+<div class="stats-bar" aria-label="Key company statistics">
   <div class="container">
-    <div class="stats__grid">
+    <div class="stats-bar__grid">
 
-      <div class="stat reveal reveal-delay-1">
-        <div class="stat__number">
-          <span class="count-up" data-target="500">0</span><span class="stat__suffix">M+</span>
+      <div class="stat-item reveal">
+        <div class="stat-item__num">
+          <span class="count-up" data-target="500">0</span><span class="stat-item__suffix">M+</span>
         </div>
-        <div class="stat__label">Liters Per Year</div>
+        <div class="stat-item__label">Liters Per Year</div>
       </div>
 
-      <div class="stat reveal reveal-delay-2">
-        <div class="stat__number">
-          <span class="count-up" data-target="42">0</span><span class="stat__suffix">+</span>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-item__num">
+          <span class="count-up" data-target="42">0</span><span class="stat-item__suffix">+</span>
         </div>
-        <div class="stat__label">Export Markets</div>
+        <div class="stat-item__label">Export Countries</div>
       </div>
 
-      <div class="stat reveal reveal-delay-3">
-        <div class="stat__number">
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-item__num">
           <span class="count-up" data-target="4">0</span>
         </div>
-        <div class="stat__label">World-Class Factories</div>
+        <div class="stat-item__label">Factories</div>
       </div>
 
-      <div class="stat reveal reveal-delay-4">
-        <div class="stat__number">
-          <span class="count-up" data-target="1300">0</span><span class="stat__suffix">+</span>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-item__num">
+          <span class="count-up" data-target="1300">0</span><span class="stat-item__suffix">+</span>
         </div>
-        <div class="stat__label">Team Members</div>
+        <div class="stat-item__label">Team Members</div>
       </div>
 
-      <div class="stat reveal reveal-delay-5">
-        <div class="stat__number">
+      <div class="stat-item reveal reveal-delay-4">
+        <div class="stat-item__num">
           <span class="count-up" data-target="7">0</span>
         </div>
-        <div class="stat__label">Iconic Brands</div>
+        <div class="stat-item__label">Iconic Brands</div>
       </div>
 
     </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     MARQUEE TICKER
-══════════════════════════════════════════ -->
-<div class="marquee-section" aria-hidden="true">
-  <div class="marquee-track">
-    <!-- duplicated for seamless loop -->
-    <div class="marquee-item"><span>Gulf Union Foods</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">Original®</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>KLASSE</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">COBRA</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>Captain</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">Splash</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>Ori</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">Al Qobtan</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>Est. 1995</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">42+ Countries</span><span class="marquee-dot"></span></div>
-    <!-- duplicate -->
-    <div class="marquee-item"><span>Gulf Union Foods</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">Original®</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>KLASSE</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">COBRA</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>Captain</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">Splash</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>Ori</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">Al Qobtan</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span>Est. 1995</span><span class="marquee-dot"></span></div>
-    <div class="marquee-item"><span class="gold">42+ Countries</span><span class="marquee-dot"></span></div>
   </div>
 </div>
 
 
 <!-- ══════════════════════════════════════════
-     BRAND PORTFOLIO
+     BRAND PORTFOLIO GRID
 ══════════════════════════════════════════ -->
-<section class="section portfolio" aria-labelledby="portfolio-title">
+<section class="section section--white" aria-labelledby="portfolio-title">
   <div class="container">
     <div class="section-header reveal">
       <span class="t-label">The Portfolio</span>
-      <h2 class="t-display t-2xl" id="portfolio-title">
+      <h2 class="t-display t-2xl" id="portfolio-title" style="margin-top:0.75rem;">
         Seven Brands.<br/>One Vision.
       </h2>
       <div class="divider"></div>
-      <p class="t-muted" style="max-width:560px;margin-top:1rem;">
-        Every brand crafted for a distinct moment, a distinct palate — unified by an unwavering standard of quality.
+      <p class="t-muted" style="max-width:520px;margin-top:0.75rem;font-size:1.05rem;">
+        Every brand crafted for a distinct moment and a distinct palate — unified by an unwavering standard of quality.
       </p>
     </div>
-  </div>
 
-  <div class="container container--wide" style="margin-top:3rem;">
-    <div class="portfolio__grid reveal-scale">
+    <div class="brand-grid">
 
-      <!-- Original -->
-      <a href="original.html" class="brand-card" data-brand="original" aria-label="Original® — The Taste of Quality">
-        <div class="brand-card__bg"></div>
-        <div class="brand-card__overlay"></div>
-        <img
-          src="https://gulf-union.com/images/boriginal%20grp.png"
-          alt="Original® products"
-          class="brand-card__img"
-          onerror="this.src='original-hero.jpg';this.style.objectFit='cover';this.style.height='100%';this.style.width='100%';this.style.bottom='0';"
-        />
-        <div class="brand-card__content">
-          <div class="brand-card__name">Original®</div>
-          <div class="brand-card__tagline">The Taste of Quality</div>
+      <!-- Original® — wide card -->
+      <a href="original.html" class="brand-tile brand-tile--wide reveal reveal-delay-1" aria-label="Original® — The Taste of Quality">
+        <div class="brand-tile__accent accent-original"></div>
+        <div class="brand-tile__img-wrap" style="height:280px;background:linear-gradient(135deg,var(--c-blue-pale),#fff);">
+          <div class="brand-tile__bg-circle circle-original" style="width:300px;height:300px;"></div>
+          <img
+            src="https://gulf-union.com/images/boriginal%20grp.png"
+            alt="Original® product family"
+            class="brand-tile__product"
+            style="height:240px;"
+            onerror="this.src='original-hero.jpg';this.style.objectFit='cover';this.style.width='100%';this.style.height='100%';"
+          />
+        </div>
+        <div class="brand-tile__info">
+          <div>
+            <div class="brand-tile__name">Original<sup style="font-size:0.55em;position:relative;top:-0.4em;">®</sup></div>
+            <div class="brand-tile__tagline">The Taste of Quality</div>
+          </div>
+          <div class="brand-tile__arrow">→</div>
         </div>
       </a>
 
       <!-- KLASSE -->
-      <a href="brands.html#klasse" class="brand-card" data-brand="klasse" aria-label="KLASSE — True German Craft">
-        <div class="brand-card__bg"></div>
-        <div class="brand-card__overlay"></div>
-        <img
-          src="https://gulf-union.com/images/bklasse%20grp.png"
-          alt="KLASSE products"
-          class="brand-card__img"
-          onerror="this.src='klasse-hero.png';"
-        />
-        <div class="brand-card__content">
-          <div class="brand-card__name">KLASSE</div>
-          <div class="brand-card__tagline">True German Craft</div>
+      <a href="brands.html#klasse" class="brand-tile reveal reveal-delay-1" aria-label="KLASSE — True German Craft">
+        <div class="brand-tile__accent accent-klasse"></div>
+        <div class="brand-tile__img-wrap" style="background:linear-gradient(135deg,#f5f5f5,#fff);">
+          <div class="brand-tile__bg-circle circle-klasse"></div>
+          <img src="https://gulf-union.com/images/bklasse%20grp.png" alt="KLASSE" class="brand-tile__product" onerror="this.src='klasse-hero.png';" loading="lazy"/>
+        </div>
+        <div class="brand-tile__info">
+          <div>
+            <div class="brand-tile__name">KLASSE</div>
+            <div class="brand-tile__tagline">True German Craft</div>
+          </div>
+          <div class="brand-tile__arrow">→</div>
         </div>
       </a>
 
       <!-- COBRA -->
-      <a href="brands.html#cobra" class="brand-card" data-brand="cobra" aria-label="COBRA — Unleash the Force">
-        <div class="brand-card__bg"></div>
-        <div class="brand-card__overlay"></div>
-        <img
-          src="https://gulf-union.com/images/bcobra%20grp.png"
-          alt="COBRA products"
-          class="brand-card__img"
-          onerror="this.src='cobra-hero.png';"
-        />
-        <div class="brand-card__content">
-          <div class="brand-card__name">COBRA</div>
-          <div class="brand-card__tagline">Unleash the Force</div>
+      <a href="brands.html#cobra" class="brand-tile reveal reveal-delay-2" aria-label="COBRA — Unleash the Force">
+        <div class="brand-tile__accent accent-cobra"></div>
+        <div class="brand-tile__img-wrap" style="background:linear-gradient(135deg,#fff5f5,#fff);">
+          <div class="brand-tile__bg-circle circle-cobra"></div>
+          <img src="https://gulf-union.com/images/bcobra%20grp.png" alt="COBRA" class="brand-tile__product" onerror="this.src='cobra-hero.png';" loading="lazy"/>
+        </div>
+        <div class="brand-tile__info">
+          <div>
+            <div class="brand-tile__name">COBRA</div>
+            <div class="brand-tile__tagline">Unleash the Force</div>
+          </div>
+          <div class="brand-tile__arrow">→</div>
         </div>
       </a>
 
       <!-- Captain -->
-      <a href="brands.html#captain" class="brand-card" data-brand="captain" aria-label="Captain — Every Drop, Pure Fun">
-        <div class="brand-card__bg"></div>
-        <div class="brand-card__overlay"></div>
-        <img
-          src="https://gulf-union.com/images/bcaptain%20grp.png"
-          alt="Captain products"
-          class="brand-card__img"
-          onerror="this.src='captain-hero.png';"
-        />
-        <div class="brand-card__content">
-          <div class="brand-card__name">Captain</div>
-          <div class="brand-card__tagline">Every Drop, Pure Fun</div>
+      <a href="brands.html#captain" class="brand-tile reveal reveal-delay-1" aria-label="Captain — Every Drop, Pure Fun">
+        <div class="brand-tile__accent accent-captain"></div>
+        <div class="brand-tile__img-wrap" style="background:linear-gradient(135deg,#f0faf5,#fff);">
+          <div class="brand-tile__bg-circle circle-captain"></div>
+          <img src="https://gulf-union.com/images/bcaptain%20grp.png" alt="Captain" class="brand-tile__product" onerror="this.src='captain-hero.png';" loading="lazy"/>
+        </div>
+        <div class="brand-tile__info">
+          <div>
+            <div class="brand-tile__name">Captain</div>
+            <div class="brand-tile__tagline">Every Drop, Pure Fun</div>
+          </div>
+          <div class="brand-tile__arrow">→</div>
         </div>
       </a>
 
       <!-- Splash -->
-      <a href="brands.html#splash" class="brand-card" data-brand="splash" aria-label="Splash — Fizz Up Your World">
-        <div class="brand-card__bg"></div>
-        <div class="brand-card__overlay"></div>
-        <img
-          src="https://gulf-union.com/images/bsplash%20grp.png"
-          alt="Splash products"
-          class="brand-card__img"
-          onerror="this.src='splash-hero.png';"
-        />
-        <div class="brand-card__content">
-          <div class="brand-card__name">Splash</div>
-          <div class="brand-card__tagline">Fizz Up Your World</div>
+      <a href="brands.html#splash" class="brand-tile reveal reveal-delay-2" aria-label="Splash — Fizz Up Your World">
+        <div class="brand-tile__accent accent-splash"></div>
+        <div class="brand-tile__img-wrap" style="background:linear-gradient(135deg,var(--c-blue-pale),#fff);">
+          <div class="brand-tile__bg-circle circle-splash"></div>
+          <img src="https://gulf-union.com/images/bsplash%20grp.png" alt="Splash" class="brand-tile__product" onerror="this.src='splash-hero.png';" loading="lazy"/>
+        </div>
+        <div class="brand-tile__info">
+          <div>
+            <div class="brand-tile__name">Splash</div>
+            <div class="brand-tile__tagline">Fizz Up Your World</div>
+          </div>
+          <div class="brand-tile__arrow">→</div>
         </div>
       </a>
 
       <!-- Ori -->
-      <a href="brands.html#ori" class="brand-card" data-brand="ori" aria-label="Ori — Your Flavor, Your Vibe">
-        <div class="brand-card__bg"></div>
-        <div class="brand-card__overlay"></div>
-        <img
-          src="https://gulf-union.com/images/bOri%20grp.png"
-          alt="Ori products"
-          class="brand-card__img"
-          onerror="this.src='ori-hero.png';"
-        />
-        <div class="brand-card__content">
-          <div class="brand-card__name">Ori</div>
-          <div class="brand-card__tagline">Your Flavor, Your Vibe</div>
+      <a href="brands.html#ori" class="brand-tile reveal reveal-delay-1" aria-label="Ori — Your Flavor, Your Vibe">
+        <div class="brand-tile__accent accent-ori"></div>
+        <div class="brand-tile__img-wrap" style="background:linear-gradient(135deg,#f8f0ff,#fff);">
+          <div class="brand-tile__bg-circle circle-ori"></div>
+          <img src="https://gulf-union.com/images/bOri%20grp.png" alt="Ori" class="brand-tile__product" onerror="this.src='ori-hero.png';" loading="lazy"/>
+        </div>
+        <div class="brand-tile__info">
+          <div>
+            <div class="brand-tile__name">Ori</div>
+            <div class="brand-tile__tagline">Your Flavor, Your Vibe</div>
+          </div>
+          <div class="brand-tile__arrow">→</div>
         </div>
       </a>
 
       <!-- Al Qobtan -->
-      <a href="brands.html#alqobtan" class="brand-card" data-brand="alqobtan" aria-label="Al Qobtan — A Choice That Knows">
-        <div class="brand-card__bg"></div>
-        <div class="brand-card__overlay"></div>
-        <img
-          src="https://gulf-union.com/images/bal%20qobtan%20grp.png"
-          alt="Al Qobtan products"
-          class="brand-card__img"
-          onerror="this.src='alqobtan-hero.png';"
-        />
-        <div class="brand-card__content">
-          <div class="brand-card__name">Al Qobtan</div>
-          <div class="brand-card__tagline">A Choice That Knows</div>
+      <a href="brands.html#alqobtan" class="brand-tile reveal reveal-delay-2" aria-label="Al Qobtan — A Choice That Knows">
+        <div class="brand-tile__accent accent-alqobtan"></div>
+        <div class="brand-tile__img-wrap" style="background:linear-gradient(135deg,#fdf8ee,#fff);">
+          <div class="brand-tile__bg-circle circle-alqobtan"></div>
+          <img src="https://gulf-union.com/images/bal%20qobtan%20grp.png" alt="Al Qobtan" class="brand-tile__product" onerror="this.src='alqobtan-hero.png';" loading="lazy"/>
+        </div>
+        <div class="brand-tile__info">
+          <div>
+            <div class="brand-tile__name">Al Qobtan</div>
+            <div class="brand-tile__tagline">A Choice That Knows</div>
+          </div>
+          <div class="brand-tile__arrow">→</div>
         </div>
       </a>
 
     </div>
-  </div>
 
-  <div class="container" style="margin-top:3rem;text-align:center;">
-    <a href="brands.html" class="btn btn--ghost">
-      View Full Portfolio <span class="btn__arrow">→</span>
-    </a>
+    <div style="text-align:center;margin-top:var(--sp-lg);" class="reveal">
+      <a href="brands.html" class="btn btn--ghost">
+        View Full Portfolio <span class="arrow">→</span>
+      </a>
+    </div>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════
-     HERITAGE TIMELINE
+     TICKER
 ══════════════════════════════════════════ -->
-<section class="section heritage" aria-labelledby="heritage-title">
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Gulf Union Foods Co.</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">Original®</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">KLASSE</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">COBRA</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Captain</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">Splash</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Ori</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">Al Qobtan</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Est. 1995</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">42+ Countries</span><span class="ticker__sep"></span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Gulf Union Foods Co.</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">Original®</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">KLASSE</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">COBRA</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Captain</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">Splash</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Ori</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">Al Qobtan</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text ticker__text--accent">Est. 1995</span><span class="ticker__sep"></span></div>
+    <div class="ticker__item"><span class="ticker__text">42+ Countries</span><span class="ticker__sep"></span></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     HERITAGE INTRO + TIMELINE
+══════════════════════════════════════════ -->
+<section class="section section--surface" aria-labelledby="heritage-title">
   <div class="container">
 
-    <div class="heritage__intro">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-xl);align-items:center;margin-bottom:var(--sp-2xl);">
       <div class="reveal-left">
         <span class="t-label">Our Heritage</span>
-        <h2 class="t-display t-2xl" id="heritage-title" style="margin-top:1rem;">
-          Thirty Years of<br/><em class="t-italic t-gold">Crafted Excellence</em>
+        <h2 class="t-display t-2xl" id="heritage-title" style="margin-top:0.75rem;">
+          Thirty Years of<br/><em class="t-italic">Crafted Excellence</em>
         </h2>
         <div class="divider"></div>
-        <p class="t-muted" style="margin-top:1rem;font-size:1.05rem;line-height:1.8;">
-          Gulf Union Foods Co. (GUFC) is a trusted name in the beverage industry, focused on delivering diverse, high-quality beverages across every category. Our portfolio spans juices, energy drinks, non-alcoholic malt, soft drinks, and sparkling juices — crafted to suit every consumer, to share every moment.
+        <p style="color:var(--c-ink-3);font-size:1.05rem;line-height:1.85;margin-top:0.75rem;">
+          Gulf Union Foods Co. (GUFC) was established in 1995 in the Kingdom of Saudi Arabia with a bold vision: to redefine the regional beverage landscape through quality, innovation, and trust. Today, with 500M+ liters produced annually and a presence in 42+ countries, that vision is reality.
         </p>
-        <a href="about.html" class="btn btn--outline" style="margin-top:2rem;">
-          Read Our Story
-        </a>
+        <a href="about.html" class="btn btn--secondary" style="margin-top:var(--sp-md);">Discover Our Story</a>
       </div>
-
-      <!-- Timeline -->
-      <div class="reveal-right" style="padding-left:2rem;">
-        <div class="timeline">
-
-          <div class="timeline__item reveal">
-            <div class="timeline__year">1995</div>
-            <div class="timeline__event">
-              <strong>The Foundation</strong>
-              Gulf Union Foods Co. is established in the Kingdom of Saudi Arabia, with a bold vision to redefine the regional beverage landscape.
-            </div>
-          </div>
-
-          <div class="timeline__item reveal reveal-delay-1">
-            <div class="timeline__year">1999</div>
-            <div class="timeline__event">
-              <strong>First Factory Doors Open</strong>
-              Production begins at our first world-class manufacturing plant, setting new benchmarks for quality in the region.
-            </div>
-          </div>
-
-          <div class="timeline__item reveal reveal-delay-2">
-            <div class="timeline__year">2005</div>
-            <div class="timeline__event">
-              <strong>Original® is Born</strong>
-              The launch of Original® — our flagship juice brand — marks a turning point, quickly capturing the hearts of consumers across the Gulf.
-            </div>
-          </div>
-
-          <div class="timeline__item reveal reveal-delay-3">
-            <div class="timeline__year">2010</div>
-            <div class="timeline__event">
-              <strong>Portfolio Expansion</strong>
-              KLASSE and COBRA join the family, diversifying into malt beverages and energy drinks. Export markets grow to 25+ countries.
-            </div>
-          </div>
-
-          <div class="timeline__item reveal reveal-delay-4">
-            <div class="timeline__year">2018</div>
-            <div class="timeline__event">
-              <strong>Global Reach</strong>
-              Four manufacturing facilities now operating at full capacity. Exports reach 42+ countries across 5 continents.
-            </div>
-          </div>
-
-          <div class="timeline__item reveal reveal-delay-5">
-            <div class="timeline__year">2026</div>
-            <div class="timeline__event">
-              <strong>500 Million Liters & Beyond</strong>
-              GUFC now produces over 500M+ liters annually with 1,300+ team members, continuing to innovate and lead the FMCG sector.
-            </div>
-          </div>
-
+      <div class="reveal-right" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-xl);padding:var(--sp-md);text-align:center;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--c-blue);line-height:1;">1995</div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-ink-4);margin-top:4px;">Founded</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-xl);padding:var(--sp-md);text-align:center;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--c-blue);line-height:1;">500M<span style="color:var(--c-gold);font-size:1.5rem;">+</span></div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-ink-4);margin-top:4px;">Liters / Year</div>
+        </div>
+        <div style="background:var(--c-blue);border-radius:var(--r-xl);padding:var(--sp-md);text-align:center;box-shadow:var(--shadow-md);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#fff;line-height:1;">42<span style="color:var(--c-gold-light);font-size:1.5rem;">+</span></div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:4px;">Countries</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-xl);padding:var(--sp-md);text-align:center;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--c-blue);line-height:1;">1300<span style="color:var(--c-gold);font-size:1.5rem;">+</span></div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-ink-4);margin-top:4px;">Team Members</div>
         </div>
       </div>
     </div>
+
+    <!-- Timeline -->
+    <div style="text-align:center;margin-bottom:var(--sp-lg);" class="reveal">
+      <span class="t-label">Milestones</span>
+      <h3 class="t-display t-xl" style="margin-top:0.5rem;">The Journey</h3>
+    </div>
+
+    <div class="timeline-wrap">
+      <div class="timeline-axis" aria-hidden="true"></div>
+
+      <!-- 1995 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-item__content" style="text-align:right;">
+          <div class="timeline-item__year">1995</div>
+          <div class="timeline-item__title">The Foundation</div>
+          <p class="timeline-item__text">Gulf Union Foods Co. is established in the Kingdom of Saudi Arabia with a bold vision to redefine the regional beverage landscape.</p>
+        </div>
+        <div class="timeline-item__center"><div class="timeline-item__dot"></div></div>
+        <div class="timeline-item__content"></div>
+      </div>
+
+      <!-- 1999 -->
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-item__content"></div>
+        <div class="timeline-item__center"><div class="timeline-item__dot"></div></div>
+        <div class="timeline-item__content">
+          <div class="timeline-item__year">1999</div>
+          <div class="timeline-item__title">First Factory Opens</div>
+          <p class="timeline-item__text">Our first world-class manufacturing plant becomes operational, setting new benchmarks for quality across the region.</p>
+        </div>
+      </div>
+
+      <!-- 2005 -->
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-item__content" style="text-align:right;">
+          <div class="timeline-item__year">2005</div>
+          <div class="timeline-item__title">Original® is Born</div>
+          <p class="timeline-item__text">The launch of Original® — our flagship juice brand — quickly captures the hearts of consumers across the Gulf.</p>
+        </div>
+        <div class="timeline-item__center"><div class="timeline-item__dot"></div></div>
+        <div class="timeline-item__content"></div>
+      </div>
+
+      <!-- 2010 -->
+      <div class="timeline-item reveal reveal-delay-3">
+        <div class="timeline-item__content"></div>
+        <div class="timeline-item__center"><div class="timeline-item__dot"></div></div>
+        <div class="timeline-item__content">
+          <div class="timeline-item__year">2010</div>
+          <div class="timeline-item__title">Portfolio Expands</div>
+          <p class="timeline-item__text">KLASSE and COBRA join the family, diversifying into malt beverages and energy drinks. Export markets grow to 25+ countries.</p>
+        </div>
+      </div>
+
+      <!-- 2018 -->
+      <div class="timeline-item reveal reveal-delay-4">
+        <div class="timeline-item__content" style="text-align:right;">
+          <div class="timeline-item__year">2018</div>
+          <div class="timeline-item__title">Global Reach</div>
+          <p class="timeline-item__text">Four manufacturing facilities at full capacity. Exports reach 42+ countries across 5 continents.</p>
+        </div>
+        <div class="timeline-item__center"><div class="timeline-item__dot"></div></div>
+        <div class="timeline-item__content"></div>
+      </div>
+
+      <!-- 2026 -->
+      <div class="timeline-item reveal reveal-delay-5">
+        <div class="timeline-item__content"></div>
+        <div class="timeline-item__center"><div class="timeline-item__dot" style="border-color:var(--c-gold);box-shadow:0 0 0 6px var(--c-gold-pale);"></div></div>
+        <div class="timeline-item__content">
+          <div class="timeline-item__year" style="color:var(--c-gold);">2026</div>
+          <div class="timeline-item__title">500M Liters &amp; Beyond</div>
+          <p class="timeline-item__text">GUFC now produces 500M+ liters annually with 1,300+ team members, continuing to lead and innovate in the FMCG sector.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════
-     GLOBAL REACH
+     GLOBAL REACH MAP
 ══════════════════════════════════════════ -->
-<section class="section reach" aria-labelledby="reach-title">
+<section class="section reach-section" aria-labelledby="reach-title">
   <div class="container">
-    <span class="t-label reveal">Global Reach</span>
-    <h2 class="t-display t-2xl reveal reveal-delay-1" id="reach-title" style="margin-top:1rem;">
-      Tasted Across<br/><em class="t-italic t-gold">42+ Nations</em>
-    </h2>
-    <div class="divider divider--center reveal reveal-delay-2"></div>
-    <p class="t-muted reveal reveal-delay-3" style="max-width:560px;margin:1rem auto 0;">
-      From the Arabian Peninsula to Africa, Europe, and beyond — our products cross borders every single day.
-    </p>
+    <div class="section-header section-header--center reveal">
+      <span class="t-label">Global Reach</span>
+      <h2 class="t-display t-2xl" id="reach-title" style="margin-top:0.75rem;">
+        Tasted Across<br/><span class="t-blue">42+ Nations</span>
+      </h2>
+      <div class="divider divider--center"></div>
+      <p class="t-muted" style="max-width:500px;margin:0.75rem auto 0;font-size:1.05rem;">
+        From the Arabian Peninsula to Africa, Europe, and beyond — our products cross borders every single day.
+      </p>
+    </div>
 
-    <!-- SVG World Map (simplified dots approach) -->
-    <div class="reach__map-wrap reveal reveal-delay-2">
-      <svg class="reach__map" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Simplified world map path -->
-        <rect width="1200" height="600" fill="#111"/>
-        <!-- Continents (simplified shapes) -->
+    <div class="reach-map-wrap reveal reveal-delay-1">
+      <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#F0F5FF;" aria-label="World map showing GUFC export markets">
+        <!-- Ocean -->
+        <rect width="1200" height="540" fill="#EEF3FB"/>
+        <!-- Continents — clean simplified shapes -->
         <!-- North America -->
-        <path d="M80,120 L200,100 L220,140 L240,180 L200,220 L160,260 L120,280 L80,260 L60,220 L70,160 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M 60 80 L 200 70 L 240 110 L 250 160 L 220 220 L 180 270 L 140 280 L 100 260 L 70 220 L 55 160 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Greenland -->
+        <path d="M 220 30 L 290 20 L 300 70 L 260 85 L 220 65 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1"/>
         <!-- South America -->
-        <path d="M180,280 L240,260 L260,300 L270,360 L250,420 L220,460 L180,450 L160,400 L150,340 L160,300 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M 170 285 L 240 265 L 265 310 L 275 380 L 255 440 L 220 465 L 180 455 L 155 410 L 145 345 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1.5" stroke-linejoin="round"/>
         <!-- Europe -->
-        <path d="M480,80 L560,70 L580,100 L570,140 L540,160 L500,150 L470,130 L460,100 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M 480 60 L 570 50 L 590 95 L 575 135 L 540 155 L 500 148 L 468 118 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1.5"/>
         <!-- Africa -->
-        <path d="M480,200 L560,180 L600,220 L620,300 L600,380 L560,420 L520,430 L480,400 L460,340 L460,260 L460,220 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
-        <!-- Middle East -->
-        <path d="M580,160 L660,150 L680,190 L660,230 L620,240 L580,220 L570,190 Z" fill="#222" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M 475 180 L 575 162 L 615 210 L 630 300 L 610 390 L 565 430 L 515 435 L 470 405 L 450 330 L 450 240 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Middle East / Arabian Peninsula -->
+        <path d="M 578 155 L 668 142 L 690 188 L 678 235 L 640 250 L 595 240 L 574 210 Z" fill="#C5D8EE" stroke="#B0C9E8" stroke-width="1.5"/>
         <!-- Asia -->
-        <path d="M640,70 L900,60 L940,120 L920,200 L860,240 L780,250 L700,230 L660,200 L640,160 L640,110 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M 640 55 L 920 45 L 960 110 L 945 205 L 880 250 L 790 255 L 710 235 L 665 200 L 642 158 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1.5" stroke-linejoin="round"/>
         <!-- SE Asia -->
-        <path d="M840,230 L920,220 L960,260 L960,300 L920,320 L880,310 L840,280 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M 840 230 L 930 218 L 970 260 L 968 310 L 920 325 L 870 315 L 838 278 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1.5"/>
+        <!-- Japan/Korea -->
+        <path d="M 930 90 L 960 80 L 975 120 L 950 140 L 925 120 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1"/>
         <!-- Australia -->
-        <path d="M860,350 L960,340 L1000,380 L990,430 L940,450 L880,440 L850,410 L840,380 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+        <path d="M 865 355 L 975 342 L 1015 385 L 1005 440 L 950 460 L 880 448 L 848 415 L 838 378 Z" fill="#D8E5F5" stroke="#C5D8EE" stroke-width="1.5" stroke-linejoin="round"/>
 
-        <!-- Export market dots -->
-        <!-- Saudi Arabia (headquarters) -->
-        <circle cx="630" cy="200" r="6" fill="#C9A84C" opacity="0.9"/>
-        <circle cx="630" cy="200" r="12" fill="#C9A84C" opacity="0.2"/>
-        <!-- UAE -->
-        <circle cx="660" cy="205" r="4" fill="#C9A84C" opacity="0.8"/>
-        <!-- Kuwait -->
-        <circle cx="615" cy="190" r="4" fill="#C9A84C" opacity="0.7"/>
-        <!-- Qatar -->
-        <circle cx="640" cy="205" r="4" fill="#C9A84C" opacity="0.7"/>
-        <!-- Bahrain -->
-        <circle cx="648" cy="198" r="3" fill="#C9A84C" opacity="0.7"/>
-        <!-- Oman -->
-        <circle cx="670" cy="215" r="4" fill="#C9A84C" opacity="0.7"/>
-        <!-- Jordan -->
-        <circle cx="598" cy="178" r="3" fill="#C9A84C" opacity="0.6"/>
-        <!-- Egypt -->
-        <circle cx="565" cy="190" r="4" fill="#C9A84C" opacity="0.6"/>
-        <!-- Morocco -->
-        <circle cx="490" cy="170" r="4" fill="#C9A84C" opacity="0.6"/>
-        <!-- Nigeria -->
-        <circle cx="512" cy="290" r="4" fill="#C9A84C" opacity="0.5"/>
-        <!-- Kenya -->
-        <circle cx="570" cy="315" r="4" fill="#C9A84C" opacity="0.5"/>
-        <!-- Ethiopia -->
-        <circle cx="582" cy="295" r="3" fill="#C9A84C" opacity="0.5"/>
-        <!-- Sudan -->
-        <circle cx="565" cy="260" r="3" fill="#C9A84C" opacity="0.5"/>
-        <!-- Yemen -->
-        <circle cx="640" cy="235" r="4" fill="#C9A84C" opacity="0.6"/>
-        <!-- Iraq -->
-        <circle cx="615" cy="175" r="4" fill="#C9A84C" opacity="0.6"/>
-        <!-- Pakistan -->
-        <circle cx="695" cy="175" r="4" fill="#C9A84C" opacity="0.5"/>
-        <!-- India -->
-        <circle cx="730" cy="200" r="4" fill="#C9A84C" opacity="0.5"/>
-        <!-- UK -->
-        <circle cx="495" cy="105" r="3" fill="#C9A84C" opacity="0.4"/>
-        <!-- Germany -->
-        <circle cx="523" cy="105" r="3" fill="#C9A84C" opacity="0.4"/>
-        <!-- USA -->
-        <circle cx="130" cy="170" r="4" fill="#C9A84C" opacity="0.4"/>
-        <!-- Canada -->
-        <circle cx="120" cy="140" r="3" fill="#C9A84C" opacity="0.3"/>
-        <!-- South Africa -->
-        <circle cx="536" cy="410" r="4" fill="#C9A84C" opacity="0.5"/>
-        <!-- Tanzania -->
-        <circle cx="570" cy="340" r="3" fill="#C9A84C" opacity="0.5"/>
-        <!-- Malaysia -->
-        <circle cx="860" cy="265" r="3" fill="#C9A84C" opacity="0.5"/>
-        <!-- Singapore -->
-        <circle cx="870" cy="280" r="3" fill="#C9A84C" opacity="0.5"/>
-        <!-- Australia -->
-        <circle cx="930" cy="390" r="4" fill="#C9A84C" opacity="0.4"/>
-
-        <!-- Pulse rings on key markets -->
-        <circle cx="630" cy="200" r="18" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3">
-          <animate attributeName="r" from="6" to="30" dur="3s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" from="0.6" to="0" dur="3s" repeatCount="indefinite"/>
+        <!-- EXPORT MARKET DOTS — pulsing gold for key markets -->
+        <!-- Saudi Arabia HQ -->
+        <circle cx="635" cy="195" r="7" fill="#1B4B9A" opacity="0.9"/>
+        <circle cx="635" cy="195" r="13" fill="#1B4B9A" opacity="0.15"/>
+        <circle cx="635" cy="195" r="7" fill="#1B4B9A">
+          <animate attributeName="r" from="7" to="22" dur="2.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.5" to="0" dur="2.5s" repeatCount="indefinite"/>
         </circle>
+
+        <!-- GCC Markets -->
+        <circle cx="660" cy="200" r="5" fill="#1B4B9A" opacity="0.85"/>
+        <circle cx="620" cy="185" r="4" fill="#1B4B9A" opacity="0.8"/>
+        <circle cx="645" cy="200" r="4" fill="#1B4B9A" opacity="0.8"/>
+        <circle cx="652" cy="193" r="3" fill="#1B4B9A" opacity="0.75"/>
+        <circle cx="670" cy="210" r="4" fill="#1B4B9A" opacity="0.8"/>
+        <!-- Jordan, Lebanon -->
+        <circle cx="600" cy="174" r="3" fill="#B8932A" opacity="0.75"/>
+        <circle cx="593" cy="168" r="3" fill="#B8932A" opacity="0.7"/>
+        <!-- Egypt -->
+        <circle cx="560" cy="190" r="4" fill="#B8932A" opacity="0.75"/>
+        <!-- Iraq -->
+        <circle cx="618" cy="170" r="4" fill="#B8932A" opacity="0.75"/>
+        <!-- Yemen -->
+        <circle cx="643" cy="232" r="4" fill="#B8932A" opacity="0.7"/>
+        <!-- Morocco, Tunisia -->
+        <circle cx="490" cy="165" r="4" fill="#B8932A" opacity="0.65"/>
+        <circle cx="520" cy="155" r="3" fill="#B8932A" opacity="0.6"/>
+        <!-- Nigeria, Ghana -->
+        <circle cx="510" cy="295" r="4" fill="#B8932A" opacity="0.6"/>
+        <circle cx="490" cy="285" r="3" fill="#B8932A" opacity="0.55"/>
+        <!-- Kenya, Ethiopia -->
+        <circle cx="568" cy="318" r="4" fill="#B8932A" opacity="0.6"/>
+        <circle cx="580" cy="295" r="3" fill="#B8932A" opacity="0.55"/>
+        <!-- Sudan -->
+        <circle cx="560" cy="260" r="3" fill="#B8932A" opacity="0.6"/>
+        <!-- South Africa -->
+        <circle cx="535" cy="415" r="4" fill="#B8932A" opacity="0.6"/>
+        <!-- Pakistan -->
+        <circle cx="696" cy="172" r="4" fill="#B8932A" opacity="0.6"/>
+        <!-- India -->
+        <circle cx="730" cy="200" r="4" fill="#B8932A" opacity="0.6"/>
+        <!-- Malaysia, Singapore -->
+        <circle cx="862" cy="268" r="3" fill="#B8932A" opacity="0.55"/>
+        <circle cx="874" cy="280" r="3" fill="#B8932A" opacity="0.55"/>
+        <!-- UK, Germany, France -->
+        <circle cx="496" cy="100" r="3" fill="#B8932A" opacity="0.5"/>
+        <circle cx="522" cy="102" r="3" fill="#B8932A" opacity="0.5"/>
+        <circle cx="508" cy="110" r="3" fill="#B8932A" opacity="0.5"/>
+        <!-- USA -->
+        <circle cx="130" cy="168" r="4" fill="#B8932A" opacity="0.45"/>
+        <!-- Canada -->
+        <circle cx="120" cy="138" r="3" fill="#B8932A" opacity="0.4"/>
+        <!-- Australia -->
+        <circle cx="930" cy="395" r="4" fill="#B8932A" opacity="0.45"/>
+
+        <!-- Legend -->
+        <circle cx="40" cy="490" r="5" fill="#1B4B9A"/>
+        <text x="52" y="494" font-size="11" fill="#6B6B6B" font-family="Inter,sans-serif">Headquarters / Main Markets</text>
+        <circle cx="220" cy="490" r="5" fill="#B8932A"/>
+        <text x="232" y="494" font-size="11" fill="#6B6B6B" font-family="Inter,sans-serif">Export Markets</text>
       </svg>
     </div>
 
-    <div class="reach__stats reveal reveal-delay-3">
-      <div class="reach__stat">
-        <div class="reach__stat-num">42+</div>
-        <div class="reach__stat-label">Countries</div>
+    <div class="reach-stats">
+      <div class="reach-stat reveal reveal-delay-1">
+        <div class="reach-stat__num">42+</div>
+        <div class="reach-stat__label">Countries</div>
       </div>
-      <div class="reach__stat">
-        <div class="reach__stat-num">5</div>
-        <div class="reach__stat-label">Continents</div>
+      <div class="reach-stat reveal reveal-delay-2">
+        <div class="reach-stat__num">5</div>
+        <div class="reach-stat__label">Continents</div>
       </div>
-      <div class="reach__stat">
-        <div class="reach__stat-num">4</div>
-        <div class="reach__stat-label">Factories</div>
+      <div class="reach-stat reveal reveal-delay-3">
+        <div class="reach-stat__num">4</div>
+        <div class="reach-stat__label">Factories</div>
       </div>
-      <div class="reach__stat">
-        <div class="reach__stat-num">30+</div>
-        <div class="reach__stat-label">Years of Export</div>
+      <div class="reach-stat reveal reveal-delay-4">
+        <div class="reach-stat__num">30+</div>
+        <div class="reach-stat__label">Years of Export</div>
       </div>
     </div>
   </div>
@@ -535,59 +617,59 @@
 <!-- ══════════════════════════════════════════
      CERTIFICATIONS
 ══════════════════════════════════════════ -->
-<section class="section certs" aria-labelledby="certs-title">
+<section class="section section--white" aria-labelledby="certs-title">
   <div class="container">
-    <div class="section-header" style="text-align:center;">
-      <span class="t-label reveal">Quality Assurance</span>
-      <h2 class="t-display t-2xl reveal reveal-delay-1" id="certs-title" style="margin-top:1rem;">
-        Certified to the<br/><em class="t-italic t-gold">Highest Standards</em>
+    <div class="section-header section-header--center reveal">
+      <span class="t-label">Quality Assurance</span>
+      <h2 class="t-display t-2xl" id="certs-title" style="margin-top:0.75rem;">
+        Certified to the<br/><span class="t-blue">Highest Standards</span>
       </h2>
-      <div class="divider divider--center reveal reveal-delay-2"></div>
-      <p class="t-muted reveal reveal-delay-3" style="max-width:520px;margin:1rem auto 0;">
-        Every bottle we produce carries the weight of international certification — a promise we take seriously.
+      <div class="divider divider--center"></div>
+      <p class="t-muted" style="max-width:500px;margin:0.75rem auto 0;">
+        Every bottle we produce carries the weight of international certification — a promise we never compromise on.
       </p>
     </div>
 
-    <div class="certs__grid">
-      <div class="cert-card reveal reveal-delay-1">
-        <img src="https://gulf-union.com/images/cert5.png" alt="ISO 22000 Certificate" />
-        <div class="cert-card__name">ISO 22000</div>
-        <div class="cert-card__desc">Food Safety Management System</div>
+    <div class="certs-grid">
+      <div class="cert-item reveal reveal-delay-1">
+        <img src="https://gulf-union.com/images/cert5.png" alt="ISO 22000" loading="lazy"/>
+        <div class="cert-item__name">ISO 22000</div>
+        <div class="cert-item__desc">Food Safety Management System</div>
       </div>
-      <div class="cert-card reveal reveal-delay-2">
-        <img src="https://gulf-union.com/images/cert8.png" alt="ISO 9001 Certificate" />
-        <div class="cert-card__name">ISO 9001</div>
-        <div class="cert-card__desc">Quality Management System</div>
+      <div class="cert-item reveal reveal-delay-2">
+        <img src="https://gulf-union.com/images/cert8.png" alt="ISO 9001" loading="lazy"/>
+        <div class="cert-item__name">ISO 9001</div>
+        <div class="cert-item__desc">Quality Management System</div>
       </div>
-      <div class="cert-card reveal reveal-delay-3">
-        <img src="https://gulf-union.com/images/cert6.png" alt="ISO 45001 Certificate" />
-        <div class="cert-card__name">ISO 45001</div>
-        <div class="cert-card__desc">Occupational Health & Safety</div>
+      <div class="cert-item reveal reveal-delay-3">
+        <img src="https://gulf-union.com/images/cert6.png" alt="ISO 45001" loading="lazy"/>
+        <div class="cert-item__name">ISO 45001</div>
+        <div class="cert-item__desc">Occupational Health &amp; Safety</div>
       </div>
-      <div class="cert-card reveal reveal-delay-4">
-        <img src="https://gulf-union.com/images/cert4.png" alt="ISO 14001 Certificate" />
-        <div class="cert-card__name">ISO 14001</div>
-        <div class="cert-card__desc">Environmental Management</div>
+      <div class="cert-item reveal reveal-delay-4">
+        <img src="https://gulf-union.com/images/cert4.png" alt="ISO 14001" loading="lazy"/>
+        <div class="cert-item__name">ISO 14001</div>
+        <div class="cert-item__desc">Environmental Management</div>
       </div>
-      <div class="cert-card reveal reveal-delay-1">
-        <img src="https://gulf-union.com/images/cert3.png" alt="Halal Certificate" />
-        <div class="cert-card__name">Halal</div>
-        <div class="cert-card__desc">Halal Certification</div>
+      <div class="cert-item reveal reveal-delay-1">
+        <img src="https://gulf-union.com/images/cert3.png" alt="Halal" loading="lazy"/>
+        <div class="cert-item__name">Halal</div>
+        <div class="cert-item__desc">Halal Certification</div>
       </div>
-      <div class="cert-card reveal reveal-delay-2">
-        <img src="https://gulf-union.com/images/cert2.png" alt="USFDA Certificate" />
-        <div class="cert-card__name">USFDA</div>
-        <div class="cert-card__desc">US Food & Drug Administration</div>
+      <div class="cert-item reveal reveal-delay-2">
+        <img src="https://gulf-union.com/images/cert2.png" alt="USFDA" loading="lazy"/>
+        <div class="cert-item__name">USFDA</div>
+        <div class="cert-item__desc">US Food &amp; Drug Administration</div>
       </div>
-      <div class="cert-card reveal reveal-delay-3">
-        <img src="https://gulf-union.com/images/cert1.png" alt="FSSC 22000 Certificate" />
-        <div class="cert-card__name">FSSC 22000</div>
-        <div class="cert-card__desc">Food Safety System Certification</div>
+      <div class="cert-item reveal reveal-delay-3">
+        <img src="https://gulf-union.com/images/cert1.png" alt="FSSC 22000" loading="lazy"/>
+        <div class="cert-item__name">FSSC 22000</div>
+        <div class="cert-item__desc">Food Safety System Certification</div>
       </div>
-      <div class="cert-card reveal reveal-delay-4">
-        <img src="https://gulf-union.com/images/cert9.png" alt="HACCP Certificate" />
-        <div class="cert-card__name">HACCP</div>
-        <div class="cert-card__desc">Hazard Analysis Critical Control</div>
+      <div class="cert-item reveal reveal-delay-4">
+        <img src="https://gulf-union.com/images/cert9.png" alt="HACCP" loading="lazy"/>
+        <div class="cert-item__name">HACCP</div>
+        <div class="cert-item__desc">Hazard Analysis Critical Control</div>
       </div>
     </div>
   </div>
@@ -595,34 +677,27 @@
 
 
 <!-- ══════════════════════════════════════════
-     CONNECT CTA
+     CONNECT / NEWSLETTER CTA
 ══════════════════════════════════════════ -->
-<section class="section connect" aria-labelledby="connect-title">
+<section class="section connect-section" aria-labelledby="connect-title">
   <div class="container">
-    <div class="connect__inner reveal-scale">
-      <span class="t-label" style="display:block;margin-bottom:1rem;">Stay Connected</span>
-      <h2 class="connect__title t-display" id="connect-title">
-        Partner With the<br/><em class="t-italic t-gold">Gulf's Leading FMCG</em>
+    <div class="connect-inner reveal-scale">
+      <span class="t-label">Stay Connected</span>
+      <h2 class="connect-title" id="connect-title">
+        Partner With the Gulf's<br/><em>Leading FMCG</em>
       </h2>
-      <p class="connect__sub">
+      <p class="connect-subtitle">
         Whether you're a distributor, retailer, or investor — we'd love to build something extraordinary together.
       </p>
-      <div class="connect__actions">
-        <form class="connect__email-form" onsubmit="handleNewsletterSubmit(event)">
-          <label for="newsletter-email" class="sr-only">Email address</label>
-          <input
-            type="email"
-            id="newsletter-email"
-            class="connect__email-input"
-            placeholder="Enter your email address"
-            required
-            autocomplete="email"
-          />
-          <button type="submit" class="btn btn--primary" style="border-radius:50px;white-space:nowrap;">
+      <div class="connect-actions">
+        <form class="email-form" onsubmit="handleNewsletterSubmit(event)">
+          <label for="newsletter-email" style="position:absolute;opacity:0;pointer-events:none;">Email</label>
+          <input type="email" id="newsletter-email" placeholder="Your email address" required autocomplete="email"/>
+          <button type="submit" class="btn btn--white btn--sm" style="border-radius:50px;white-space:nowrap;">
             Subscribe
           </button>
         </form>
-        <a href="contact.html" class="btn btn--outline">Get in Touch →</a>
+        <a href="contact.html" class="btn btn--white">Get in Touch →</a>
       </div>
     </div>
   </div>
@@ -636,24 +711,22 @@
   <div class="container">
     <div class="footer__grid">
 
-      <!-- Brand col -->
       <div>
         <a href="index.html" class="footer__logo" aria-label="Gulf Union Foods Co.">
           <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." />
         </a>
-        <p class="footer__brand-desc">
-          Crafting moments since 1995. A leading FMCG powerhouse in the Kingdom of Saudi Arabia, producing 500M+ liters annually for 42+ markets worldwide.
+        <p class="footer__desc">
+          Crafting moments since 1995. A leading FMCG powerhouse in KSA producing 500M+ liters annually for 42+ markets worldwide.
         </p>
         <div class="footer__social">
           <a href="https://www.linkedin.com/company/gulf-union-foods-company/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
           <a href="https://www.facebook.com/OriginalJuiceAR/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
           <a href="https://www.instagram.com/originaljuicear/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-          <a href="https://x.com/OriginalJuiceAR" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
-          <a href="https://www.tiktok.com/@originaljuicear" target="_blank" rel="noopener" aria-label="TikTok">tt</a>
+          <a href="https://x.com/OriginalJuiceAR" target="_blank" rel="noopener" aria-label="X">𝕏</a>
+          <a href="https://www.youtube.com/@OriginalJuiceAR" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
         </div>
       </div>
 
-      <!-- Discover -->
       <div>
         <div class="footer__col-title">Discover</div>
         <ul class="footer__links">
@@ -664,7 +737,6 @@
         </ul>
       </div>
 
-      <!-- Portfolio -->
       <div>
         <div class="footer__col-title">The Portfolio</div>
         <ul class="footer__links">
@@ -678,7 +750,6 @@
         </ul>
       </div>
 
-      <!-- Contact -->
       <div>
         <div class="footer__col-title">Connect</div>
         <ul class="footer__links">
@@ -687,11 +758,12 @@
           <li><a href="contact.html">Send a Message</a></li>
           <li><a href="contact.html">Partner With Us</a></li>
         </ul>
-        <div style="margin-top:1.5rem;font-size:0.75rem;color:rgba(248,246,240,0.3);line-height:1.7;">
-          Kingdom of Saudi Arabia<br/>
-          ISO 22000 · ISO 9001 · Halal Certified
+        <div style="margin-top:1.5rem;font-size:0.72rem;color:var(--c-ink-4);line-height:1.7;border:1px solid var(--c-border);border-radius:var(--r-md);padding:0.75rem 1rem;">
+          🇸🇦 Kingdom of Saudi Arabia<br/>
+          ISO Certified · Halal · USFDA
         </div>
       </div>
+
     </div>
 
     <div class="footer__bottom">
@@ -704,9 +776,6 @@
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════════
-     SCRIPTS
-══════════════════════════════════════════ -->
 <script src="main.js"></script>
 </body>
 </html>

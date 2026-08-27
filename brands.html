@@ -4,106 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Portfolio — Gulf Union Foods Co.</title>
-  <meta name="description" content="Explore the full portfolio of Gulf Union Foods Co. — seven distinct beverage brands crafted for every moment, every consumer." />
+  <meta name="description" content="Explore the full portfolio of Gulf Union Foods Co. — Original®, KLASSE, COBRA, Captain, Splash, Ori, and Al Qobtan." />
   <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
   <style>
-    .brands-header {
-      padding: calc(var(--nav-h) + 5rem) var(--sp-md) var(--sp-xl);
-      text-align: center;
-      background: var(--c-black);
-      position: relative;
-      overflow: hidden;
+    /* Sticky brand tabs */
+    .brand-tabs-wrap {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 90;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--c-border);
+      box-shadow: var(--shadow-xs);
     }
-    .brands-header::before {
-      content: '';
-      position: absolute;
-      top: -200px; left: 50%;
-      transform: translateX(-50%);
-      width: 800px; height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    /* Brand item — full-bleed alternating layout */
-    .brand-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid var(--c-border);
-    }
-    .brand-item:nth-child(even) .brand-item__visual { order: -1; }
-
-    .brand-item__visual {
-      position: relative;
-      overflow: hidden;
+    .brand-tabs-inner {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 600px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 var(--sp-md);
+      max-width: var(--max-w);
+      margin: 0 auto;
+      gap: 0;
     }
-    .brand-item__bg {
-      position: absolute;
-      inset: 0;
+    .brand-tabs-inner::-webkit-scrollbar { display: none; }
+    .brand-tab {
+      display: inline-block;
+      padding: 18px 22px;
+      font-size: var(--ts-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-ink-4);
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color var(--t-fast), border-color var(--t-fast);
     }
-    .brand-item__product {
-      position: relative;
-      z-index: 2;
-      width: 65%;
-      max-width: 420px;
-      object-fit: contain;
-      filter: drop-shadow(0 40px 80px rgba(0,0,0,0.6));
-      animation: floatSlow 8s ease-in-out infinite;
-    }
-    .brand-item__content {
-      padding: var(--sp-xl);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .brand-item__num {
-      font-family: var(--font-display);
-      font-size: 6rem;
-      font-weight: 300;
-      line-height: 1;
-      color: rgba(201,168,76,0.08);
-      margin-bottom: var(--sp-sm);
-    }
-    .brand-item__name {
-      font-family: var(--font-display);
-      font-size: var(--ts-2xl);
-      font-weight: 300;
-      line-height: 0.95;
-      margin-bottom: var(--sp-sm);
-    }
-    .brand-item__tagline {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: var(--ts-lg);
-      color: var(--c-gold);
-      margin-bottom: var(--sp-md);
-    }
-    .brand-item__desc {
-      font-size: var(--ts-base);
-      color: var(--c-muted);
-      line-height: 1.85;
-      max-width: 480px;
-      margin-bottom: var(--sp-lg);
-    }
-
-    @media (max-width: 900px) {
-      .brand-item {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .brand-item:nth-child(even) .brand-item__visual { order: 0; }
-      .brand-item__visual { min-height: 70vw; }
-      .brand-item__content { padding: var(--sp-lg) var(--sp-md); }
-    }
+    .brand-tab:hover { color: var(--c-ink); }
+    .brand-tab.active { color: var(--c-blue); border-bottom-color: var(--c-blue); }
   </style>
 </head>
 <body>
@@ -153,29 +91,29 @@
 </div>
 
 
-<!-- ── BRAND TABS (sticky) ── -->
-<div class="brand-tabs" style="top:var(--nav-h);z-index:90;">
+<!-- ── BRAND TABS ── -->
+<div class="brand-tabs-wrap" id="brand-tabs">
   <div class="brand-tabs-inner">
     <a href="original.html" class="brand-tab">Original®</a>
-    <a href="#klasse"   class="brand-tab">KLASSE</a>
-    <a href="#cobra"    class="brand-tab">COBRA</a>
-    <a href="#captain"  class="brand-tab">Captain</a>
-    <a href="#splash"   class="brand-tab">Splash</a>
-    <a href="#ori"      class="brand-tab">Ori</a>
-    <a href="#alqobtan" class="brand-tab">Al Qobtan</a>
+    <a href="#klasse"       class="brand-tab">KLASSE</a>
+    <a href="#cobra"        class="brand-tab">COBRA</a>
+    <a href="#captain"      class="brand-tab">Captain</a>
+    <a href="#splash"       class="brand-tab">Splash</a>
+    <a href="#ori"          class="brand-tab">Ori</a>
+    <a href="#alqobtan"     class="brand-tab">Al Qobtan</a>
   </div>
 </div>
 
 
 <!-- ── PAGE HEADER ── -->
-<header class="brands-header" aria-labelledby="brands-page-title">
-  <div style="position:relative;z-index:2;">
-    <span class="t-label reveal" style="display:block;margin-bottom:1rem;">Gulf Union Foods Co.</span>
-    <h1 class="t-display t-3xl reveal reveal-delay-1" id="brands-page-title">
-      The<br/><em class="t-italic t-gold">Portfolio</em>
+<header class="portfolio-page-hero" aria-labelledby="page-title">
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="t-label reveal" style="display:block;margin-bottom:0.75rem;">Gulf Union Foods Co.</span>
+    <h1 class="t-display t-3xl reveal reveal-delay-1" id="page-title">
+      The <span class="t-blue">Portfolio</span>
     </h1>
-    <div class="divider divider--center reveal reveal-delay-2"></div>
-    <p class="t-muted reveal reveal-delay-3" style="max-width:560px;margin:1.5rem auto 0;font-size:1.05rem;line-height:1.8;">
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="t-muted reveal reveal-delay-3" style="max-width:520px;margin-top:0.75rem;font-size:1.05rem;line-height:1.8;">
       Seven distinct brands. Each one crafted with purpose, passion, and an unwavering commitment to quality. One family.
     </p>
   </div>
@@ -185,216 +123,219 @@
 <!-- ══════════════════════════════════════════
      01 — ORIGINAL®
 ══════════════════════════════════════════ -->
-<article class="brand-item" id="original" style="background:var(--c-black);" aria-label="Original® brand">
-  <div class="brand-item__visual">
-    <div class="brand-item__bg" style="background:radial-gradient(ellipse at center, #1c3664 0%, #050a1f 100%);"></div>
-    <img
-      src="https://gulf-union.com/images/boriginal%20grp.png"
-      alt="Original® juice product line"
-      class="brand-item__product"
-      onerror="this.src='original-hero.jpg';"
-    />
-  </div>
-  <div class="brand-item__content">
-    <div class="brand-item__num reveal">01</div>
-    <h2 class="brand-item__name reveal reveal-delay-1">
-      Original<sup style="font-size:0.4em;position:relative;top:-0.7em;">®</sup>
-    </h2>
-    <div class="brand-item__tagline reveal reveal-delay-2">The Taste of Quality</div>
-    <p class="brand-item__desc reveal reveal-delay-3">
-      Our flagship brand — and the Gulf's most beloved juice. Original® is crafted from the finest fruits and available in seven distinct expressions: Pet, Zero, Carton, Junior, Cans, Glass, and Iced Coffee. Every sip a commitment to authenticity.
-    </p>
-    <div class="reveal reveal-delay-4" style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="original.html" class="btn btn--primary">Explore Original®</a>
-      <a href="https://www.instagram.com/originaljuicear/" target="_blank" rel="noopener" class="btn btn--outline">Follow @OriginalJuiceAR</a>
+<section class="brand-section" id="original" aria-label="Original® brand">
+  <div class="brand-section__inner">
+    <div class="brand-section__img">
+      <img
+        src="https://gulf-union.com/images/boriginal%20grp.png"
+        alt="Original® juice product family"
+        class="brand-section__product"
+        style="animation-delay:0s;"
+        onerror="this.src='original-hero.jpg';"
+      />
+    </div>
+    <div class="brand-section__content reveal-right">
+      <div class="brand-section__num" style="color:var(--c-blue);">01</div>
+      <div class="brand-section__name">
+        Original<sup style="font-size:0.4em;position:relative;top:-0.7em;">®</sup>
+      </div>
+      <div class="brand-section__tagline t-blue">The Taste of Quality</div>
+      <p class="brand-section__desc">
+        Our flagship brand — and the Gulf's most beloved juice. Original® is crafted from the finest fruits and available in seven distinct expressions: Pet, Zero, Carton, Junior, Cans, Glass, and Iced Coffee. Every sip, a commitment to authenticity.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="original.html" class="btn btn--primary">Explore Original®</a>
+        <a href="https://www.instagram.com/originaljuicear/" target="_blank" rel="noopener" class="btn btn--secondary">Follow Us</a>
+      </div>
     </div>
   </div>
-</article>
+</section>
 
 
 <!-- ══════════════════════════════════════════
      02 — KLASSE
 ══════════════════════════════════════════ -->
-<article class="brand-item" id="klasse" style="background:var(--c-deep);" aria-label="KLASSE brand">
-  <div class="brand-item__visual">
-    <div class="brand-item__bg" style="background:radial-gradient(ellipse at center, #2a2a2a 0%, #050505 100%);"></div>
-    <img
-      src="https://gulf-union.com/images/bklasse%20grp.png"
-      alt="KLASSE malt beverage product line"
-      class="brand-item__product"
-      onerror="this.src='klasse-hero.png';"
-      loading="lazy"
-    />
-  </div>
-  <div class="brand-item__content">
-    <div class="brand-item__num reveal">02</div>
-    <h2 class="brand-item__name reveal reveal-delay-1">KLASSE</h2>
-    <div class="brand-item__tagline reveal reveal-delay-2">True German Craft</div>
-    <p class="brand-item__desc reveal reveal-delay-3">
-      Inspired by the rich tradition of German brewing, KLASSE is a premium non-alcoholic malt beverage that delivers a sophisticated taste experience. Crisp, refined, and distinctly European in character — KLASSE is for those who demand more.
-    </p>
-    <div class="reveal reveal-delay-4">
-      <a href="contact.html" class="btn btn--primary">Enquire About KLASSE</a>
+<section class="brand-section" id="klasse" aria-label="KLASSE brand">
+  <div class="brand-section__inner">
+    <div class="brand-section__content reveal-left">
+      <div class="brand-section__num" style="color:#2C2C2C;">02</div>
+      <div class="brand-section__name">KLASSE</div>
+      <div class="brand-section__tagline" style="color:#2C2C2C;">True German Craft</div>
+      <p class="brand-section__desc">
+        Inspired by the rich tradition of German brewing, KLASSE is a premium non-alcoholic malt beverage that delivers a sophisticated taste experience. Crisp, refined, and distinctly European in character — KLASSE is for those who demand more.
+      </p>
+      <a href="contact.html" class="btn btn--primary" style="background:#2C2C2C;">Enquire About KLASSE</a>
+    </div>
+    <div class="brand-section__img">
+      <img
+        src="https://gulf-union.com/images/bklasse%20grp.png"
+        alt="KLASSE malt beverage products"
+        class="brand-section__product"
+        style="animation-delay:-2s;"
+        onerror="this.src='klasse-hero.png';"
+        loading="lazy"
+      />
     </div>
   </div>
-</article>
+</section>
 
 
 <!-- ══════════════════════════════════════════
      03 — COBRA
 ══════════════════════════════════════════ -->
-<article class="brand-item" id="cobra" style="background:var(--c-black);" aria-label="COBRA energy drink brand">
-  <div class="brand-item__visual">
-    <div class="brand-item__bg" style="background:radial-gradient(ellipse at center, #5a0000 0%, #050000 100%);"></div>
-    <img
-      src="https://gulf-union.com/images/bcobra%20grp.png"
-      alt="COBRA energy drink product line"
-      class="brand-item__product"
-      onerror="this.src='cobra-hero.png';"
-      loading="lazy"
-      style="animation-duration:5s;"
-    />
-  </div>
-  <div class="brand-item__content">
-    <div class="brand-item__num reveal">03</div>
-    <h2 class="brand-item__name reveal reveal-delay-1">COBRA</h2>
-    <div class="brand-item__tagline reveal reveal-delay-2">Unleash the Force</div>
-    <p class="brand-item__desc reveal reveal-delay-3">
-      COBRA is the energy drink for those who never settle. Formulated for high performance and peak vitality, COBRA delivers the intensity you need — whenever you need it. Bold, powerful, unstoppable.
-    </p>
-    <div class="reveal reveal-delay-4">
-      <a href="contact.html" class="btn btn--primary" style="background:#8b0000;box-shadow:none;">Enquire About COBRA</a>
+<section class="brand-section" id="cobra" aria-label="COBRA energy drink brand">
+  <div class="brand-section__inner">
+    <div class="brand-section__img">
+      <img
+        src="https://gulf-union.com/images/bcobra%20grp.png"
+        alt="COBRA energy drinks"
+        class="brand-section__product"
+        style="animation-delay:-4s;"
+        onerror="this.src='cobra-hero.png';"
+        loading="lazy"
+      />
+    </div>
+    <div class="brand-section__content reveal-right">
+      <div class="brand-section__num" style="color:var(--c-red);">03</div>
+      <div class="brand-section__name">COBRA</div>
+      <div class="brand-section__tagline" style="color:var(--c-red);">Unleash the Force</div>
+      <p class="brand-section__desc">
+        COBRA is the energy drink for those who never settle. Formulated for high performance and peak vitality, COBRA delivers the intensity you need — whenever you need it. Bold, powerful, unstoppable.
+      </p>
+      <a href="contact.html" class="btn btn--primary" style="background:var(--c-red);">Enquire About COBRA</a>
     </div>
   </div>
-</article>
+</section>
 
 
 <!-- ══════════════════════════════════════════
      04 — CAPTAIN
 ══════════════════════════════════════════ -->
-<article class="brand-item" id="captain" style="background:var(--c-deep);" aria-label="Captain brand">
-  <div class="brand-item__visual">
-    <div class="brand-item__bg" style="background:radial-gradient(ellipse at center, #004488 0%, #000a1a 100%);"></div>
-    <img
-      src="https://gulf-union.com/images/bcaptain%20grp.png"
-      alt="Captain product line"
-      class="brand-item__product"
-      onerror="this.src='captain-hero.png';"
-      loading="lazy"
-    />
-  </div>
-  <div class="brand-item__content">
-    <div class="brand-item__num reveal">04</div>
-    <h2 class="brand-item__name reveal reveal-delay-1">Captain</h2>
-    <div class="brand-item__tagline reveal reveal-delay-2">Every Drop, Pure Fun</div>
-    <p class="brand-item__desc reveal reveal-delay-3">
-      Captain is the adventure drink for the young and young-at-heart. With its vibrant flavors and playful personality, Captain is the perfect companion for active moments, family gatherings, and everything in between.
-    </p>
-    <div class="reveal reveal-delay-4">
-      <a href="contact.html" class="btn btn--primary">Enquire About Captain</a>
+<section class="brand-section" id="captain" aria-label="Captain brand">
+  <div class="brand-section__inner">
+    <div class="brand-section__content reveal-left">
+      <div class="brand-section__num" style="color:#0E7C5A;">04</div>
+      <div class="brand-section__name">Captain</div>
+      <div class="brand-section__tagline" style="color:#0E7C5A;">Every Drop, Pure Fun</div>
+      <p class="brand-section__desc">
+        Captain is the adventure drink for the young and young-at-heart. With its vibrant flavors and playful personality, Captain is the perfect companion for active moments, family gatherings, and everything in between.
+      </p>
+      <a href="contact.html" class="btn btn--primary" style="background:#0E7C5A;">Enquire About Captain</a>
+    </div>
+    <div class="brand-section__img">
+      <img
+        src="https://gulf-union.com/images/bcaptain%20grp.png"
+        alt="Captain products"
+        class="brand-section__product"
+        style="animation-delay:-6s;"
+        onerror="this.src='captain-hero.png';"
+        loading="lazy"
+      />
     </div>
   </div>
-</article>
+</section>
 
 
 <!-- ══════════════════════════════════════════
      05 — SPLASH
 ══════════════════════════════════════════ -->
-<article class="brand-item" id="splash" style="background:var(--c-black);" aria-label="Splash brand">
-  <div class="brand-item__visual">
-    <div class="brand-item__bg" style="background:radial-gradient(ellipse at center, #006655 0%, #001a14 100%);"></div>
-    <img
-      src="https://gulf-union.com/images/bsplash%20grp.png"
-      alt="Splash product line"
-      class="brand-item__product"
-      onerror="this.src='splash-hero.png';"
-      loading="lazy"
-    />
-  </div>
-  <div class="brand-item__content">
-    <div class="brand-item__num reveal">05</div>
-    <h2 class="brand-item__name reveal reveal-delay-1">Splash</h2>
-    <div class="brand-item__tagline reveal reveal-delay-2">Fizz Up Your World</div>
-    <p class="brand-item__desc reveal reveal-delay-3">
-      Splash brings the joy of sparkling refreshment to every occasion. Lively, bubbly, and bursting with personality — Splash is the sparkling companion that turns any moment into a celebration.
-    </p>
-    <div class="reveal reveal-delay-4">
-      <a href="contact.html" class="btn btn--primary">Enquire About Splash</a>
+<section class="brand-section" id="splash" aria-label="Splash brand">
+  <div class="brand-section__inner">
+    <div class="brand-section__img">
+      <img
+        src="https://gulf-union.com/images/bsplash%20grp.png"
+        alt="Splash sparkling drinks"
+        class="brand-section__product"
+        style="animation-delay:-8s;"
+        onerror="this.src='splash-hero.png';"
+        loading="lazy"
+      />
+    </div>
+    <div class="brand-section__content reveal-right">
+      <div class="brand-section__num" style="color:#2B6CB0;">05</div>
+      <div class="brand-section__name">Splash</div>
+      <div class="brand-section__tagline" style="color:#2B6CB0;">Fizz Up Your World</div>
+      <p class="brand-section__desc">
+        Splash brings the joy of sparkling refreshment to every occasion. Lively, bubbly, and bursting with personality — Splash is the sparkling companion that turns any moment into a celebration.
+      </p>
+      <a href="contact.html" class="btn btn--primary" style="background:#2B6CB0;">Enquire About Splash</a>
     </div>
   </div>
-</article>
+</section>
 
 
 <!-- ══════════════════════════════════════════
      06 — ORI
 ══════════════════════════════════════════ -->
-<article class="brand-item" id="ori" style="background:var(--c-deep);" aria-label="Ori brand">
-  <div class="brand-item__visual">
-    <div class="brand-item__bg" style="background:radial-gradient(ellipse at center, #4d1c8c 0%, #120428 100%);"></div>
-    <img
-      src="https://gulf-union.com/images/bOri%20grp.png"
-      alt="Ori product line"
-      class="brand-item__product"
-      onerror="this.src='ori-hero.png';"
-      loading="lazy"
-    />
-  </div>
-  <div class="brand-item__content">
-    <div class="brand-item__num reveal">06</div>
-    <h2 class="brand-item__name reveal reveal-delay-1">Ori</h2>
-    <div class="brand-item__tagline reveal reveal-delay-2">Your Flavor, Your Vibe</div>
-    <p class="brand-item__desc reveal reveal-delay-3">
-      Ori is the expressive, youthful beverage brand designed for a generation that refuses to be defined. Bold flavors, striking visual identity, and an attitude that celebrates individuality — Ori is authentically you.
-    </p>
-    <div class="reveal reveal-delay-4">
-      <a href="contact.html" class="btn btn--primary" style="background:#4d1c8c;">Enquire About Ori</a>
+<section class="brand-section" id="ori" aria-label="Ori brand">
+  <div class="brand-section__inner">
+    <div class="brand-section__content reveal-left">
+      <div class="brand-section__num" style="color:#6B2F9E;">06</div>
+      <div class="brand-section__name">Ori</div>
+      <div class="brand-section__tagline" style="color:#6B2F9E;">Your Flavor, Your Vibe</div>
+      <p class="brand-section__desc">
+        Ori is the expressive, youthful beverage brand designed for a generation that refuses to be defined. Bold flavors, striking visual identity, and an attitude that celebrates individuality — Ori is authentically you.
+      </p>
+      <a href="contact.html" class="btn btn--primary" style="background:#6B2F9E;">Enquire About Ori</a>
+    </div>
+    <div class="brand-section__img">
+      <img
+        src="https://gulf-union.com/images/bOri%20grp.png"
+        alt="Ori beverages"
+        class="brand-section__product"
+        style="animation-delay:-10s;"
+        onerror="this.src='ori-hero.png';"
+        loading="lazy"
+      />
     </div>
   </div>
-</article>
+</section>
 
 
 <!-- ══════════════════════════════════════════
      07 — AL QOBTAN
 ══════════════════════════════════════════ -->
-<article class="brand-item" id="alqobtan" style="background:var(--c-black);" aria-label="Al Qobtan brand">
-  <div class="brand-item__visual">
-    <div class="brand-item__bg" style="background:radial-gradient(ellipse at center, #593900 0%, #120b00 100%);"></div>
-    <img
-      src="https://gulf-union.com/images/bal%20qobtan%20grp.png"
-      alt="Al Qobtan product line"
-      class="brand-item__product"
-      onerror="this.src='alqobtan-hero.png';"
-      loading="lazy"
-    />
-  </div>
-  <div class="brand-item__content">
-    <div class="brand-item__num reveal">07</div>
-    <h2 class="brand-item__name reveal reveal-delay-1">Al Qobtan</h2>
-    <div class="brand-item__tagline reveal reveal-delay-2">A Choice That Knows</div>
-    <p class="brand-item__desc reveal reveal-delay-3">
-      Al Qobtan is a brand that speaks to heritage and depth of character. Rooted in regional tradition and crafted with care, Al Qobtan offers a beverage experience that is warm, familiar, and deeply satisfying.
-    </p>
-    <div class="reveal reveal-delay-4">
-      <a href="contact.html" class="btn btn--primary" style="background:#593900;">Enquire About Al Qobtan</a>
+<section class="brand-section" id="alqobtan" aria-label="Al Qobtan brand">
+  <div class="brand-section__inner">
+    <div class="brand-section__img">
+      <img
+        src="https://gulf-union.com/images/bal%20qobtan%20grp.png"
+        alt="Al Qobtan beverages"
+        class="brand-section__product"
+        style="animation-delay:-12s;"
+        onerror="this.src='alqobtan-hero.png';"
+        loading="lazy"
+      />
+    </div>
+    <div class="brand-section__content reveal-right">
+      <div class="brand-section__num" style="color:var(--c-gold);">07</div>
+      <div class="brand-section__name">Al Qobtan</div>
+      <div class="brand-section__tagline t-gold">A Choice That Knows</div>
+      <p class="brand-section__desc">
+        Al Qobtan is a brand that speaks to heritage and depth of character. Rooted in regional tradition and crafted with care, Al Qobtan offers a beverage experience that is warm, familiar, and deeply satisfying.
+      </p>
+      <a href="contact.html" class="btn btn--gold">Enquire About Al Qobtan</a>
     </div>
   </div>
-</article>
+</section>
 
 
 <!-- ── CONNECT CTA ── -->
-<section class="section connect">
+<section class="section connect-section" aria-labelledby="connect-title">
   <div class="container">
-    <div class="connect__inner reveal-scale">
-      <span class="t-label" style="display:block;margin-bottom:1rem;">Become a Distributor</span>
-      <h2 class="connect__title t-display">
-        Bring GUFC Brands<br/><em class="t-italic t-gold">To Your Market</em>
+    <div class="connect-inner reveal-scale">
+      <span class="t-label">Become a Partner</span>
+      <h2 class="connect-title" id="connect-title">
+        Bring GUFC Brands<br/><em>To Your Market</em>
       </h2>
-      <p class="connect__sub">
+      <p class="connect-subtitle">
         We are actively seeking distribution partners across all global markets. Let's build something great together.
       </p>
-      <div class="connect__actions">
-        <a href="contact.html" class="btn btn--primary">Contact Our Trade Team</a>
-        <a href="about.html" class="btn btn--outline">Learn About GUFC →</a>
+      <div class="connect-actions">
+        <a href="contact.html" class="btn btn--white btn--lg">Contact Our Trade Team</a>
+        <a href="about.html" class="btn btn--white btn--lg" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.25);">
+          Learn About GUFC →
+        </a>
       </div>
     </div>
   </div>
@@ -406,10 +347,8 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a href="index.html" class="footer__logo">
-          <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." />
-        </a>
-        <p class="footer__brand-desc">Crafting moments since 1995. 500M+ liters annually, 42+ markets, 7 iconic brands.</p>
+        <a href="index.html" class="footer__logo"><img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." /></a>
+        <p class="footer__desc">Crafting moments since 1995. 500M+ liters annually, 42+ markets, 7 iconic brands.</p>
         <div class="footer__social">
           <a href="https://www.linkedin.com/company/gulf-union-foods-company/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
           <a href="https://www.facebook.com/OriginalJuiceAR/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
@@ -448,33 +387,24 @@
     </div>
     <div class="footer__bottom">
       <div class="footer__copy">© 2026 Gulf Union Foods Co. All rights reserved.</div>
-      <div class="footer__legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-      </div>
+      <div class="footer__legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
     </div>
   </div>
 </footer>
 
 <script src="main.js"></script>
 <script>
-  // Active brand tab on scroll
   (function() {
     const tabs = document.querySelectorAll('.brand-tab');
-    const sections = ['original','klasse','cobra','captain','splash','ori','alqobtan']
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-    if (!sections.length) return;
+    const ids  = ['original','klasse','cobra','captain','splash','ori','alqobtan'];
+    const secs = ids.map(id => document.getElementById(id)).filter(Boolean);
     const onScroll = () => {
-      let current = sections[0];
-      sections.forEach(sec => {
-        if (window.scrollY + 200 >= sec.offsetTop) current = sec;
-      });
-      tabs.forEach(tab => {
-        const href = tab.getAttribute('href');
-        tab.classList.toggle('active',
-          href === '#' + current.id ||
-          (href === 'original.html' && current.id === 'original')
+      let cur = secs[0];
+      secs.forEach(s => { if (window.scrollY + 200 >= s.offsetTop) cur = s; });
+      tabs.forEach(t => {
+        const href = t.getAttribute('href');
+        t.classList.toggle('active',
+          href === '#' + cur.id || (href === 'original.html' && cur.id === 'original')
         );
       });
     };
