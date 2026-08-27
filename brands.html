@@ -23,13 +23,18 @@
     }
 
     /* Individual section backgrounds to match the image edges if needed */
-    #original { background: #0c2049; } /* Deep blue from Original image */
-    #klasse { background: #111; }
-    #cobra { background: #1a0000; }
-    #captain { background: #00224d; }
-    #splash { background: #003d33; }
-    #ori { background: #2a0c50; }
-    #alqobtan { background: #2a1a00; }
+    #original { background: radial-gradient(circle at center, #1a326a 0%, #0c2049 70%, #050a1f 100%); }
+    #klasse { background: radial-gradient(circle at center, #2a2a2a 0%, #111 70%, #000 100%); }
+    #cobra { background: radial-gradient(circle at center, #5a0000 0%, #1a0000 70%, #050000 100%); }
+    #captain { background: radial-gradient(circle at center, #004488 0%, #00224d 70%, #000a1a 100%); }
+    #splash { background: radial-gradient(circle at center, #006655 0%, #003d33 70%, #001a14 100%); }
+    #ori { background: radial-gradient(circle at center, #4d1c8c 0%, #2a0c50 70%, #120428 100%); }
+    #alqobtan { background: radial-gradient(circle at center, #593900 0%, #2a1a00 70%, #120b00 100%); }
+    
+    @keyframes floatingBrand {
+      0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3)); }
+      50% { transform: translateY(-12px) scale(1.02); filter: drop-shadow(0 25px 30px rgba(0,0,0,0.5)); }
+    }
 
     .brand-full-image {
       position: absolute;
@@ -46,10 +51,12 @@
       position: relative;
       width: 100%;
       height: 100%;
-      min-height: 100vh;
-      object-fit: cover;
+      max-height: 85vh; /* Keep it from touching the absolute top/bottom */
+      object-fit: contain; /* Changed from cover so it doesn't crop or overpower */
       object-position: center;
       z-index: 1;
+      padding: 0 2rem;
+      animation: floatingBrand 6s ease-in-out infinite;
     }
 
     .btn-discover {
@@ -159,60 +166,60 @@
 
 <!-- KLASSE -->
 <section class="brand-image-section" id="klasse">
-  <img src="klasse-hero.jpg" alt="KLASSE" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <img src="klasse-hero.png" alt="KLASSE" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
   <div class="img-placeholder-box" style="display:none;">
     <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
-    Save your image as <strong>klasse-hero.jpg</strong>
+    Save your image as <strong>klasse-hero.png</strong>
   </div>
   <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- COBRA -->
 <section class="brand-image-section" id="cobra">
-  <img src="cobra-hero.jpg" alt="COBRA" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <img src="cobra-hero.png" alt="COBRA" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
   <div class="img-placeholder-box" style="display:none;">
     <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
-    Save your image as <strong>cobra-hero.jpg</strong>
+    Save your image as <strong>cobra-hero.png</strong>
   </div>
   <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- CAPTAIN -->
 <section class="brand-image-section" id="captain">
-  <img src="captain-hero.jpg" alt="Captain" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <img src="captain-hero.png" alt="Captain" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
   <div class="img-placeholder-box" style="display:none;">
     <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
-    Save your image as <strong>captain-hero.jpg</strong>
+    Save your image as <strong>captain-hero.png</strong>
   </div>
   <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- SPLASH -->
 <section class="brand-image-section" id="splash">
-  <img src="splash-hero.jpg" alt="Splash" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <img src="splash-hero.png" alt="Splash" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
   <div class="img-placeholder-box" style="display:none;">
     <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
-    Save your image as <strong>splash-hero.jpg</strong>
+    Save your image as <strong>splash-hero.png</strong>
   </div>
   <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- ORI -->
 <section class="brand-image-section" id="ori">
-  <img src="ori-hero.jpg" alt="Ori" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <img src="ori-hero.png" alt="Ori" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
   <div class="img-placeholder-box" style="display:none;">
     <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
-    Save your image as <strong>ori-hero.jpg</strong>
+    Save your image as <strong>ori-hero.png</strong>
   </div>
   <a href="#" class="btn-discover">Discover</a>
 </section>
 
 <!-- AL QOBTAN -->
 <section class="brand-image-section" id="alqobtan">
-  <img src="alqobtan-hero.jpg" alt="Al Qobtan" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+  <img src="alqobtan-hero.png" alt="Al Qobtan" class="brand-contain-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
   <div class="img-placeholder-box" style="display:none;">
     <span style="font-size:3rem;margin-bottom:1rem;">🖼️</span>
-    Save your image as <strong>alqobtan-hero.jpg</strong>
+    Save your image as <strong>alqobtan-hero.png</strong>
   </div>
   <a href="#" class="btn-discover">Discover</a>
 </section>
