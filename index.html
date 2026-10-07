@@ -3,1591 +3,1024 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gulf Union Foods Co. — Crafting Moments Since 1995</title>
-  <meta name="description" content="Gulf Union Foods Co. is a world-class FMCG powerhouse producing 500M+ liters per year across 7 iconic brands, exported to 42+ countries from the Kingdom of Saudi Arabia." />
+  <title>Home | Gulf Union Foods Co.</title>
+  <meta name="description" content="Gulf Union Foods Co. - Where quality meets passion, and taste meets innovation. Discover a world of products crafted to elevate everyday moments." />
   <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
   <style>
-    /* ─────────────────────────────────────────
-       QUANTUM HOMEPAGE — GUFC v4.0
-       Design: Editorial · Liquid · Asymmetric
-    ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: #fff;
-      color: #0A0A0A;
-      font-family: 'Inter', system-ui, sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+    /* ═══════════════════════════════════════════════
+       GUFC — Quantum Leap Homepage v5.0
+       "Appetite · Editorial · Immersive"
+    ═══════════════════════════════════════════════ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --blue:#1B4B9A; --blue-dk:#0D2E6B; --gold:#C9921A; --ink:#080A0F;
+      --ink-2:#3B3D42; --ink-4:#9A9DA8; --muted:#6C6F7D;
+      --cream:#FAFAF6; --surface:#F4F3EE; --border:rgba(0,0,0,.07);
+      --nav-h:74px; --ease:cubic-bezier(.16,1,.3,1); --ease-in:cubic-bezier(.7,0,.84,0);
     }
-    ::selection { background: #1B4B9A; color: #fff; }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #f5f5f5; }
-    ::-webkit-scrollbar-thumb { background: #1B4B9A; border-radius: 2px; }
+    html{scroll-behavior:smooth}
+    body{
+      background:#fff; color:var(--ink);
+      font-family:'Inter',system-ui,sans-serif;
+      overflow-x:hidden; -webkit-font-smoothing:antialiased;
+    }
+    ::selection{background:var(--blue);color:#fff}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:#f4f4f4}
+    ::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
 
-    /* ── TOKENS ── */
-    :root {
-      --blue:      #1B4B9A;
-      --blue-dark: #0E2F6B;
-      --gold:      #C9921A;
-      --cream:     #FAFAF7;
-      --ink:       #0A0A0A;
-      --muted:     #7A7A7A;
-      --border:    rgba(0,0,0,0.07);
-      --nav-h:     72px;
+    /* ─── LOADER ────────────────────────────────── */
+    #loader{
+      position:fixed;inset:0;z-index:9999;
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;gap:1.5rem;
+      background:#fff;
+      transition:opacity .6s var(--ease), visibility .6s;
     }
+    #loader.done{opacity:0;visibility:hidden;pointer-events:none}
+    .loader__logo{height:48px;opacity:0;animation:lFadeIn .6s var(--ease) .2s forwards}
+    .loader__bar-wrap{
+      width:200px;height:2px;
+      background:rgba(27,75,154,.12);border-radius:2px;overflow:hidden;
+    }
+    .loader__bar{
+      height:100%;width:0%;
+      background:var(--blue);border-radius:2px;
+      animation:lBar 1.8s var(--ease) .3s forwards;
+    }
+    .loader__label{
+      font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--ink-4);opacity:0;animation:lFadeIn .5s var(--ease) .5s forwards;
+    }
+    @keyframes lFadeIn{to{opacity:1}}
+    @keyframes lBar{to{width:100%}}
 
-    /* ════════════════════════════════════
-       GLASSMORPHISM NAV
-    ════════════════════════════════════ */
-    .gn {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--nav-h);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(255,255,255,0.4);
-      transition: background 0.4s, box-shadow 0.4s;
-    }
-    .gn.scrolled {
-      background: rgba(255,255,255,0.92);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.08);
-    }
-    .gn__logo img {
-      height: 44px;
-      width: auto;
-      object-fit: contain;
-    }
-    .gn__links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-      margin: 0 auto;
-    }
-    .gn__link {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink);
-      position: relative;
-      padding: 4px 0;
-      transition: color 0.2s;
-    }
-    .gn__link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      width: 0; height: 2px;
-      background: var(--blue);
-      border-radius: 1px;
-      transition: width 0.35s cubic-bezier(0.16,1,0.3,1);
-    }
-    .gn__link:hover { color: var(--blue); }
-    .gn__link:hover::after { width: 100%; }
-    .gn__cta {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #fff;
-      background: var(--blue);
-      padding: 11px 24px;
-      border-radius: 50px;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .gn__cta:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(27,75,154,0.32);
-    }
-    .gn__toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 8px;
-    }
-    .gn__toggle span {
-      display: block; width: 22px; height: 2px;
-      background: var(--ink);
-      border-radius: 2px;
-      transition: transform 0.3s, opacity 0.2s;
-      transform-origin: center;
-    }
-    .gn__toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .gn__toggle.open span:nth-child(2) { opacity: 0; }
-    .gn__toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    /* Mobile nav */
-    .gn__mobile {
-      position: fixed;
-      top: var(--nav-h); left: 0; right: 0;
-      background: #fff;
-      border-top: 1px solid var(--border);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
-      padding: 1.5rem 2rem;
-      transform: translateY(-8px);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
-      z-index: 999;
-    }
-    .gn__mobile.open {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-    .gn__mobile ul { list-style: none; }
-    .gn__mobile a {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 700;
-      color: var(--ink);
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s, padding-left 0.2s;
-    }
-    .gn__mobile a:hover { color: var(--blue); padding-left: 8px; }
-
-    /* ════════════════════════════════════
-       HERO — FULL BLEED ASYMMETRIC
-    ════════════════════════════════════ */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      overflow: hidden;
-      padding-top: var(--nav-h);
-      background: #fff;
+    /* ─── SCROLL PROGRESS ────────────────────────── */
+    #progress{
+      position:fixed;top:0;left:0;right:0;height:2px;
+      background:var(--blue);transform-origin:left;transform:scaleX(0);
+      z-index:1001;transition:transform .05s linear;
     }
 
-    /* Ambient background orbs */
-    .hero__orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
+    /* ─── GLASSMORPHISM NAV ─────────────────────── */
+    .gn{
+      position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;
+      display:flex;align-items:center;
+      padding:0 clamp(1.5rem,5vw,4rem);
+      background:rgba(255,255,255,.7);
+      backdrop-filter:blur(24px) saturate(200%);
+      -webkit-backdrop-filter:blur(24px) saturate(200%);
+      border-bottom:1px solid rgba(255,255,255,.45);
+      transition:background .4s,box-shadow .4s;
     }
-    .hero__orb--a {
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, #EEF3FB 0%, transparent 70%);
-      top: -200px; right: -100px;
+    .gn.scrolled{background:rgba(255,255,255,.92);box-shadow:0 1px 32px rgba(0,0,0,.08)}
+    .gn__logo img{height:44px;width:auto;object-fit:contain;transition:transform .2s}
+    .gn__logo:hover img{transform:scale(1.04)}
+    .gn__links{
+      display:flex;align-items:center;gap:2.5rem;list-style:none;margin:0 auto;
     }
-    .hero__orb--b {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, #FBF5E6 0%, transparent 70%);
-      bottom: -100px; left: -50px;
+    .gn__link{
+      font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--ink-2);position:relative;padding:4px 0;transition:color .2s;
     }
-    .hero__orb--c {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, #E8F7F0 0%, transparent 70%);
-      top: 40%; left: 40%;
+    .gn__link::after{
+      content:'';position:absolute;bottom:-2px;left:0;
+      width:0;height:2px;background:var(--blue);border-radius:1px;
+      transition:width .35s var(--ease);
+    }
+    .gn__link:hover,.gn__link.active{color:var(--blue)}
+    .gn__link:hover::after,.gn__link.active::after{width:100%}
+    .gn__cta{
+      font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+      color:#fff;background:var(--blue);padding:11px 26px;border-radius:50px;
+      transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap;
+    }
+    .gn__cta:hover{background:var(--blue-dk);transform:translateY(-2px);box-shadow:0 10px 28px rgba(27,75,154,.3)}
+    .gn__toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+    .gn__toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;
+      transition:transform .3s,opacity .2s;transform-origin:center}
+    .gn__toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .gn__toggle.open span:nth-child(2){opacity:0}
+    .gn__toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .gn__mobile{
+      position:fixed;top:var(--nav-h);left:0;right:0;background:#fff;
+      border-top:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,.1);
+      padding:1.5rem 2rem;transform:translateY(-8px);opacity:0;pointer-events:none;
+      transition:transform .35s var(--ease),opacity .3s;z-index:999;
+    }
+    .gn__mobile.open{transform:translateY(0);opacity:1;pointer-events:all}
+    .gn__mobile ul{list-style:none}
+    .gn__mobile a{
+      display:block;font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);
+      font-weight:700;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--border);
+      transition:color .2s,padding-left .2s;
+    }
+    .gn__mobile a:hover{color:var(--blue);padding-left:8px}
+
+    /* ─── HERO ──────────────────────────────────── */
+    .hero{
+      position:relative;min-height:100vh;padding-top:var(--nav-h);
+      display:grid;grid-template-columns:1fr 1fr;align-items:center;
+      overflow:hidden;background:#fff;
+    }
+    /* Dot grid */
+    .hero__dots{
+      position:absolute;inset:0;z-index:0;
+      background-image:radial-gradient(circle,#c8d5ea 1px,transparent 1px);
+      background-size:38px 38px;opacity:.28;
+    }
+    /* Radial ambient light */
+    .hero__ambient{
+      position:absolute;z-index:0;border-radius:50%;filter:blur(100px);pointer-events:none;
+    }
+    .hero__ambient--a{width:600px;height:600px;background:#E8F0FC;top:-150px;right:-50px}
+    .hero__ambient--b{width:420px;height:420px;background:#FBF5E6;bottom:-80px;left:40px}
+    .hero__ambient--c{width:260px;height:260px;background:#E8F7EE;top:38%;left:44%}
+
+    /* LEFT: copy */
+    .hero__copy{
+      position:relative;z-index:2;
+      padding:clamp(3rem,7vw,6rem) clamp(2rem,5vw,5rem) clamp(3rem,6vw,5rem);
+      display:flex;flex-direction:column;align-items:flex-start;
+    }
+    .hero__eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      margin-bottom:clamp(1.5rem,3vw,2.5rem);
+      opacity:0;transform:translateY(16px);
+    }
+    .hero__eyebrow-pulse{
+      width:8px;height:8px;border-radius:50%;background:var(--blue);position:relative;
+    }
+    .hero__eyebrow-pulse::after{
+      content:'';position:absolute;inset:-4px;border-radius:50%;
+      border:2px solid var(--blue);animation:pulseOut 2s ease-out infinite;
+    }
+    @keyframes pulseOut{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.4);opacity:0}}
+    .hero__eyebrow-text{
+      font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);
     }
 
-    /* Subtle dot grid */
-    .hero__dotgrid {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, #c8d4e8 1px, transparent 1px);
-      background-size: 36px 36px;
-      opacity: 0.35;
-      z-index: 0;
+    /* EDITORIAL HEADLINE — word-by-word line masking */
+    .hero__title{
+      font-family:'Playfair Display',serif;font-weight:900;
+      line-height:.9;letter-spacing:-.04em;color:var(--ink);
+      margin-bottom:clamp(1.5rem,3vw,2.5rem);
+    }
+    .title-row{display:block;overflow:hidden}
+    .title-word{
+      display:inline-block;
+      font-size:clamp(3.8rem,8.5vw,9rem);
+      transform:translateY(110%);
+    }
+    .title-word.outline{
+      -webkit-text-stroke:2.5px var(--ink);color:transparent;
+    }
+    .title-word.blue{color:var(--blue)}
+    .title-word.italic{font-style:italic;font-weight:400;font-size:clamp(2rem,4vw,4.8rem)}
+
+    .hero__sub{
+      font-size:clamp(1rem,1.6vw,1.15rem);color:var(--muted);line-height:1.8;
+      max-width:420px;margin-bottom:clamp(2rem,4vw,3rem);
+      opacity:0;transform:translateY(20px);
+    }
+    .hero__actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+
+    /* Pill buttons */
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+      padding:16px 32px;border-radius:50px;
+      transition:transform .22s,box-shadow .22s,background .2s,color .2s;
+    }
+    .pill--solid{background:var(--ink);color:#fff}
+    .pill--solid:hover{background:var(--blue);transform:translateY(-3px);box-shadow:0 14px 32px rgba(27,75,154,.28)}
+    .pill--ghost{border:1.5px solid rgba(0,0,0,.2);color:var(--ink)}
+    .pill--ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+    .pill .arrow{transition:transform .2s}
+    .pill:hover .arrow{transform:translateX(4px)}
+    .pill--white{background:#fff;color:var(--blue)}
+    .pill--white:hover{background:#EEF3FB;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+    .pill--glass{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.25);backdrop-filter:blur(8px)}
+    .pill--glass:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+
+    .hero__trust{
+      display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
+      margin-top:clamp(1.5rem,3vw,2.5rem);padding-top:1.5rem;
+      border-top:1px solid var(--border);
+      opacity:0;transform:translateY(12px);
+    }
+    .trust-badge{
+      display:flex;align-items:center;gap:6px;
+      font-size:.68rem;font-weight:600;letter-spacing:.08em;color:#6A6A7A;
+    }
+    .trust-badge svg{color:var(--blue)}
+
+    /* RIGHT: Product showcase */
+    .hero__stage{
+      position:relative;z-index:2;
+      height:100%;min-height:100vh;
+      display:flex;align-items:center;justify-content:center;
+    }
+    /* Giant ghost text behind products */
+    .hero__ghost{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      font-family:'Playfair Display',serif;font-size:clamp(10rem,22vw,28rem);
+      font-weight:900;letter-spacing:-.08em;color:transparent;
+      -webkit-text-stroke:1px rgba(27,75,154,.06);
+      white-space:nowrap;pointer-events:none;user-select:none;
+      animation:ghostDrift 20s ease-in-out infinite alternate;
+    }
+    @keyframes ghostDrift{from{transform:translate(-50%,-50%) scale(1)}to{transform:translate(-50%,-52%) scale(1.02)}}
+
+    /* PRODUCT CLUSTER */
+    .pcluster{position:relative;width:clamp(320px,44vw,600px);height:clamp(400px,60vh,720px)}
+
+    /* Main centred product */
+    .pcluster__main{
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:72%;z-index:3;
+      filter:drop-shadow(0 40px 80px rgba(27,75,154,.18)) drop-shadow(0 12px 24px rgba(0,0,0,.12));
+      animation:pFloat1 8s ease-in-out infinite;border-radius:16px;
+      opacity:0;
+    }
+    /* Left product (rotated) */
+    .pcluster__left{
+      position:absolute;top:30%;left:-8%;
+      width:38%;z-index:2;
+      filter:drop-shadow(0 20px 40px rgba(0,0,0,.16));
+      animation:pFloat2 9.5s ease-in-out infinite;border-radius:12px;
+      opacity:0;transform:rotate(-8deg);
+    }
+    /* Right product */
+    .pcluster__right{
+      position:absolute;bottom:22%;right:-6%;
+      width:34%;z-index:2;
+      filter:drop-shadow(0 16px 32px rgba(0,0,0,.14));
+      animation:pFloat3 7.5s ease-in-out infinite;border-radius:12px;
+      opacity:0;transform:rotate(6deg);
+    }
+    /* Top-right accent — small can */
+    .pcluster__accent{
+      position:absolute;top:8%;right:5%;
+      width:22%;z-index:4;
+      filter:drop-shadow(0 10px 20px rgba(0,0,0,.12));
+      animation:pFloat1 11s ease-in-out infinite;border-radius:8px;
+      opacity:0;transform:rotate(10deg);
     }
 
-    /* Left column — COPY */
-    .hero__copy {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
-      align-self: center;
-    }
-    .hero__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 2rem;
-    }
-    .hero__eyebrow-pulse {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--blue);
-      position: relative;
-    }
-    .hero__eyebrow-pulse::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 2px solid var(--blue);
-      animation: pulseOut 2s ease-out infinite;
-    }
-    @keyframes pulseOut {
-      0%   { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-    .hero__eyebrow-text {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--blue);
-    }
-
-    /* Massive editorial headline */
-    .hero__title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      margin-bottom: 2.5rem;
-    }
-    .hero__title .line { display: block; overflow: hidden; }
-    .hero__title .line-inner { display: block; }
-    .hero__title .t-outline {
-      -webkit-text-stroke: 2px var(--ink);
-      color: transparent;
-    }
-    .hero__title .t-blue { color: var(--blue); }
-    .hero__title .t-word-lg {
-      font-size: clamp(4.5rem, 9vw, 9rem);
-    }
-    .hero__title .t-word-xl {
-      font-size: clamp(5rem, 11vw, 11rem);
-    }
-    .hero__title .t-word-sm {
-      font-size: clamp(2rem, 4vw, 4.5rem);
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .hero__sub {
-      font-size: clamp(1rem, 1.6vw, 1.2rem);
-      color: #5A5A5A;
-      line-height: 1.75;
-      max-width: 420px;
-      margin-bottom: 2.5rem;
-      font-weight: 400;
-    }
-    .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-
-    /* Pill button */
-    .btn-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 16px 32px;
-      border-radius: 50px;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .btn-pill--solid {
-      background: var(--ink);
-      color: #fff;
-    }
-    .btn-pill--solid:hover {
-      background: var(--blue);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(27,75,154,0.28);
-    }
-    .btn-pill--ghost {
-      border: 1.5px solid rgba(0,0,0,0.2);
-      color: var(--ink);
-    }
-    .btn-pill--ghost:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-      transform: translateY(-2px);
-    }
-    .btn-pill .arrow {
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-    .btn-pill:hover .arrow { transform: translateX(4px); }
-
-    /* Trust badges under CTA */
-    .hero__trust {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .hero__badge-sm {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: #6A6A6A;
-    }
-    .hero__badge-sm svg { color: var(--blue); }
-
-    /* Right column — VISUAL */
-    .hero__visual {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: visible;
-    }
-
-    /* Main product container — the "display frame" */
-    .hero__frame {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero__product-main {
-      position: relative;
-      z-index: 3;
-      width: clamp(260px, 38vw, 560px);
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 40px 80px rgba(27,75,154,0.16)) drop-shadow(0 10px 20px rgba(0,0,0,0.1));
-      /* Float animation */
-      animation: heroFloat 7s ease-in-out infinite;
-      border-radius: 12px;
-    }
-    @keyframes heroFloat {
-      0%, 100% { transform: translateY(0) rotate(-1deg); }
-      50%       { transform: translateY(-22px) rotate(1deg); }
-    }
-
-    /* Decorative product thumbnails */
-    .hero__prod-thumb {
-      position: absolute;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.14));
-      border-radius: 10px;
-      animation: heroFloat 8s ease-in-out infinite;
-    }
-    .hero__prod-thumb--1 {
-      width: clamp(80px, 12vw, 160px);
-      top: 18%; left: -5%;
-      animation-delay: -2.5s;
-      opacity: 0.88;
-    }
-    .hero__prod-thumb--2 {
-      width: clamp(70px, 10vw, 130px);
-      bottom: 20%; right: -5%;
-      animation-delay: -5s;
-      opacity: 0.82;
-    }
-
-    /* Big decorative text behind product */
-    .hero__bg-text {
-      position: absolute;
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(8rem, 18vw, 22rem);
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(27,75,154,0.07);
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      z-index: 1;
-    }
+    @keyframes pFloat1{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-20px)}}
+    @keyframes pFloat2{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-6deg) translateY(-16px)}}
+    @keyframes pFloat3{0%,100%{transform:rotate(6deg) translateY(0)}50%{transform:rotate(8deg) translateY(-18px)}}
 
     /* Floating stat cards */
-    .hero__stat-card {
-      position: absolute;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.6);
-      border-radius: 18px;
-      padding: 14px 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      z-index: 5;
-      animation: heroFloat 9s ease-in-out infinite;
+    .pstat{
+      position:absolute;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,.6);
+      border-radius:18px;padding:14px 20px;
+      box-shadow:0 8px 32px rgba(0,0,0,.1);
+      display:flex;align-items:center;gap:12px;z-index:5;
+      animation:pFloat2 9s ease-in-out infinite;
+      opacity:0;
     }
-    .hero__stat-card--a {
-      bottom: 28%; left: 6%;
-      animation-delay: -1.5s;
+    .pstat--a{bottom:24%;left:2%;animation-delay:-2s}
+    .pstat--b{top:18%;right:3%;animation-delay:-5s}
+    .pstat__num{
+      font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;
+      color:var(--blue);line-height:1;
     }
-    .hero__stat-card--b {
-      top: 22%; right: 6%;
-      animation-delay: -4s;
+    .pstat__lbl{
+      font-size:.63rem;font-weight:700;letter-spacing:.14em;
+      text-transform:uppercase;color:#888;line-height:1.4;
     }
-    .hero__stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--blue);
-      line-height: 1;
-    }
-    .hero__stat-lbl {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #888;
-      line-height: 1.3;
-    }
-    .hero__stat-icon { font-size: 1.4rem; }
+    .pstat__ico{font-size:1.5rem}
 
-    /* Curve divider at bottom of hero */
-    .hero__curve {
-      position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      z-index: 10;
-    }
+    /* WAVE to ticker */
+    .hero__wave{position:absolute;bottom:-2px;left:0;right:0;z-index:10;line-height:0}
+    .hero__wave svg{width:100%;display:block}
 
-    /* ════════════════════════════════════
-       SCROLL TICKER
-    ════════════════════════════════════ */
-    .ticker-wrap {
-      overflow: hidden;
-      padding: 20px 0;
-      background: var(--ink);
-      position: relative;
-      z-index: 5;
+    /* ─── TICKER ─────────────────────────────────── */
+    .ticker-wrap{overflow:hidden;padding:18px 0;background:var(--ink);position:relative;z-index:5}
+    .ticker-track{display:flex;width:max-content;animation:tickScroll 38s linear infinite}
+    .ticker-track:hover{animation-play-state:paused}
+    @keyframes tickScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tick-item{display:flex;align-items:center;gap:2rem;padding:0 2rem;white-space:nowrap}
+    .tick-text{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+    .tick-text--lit{color:#fff}
+    .tick-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+    /* ─── THE TASTE — BRAND CAROUSEL ─────────────── */
+    .taste{
+      padding:clamp(5rem,10vw,10rem) 0;
+      background:#fff;
+      transition:background-color .9s var(--ease);
     }
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: tickerScroll 36s linear infinite;
+    .taste.bg-original{background:#EEF3FB}
+    .taste.bg-klasse  {background:#F2F2F0}
+    .taste.bg-cobra   {background:#FFF3F3}
+    .taste.bg-captain {background:#EDF8F2}
+    .taste.bg-splash  {background:#EDF5FF}
+    .taste.bg-ori     {background:#F8F0FF}
+    .taste.bg-alqobtan{background:#FBF6ED}
+
+    .taste__head{
+      padding:0 clamp(2rem,6vw,6rem);
+      margin-bottom:clamp(3rem,5vw,5rem);
+      display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;
     }
-    .ticker-track:hover { animation-play-state: paused; }
-    @keyframes tickerScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+    .taste__kicker{
+      font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--blue);display:block;margin-bottom:1rem;
     }
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      padding: 0 2rem;
-      white-space: nowrap;
+    .taste__h{
+      font-family:'Playfair Display',serif;font-weight:900;
+      line-height:.88;letter-spacing:-.04em;
+      font-size:clamp(3.5rem,8.5vw,9rem);
     }
-    .ticker-text {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-    }
-    .ticker-text--lit { color: #fff; }
-    .ticker-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
+    .taste__h em{font-style:italic;font-weight:400;color:var(--blue)}
+    .taste__sub{
+      font-size:clamp(.9rem,1.5vw,1.05rem);color:var(--muted);
+      line-height:1.75;max-width:300px;flex-shrink:0;
     }
 
-    /* ════════════════════════════════════
-       THE TASTE — BRAND CAROUSEL
-    ════════════════════════════════════ */
-    .taste-section {
-      padding: clamp(5rem, 10vw, 10rem) 0;
-      position: relative;
-      overflow: hidden;
-      background: #fff;
-      /* The bg color transitions via JS */
-      transition: background-color 0.8s cubic-bezier(0.16,1,0.3,1);
-    }
-    .taste-section.taste-bg-original { background: #EEF3FB; }
-    .taste-section.taste-bg-klasse   { background: #F2F2F2; }
-    .taste-section.taste-bg-cobra    { background: #FFF2F2; }
-    .taste-section.taste-bg-captain  { background: #EDFAF4; }
-    .taste-section.taste-bg-splash   { background: #EDF5FF; }
-    .taste-section.taste-bg-ori      { background: #F8F0FF; }
-    .taste-section.taste-bg-alqobtan { background: #FBF6ED; }
-
-    .taste-header {
-      padding: 0 clamp(2rem, 6vw, 6rem);
-      margin-bottom: 4rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .taste-header__title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: -0.04em;
-      font-size: clamp(3.5rem, 8vw, 8rem);
-    }
-    .taste-header__title .italic { font-style: italic; font-weight: 400; color: var(--blue); }
-    .taste-header__sub {
-      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 320px;
-    }
-
-    /* Scrollable carousel */
-    .carousel-outer {
-      overflow-x: auto;
-      scrollbar-width: none;
-      cursor: grab;
-    }
-    .carousel-outer::-webkit-scrollbar { display: none; }
-    .carousel-outer.grabbing { cursor: grabbing; }
-    .carousel-track {
-      display: flex;
-      gap: 2rem;
-      padding: 0 clamp(2rem, 6vw, 6rem) 3rem;
-      width: max-content;
+    /* Drag carousel */
+    .carousel-outer{overflow-x:auto;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+    .carousel-outer::-webkit-scrollbar{display:none}
+    .carousel-outer.grab{cursor:grabbing}
+    .carousel-track{
+      display:flex;gap:1.75rem;
+      padding:0 clamp(2rem,6vw,6rem) 3rem;width:max-content;
     }
 
     /* Brand card */
-    .brand-card {
-      position: relative;
-      width: clamp(300px, 38vw, 540px);
-      height: clamp(380px, 55vw, 640px);
-      border-radius: 28px;
-      overflow: hidden;
-      flex-shrink: 0;
-      cursor: pointer;
-      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    .bc{
+      position:relative;
+      width:clamp(300px,38vw,540px);
+      height:clamp(400px,56vw,660px);
+      border-radius:32px;overflow:hidden;flex-shrink:0;cursor:pointer;
+      background:#fff;border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 4px 24px rgba(0,0,0,.06);
+      transition:transform .55s var(--ease),box-shadow .55s var(--ease);
     }
-    .brand-card:hover { transform: translateY(-10px); box-shadow: 0 32px 64px rgba(0,0,0,0.13); }
+    .bc:hover{transform:translateY(-12px);box-shadow:0 36px 64px rgba(0,0,0,.14)}
 
-    /* Colored top strip */
-    .brand-card__strip {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 6px;
-      border-radius: 28px 28px 0 0;
-    }
-    .bc-original { background: #1B4B9A; }
-    .bc-klasse   { background: #1A1A1A; }
-    .bc-cobra    { background: #C42B20; }
-    .bc-captain  { background: #0E7C5A; }
-    .bc-splash   { background: #2B6CB0; }
-    .bc-ori      { background: #6B2F9E; }
-    .bc-alqobtan { background: #9A6B1A; }
+    /* Brand accent strip */
+    .bc__strip{position:absolute;top:0;left:0;right:0;height:5px;border-radius:32px 32px 0 0}
+    .bs-orig{background:#1B4B9A}.bs-kl{background:#1C1C1C}.bs-co{background:#C42B20}
+    .bs-ca{background:#0E7C5A}.bs-sp{background:#2B6CB0}.bs-or{background:#6B2F9E}.bs-aq{background:#9A6B1A}
 
-    /* Background gradient fill inside card */
-    .brand-card__bg {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.6s;
-    }
-    .brand-card:hover .brand-card__bg { opacity: 1; }
+    /* Soft colored bg on hover */
+    .bc__bg{position:absolute;inset:0;opacity:0;transition:opacity .6s}
+    .bc:hover .bc__bg{opacity:1}
 
-    /* Product image — pops out of card on hover */
-    .brand-card__product {
-      position: absolute;
-      right: 0; bottom: 0;
-      height: 78%;
-      width: auto;
-      object-fit: contain;
-      object-position: bottom right;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18));
-      transition: transform 0.65s cubic-bezier(0.16,1,0.3,1),
-                  filter 0.5s;
+    /* Product image — "bursts" out of card */
+    .bc__prod{
+      position:absolute;right:0;bottom:0;
+      height:78%;width:auto;object-fit:contain;object-position:bottom right;
+      filter:drop-shadow(0 24px 48px rgba(0,0,0,.2));
+      transition:transform .7s var(--ease),filter .5s;
     }
-    .brand-card:hover .brand-card__product {
-      transform: scale(1.07) translateY(-12px);
-      filter: drop-shadow(0 36px 60px rgba(0,0,0,0.22));
-    }
+    .bc:hover .bc__prod{transform:scale(1.09) translateY(-14px);filter:drop-shadow(0 40px 64px rgba(0,0,0,.24))}
 
-    /* Content overlay */
-    .brand-card__content {
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 65%;
-      padding: 2rem;
-      z-index: 3;
+    .bc__content{position:absolute;bottom:0;left:0;width:60%;padding:2rem;z-index:3}
+    .bc__num{
+      font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:900;
+      line-height:1;opacity:.055;margin-bottom:-.75rem;
     }
-    .brand-card__num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1;
-      opacity: 0.06;
-      margin-bottom: -0.75rem;
+    .bc__name{
+      font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.4rem);
+      font-weight:900;line-height:.92;letter-spacing:-.02em;margin-bottom:.5rem;
     }
-    .brand-card__name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 900;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 0.5rem;
+    .bc__tag{font-size:.76rem;font-weight:500;letter-spacing:.06em;color:var(--muted);margin-bottom:1rem}
+    .bc__cta{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+      opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s;
     }
-    .brand-card__tagline {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-    .brand-card__cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink);
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.4s, transform 0.4s;
-    }
-    .brand-card:hover .brand-card__cta { opacity: 1; transform: translateY(0); }
-    .brand-card__cta-arrow { transition: transform 0.2s; }
-    .brand-card__cta:hover .brand-card__cta-arrow { transform: translateX(4px); }
+    .bc:hover .bc__cta{opacity:1;transform:translateY(0)}
+    .bc__cta-arrow{transition:transform .2s}.bc:hover .bc__cta-arrow{transform:translateX(4px)}
 
-    /* ════════════════════════════════════
-       EDITORIAL SPLIT — OUR STORY
-    ════════════════════════════════════ */
-    .split-section {
-      padding: clamp(5rem, 10vw, 10rem) 0;
-      background: var(--ink);
-      position: relative;
-      overflow: hidden;
-    }
-    .split-section__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 clamp(2rem, 6vw, 6rem);
-      gap: clamp(3rem, 6vw, 8rem);
-      align-items: center;
-    }
-    /* Overlapping big number */
-    .split-section__ghost-num {
-      position: absolute;
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(16rem, 28vw, 36rem);
-      font-weight: 900;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.04);
-      top: 50%; left: -5%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      letter-spacing: -0.1em;
-    }
-    .split-section__pretitle {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 1.5rem;
-    }
-    .split-section__title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      font-size: clamp(3.2rem, 6vw, 6.5rem);
-      color: #fff;
-      margin-bottom: 2.5rem;
-    }
-    .split-section__title em { font-style: italic; font-weight: 400; color: #A8C0E8; }
-    .split-section__body {
-      font-size: clamp(1rem, 1.5vw, 1.15rem);
-      color: rgba(255,255,255,0.55);
-      line-height: 1.85;
-      margin-bottom: 3rem;
-    }
-    .split-section__stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    .split-stat {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 1.25rem;
-    }
-    .split-stat__num {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1;
-    }
-    .split-stat__num span { color: #A8C0E8; }
-    .split-stat__label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-top: 6px;
-    }
-    /* Right visual grid */
-    .split-section__img-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 1rem;
-      height: 520px;
-    }
-    .split-img-item {
-      border-radius: 20px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .split-img-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 1.5rem;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
-    }
-    .split-img-item:hover img { transform: scale(1.06) translateY(-6px); }
-    .split-img-item--tall { grid-row: span 2; }
+    .taste__foot{text-align:center;margin-top:2.5rem}
 
-    /* ════════════════════════════════════
-       GLOBAL FOOTPRINT — DATA VIZ
-    ════════════════════════════════════ */
-    .globe-section {
-      background: #fff;
-      padding: clamp(5rem, 10vw, 10rem) 0;
-      overflow: hidden;
+    /* ─── DARK EDITORIAL SPLIT ────────────────────── */
+    .split{
+      background:var(--ink);position:relative;
+      padding:clamp(6rem,12vw,14rem) 0;overflow:hidden;
     }
-    .globe-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 clamp(2rem, 6vw, 6rem);
+    .split__ghost{
+      position:absolute;left:-8%;top:50%;transform:translateY(-50%);
+      font-family:'Playfair Display',serif;font-size:clamp(16rem,30vw,42rem);
+      font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.03);
+      letter-spacing:-.1em;pointer-events:none;user-select:none;
     }
-    .globe-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 6vw, 6rem);
-      align-items: flex-end;
-      margin-bottom: 4rem;
+    .split__inner{
+      display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,9rem);
+      max-width:1400px;margin:0 auto;padding:0 clamp(2rem,6vw,6rem);align-items:center;
     }
-    .globe-header__title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      font-size: clamp(3rem, 6vw, 6.5rem);
-      line-height: 0.9;
-      letter-spacing: -0.03em;
+    .split__kicker{
+      font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+      color:rgba(255,255,255,.35);margin-bottom:1.75rem;
     }
-    .globe-header__title span { -webkit-text-stroke: 2px var(--ink); color: transparent; }
-    .globe-header__body {
-      font-size: clamp(1rem, 1.4vw, 1.1rem);
-      color: var(--muted);
-      line-height: 1.8;
-      padding-bottom: 0.5rem;
+    .split__h{
+      font-family:'Playfair Display',serif;font-weight:900;line-height:.88;
+      letter-spacing:-.04em;font-size:clamp(3rem,6.5vw,7rem);color:#fff;margin-bottom:2.5rem;
+    }
+    .split__h em{font-style:italic;font-weight:400;color:#90B0D8}
+    .split__body{
+      font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.48);
+      line-height:1.88;margin-bottom:3rem;
+    }
+    .split__grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;margin-bottom:3rem}
+    .split__stat{padding:clamp(1.5rem,3vw,2.5rem);background:rgba(255,255,255,.02)}
+    .split__stat:hover{background:rgba(255,255,255,.05)}
+    .split__stat-num{
+      font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);
+      font-weight:900;color:#fff;line-height:1;margin-bottom:6px;
+    }
+    .split__stat-num span{color:#90B0D8}
+    .split__stat-lbl{
+      font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);
     }
 
-    /* Animated counter row */
-    .globe-numbers {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 4rem;
-      border: 1px solid var(--border);
+    /* Right: product mosaic */
+    .split__mosaic{
+      display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.875rem;height:540px;
     }
-    .globe-num-item {
-      background: #fff;
-      padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
-      text-align: center;
-      transition: background 0.3s;
+    .split__mitem{
+      border-radius:22px;overflow:hidden;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+      display:flex;align-items:center;justify-content:center;padding:1.5rem;
+      transition:background .3s;
     }
-    .globe-num-item:hover { background: #F7F6F2; }
-    .globe-num-item__num {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 5.5vw, 5.5rem);
-      font-weight: 900;
-      color: var(--blue);
-      line-height: 1;
-      margin-bottom: 8px;
+    .split__mitem:hover{background:rgba(255,255,255,.08)}
+    .split__mitem--tall{grid-row:span 2}
+    .split__mitem img{
+      width:100%;height:100%;object-fit:contain;
+      filter:drop-shadow(0 12px 24px rgba(0,0,0,.4));
+      transition:transform .65s var(--ease);
     }
-    .globe-num-item__suf { color: var(--gold); }
-    .globe-num-item__label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    .split__mitem:hover img{transform:scale(1.07) translateY(-8px)}
 
-    /* SVG Map */
-    .globe-map-wrap {
-      border-radius: 24px;
-      overflow: hidden;
-      background: #F0F5FF;
-      border: 1px solid rgba(27,75,154,0.1);
-      box-shadow: 0 8px 32px rgba(27,75,154,0.07);
+    /* ─── GLOBAL FOOTPRINT ───────────────────────── */
+    .globe{padding:clamp(5rem,10vw,12rem) 0;background:#fff;overflow:hidden}
+    .globe__inner{max-width:1400px;margin:0 auto;padding:0 clamp(2rem,6vw,6rem)}
+    .globe__head{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:clamp(2rem,6vw,7rem);align-items:flex-end;margin-bottom:clamp(3rem,5vw,5rem);
     }
+    .globe__kicker{
+      font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--blue);display:block;margin-bottom:1rem;
+    }
+    .globe__h{
+      font-family:'Playfair Display',serif;font-weight:900;
+      line-height:.88;letter-spacing:-.04em;font-size:clamp(2.8rem,6.5vw,7rem);
+    }
+    .globe__h .outline{-webkit-text-stroke:2.5px var(--ink);color:transparent}
+    .globe__body{
+      font-size:clamp(1rem,1.5vw,1.1rem);color:var(--muted);line-height:1.82;
+      padding-bottom:0.5rem;
+    }
+    /* Counter row */
+    .globe__nums{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      border:1px solid var(--border);border-radius:22px;overflow:hidden;
+      margin-bottom:clamp(3rem,5vw,5rem);background:var(--border);gap:1px;
+    }
+    .globe__num{
+      background:#fff;padding:clamp(2rem,4vw,3.5rem) clamp(1rem,3vw,2rem);
+      text-align:center;transition:background .3s;
+    }
+    .globe__num:hover{background:var(--surface)}
+    .globe__num-val{
+      font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5.5rem);
+      font-weight:900;color:var(--blue);line-height:1;margin-bottom:6px;
+    }
+    .globe__num-val span{color:var(--gold)}
+    .globe__num-lbl{
+      font-size:.68rem;font-weight:700;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--ink-4);
+    }
+    /* SVG map */
+    .globe__map{border-radius:26px;overflow:hidden;background:#EEF3FB;border:1px solid rgba(27,75,154,.1);box-shadow:0 8px 32px rgba(27,75,154,.07)}
 
-    /* ════════════════════════════════════
-       CERTIFICATIONS — LIGHT GRID
-    ════════════════════════════════════ */
-    .certs-section {
-      background: #F7F6F2;
-      padding: clamp(5rem, 8vw, 8rem) 0;
+    /* ─── CERTIFICATIONS ─────────────────────────── */
+    .certs{background:var(--surface);padding:clamp(5rem,8vw,9rem) 0}
+    .certs__inner{max-width:1300px;margin:0 auto;padding:0 clamp(2rem,6vw,6rem)}
+    .certs__kicker{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;display:block}
+    .certs__h{
+      font-family:'Playfair Display',serif;font-weight:900;
+      font-size:clamp(2.5rem,5.5vw,5.5rem);letter-spacing:-.03em;line-height:.92;
     }
-    .certs-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 clamp(2rem, 6vw, 6rem);
+    .certs__h em{font-style:italic;font-weight:400;color:var(--blue)}
+    .certs__div{width:48px;height:3px;background:var(--blue);border-radius:2px;margin:2rem 0 3.5rem}
+    .certs__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+    .cert-tile{
+      background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:22px;
+      padding:2rem 1.5rem;text-align:center;
+      box-shadow:0 2px 12px rgba(0,0,0,.04);
+      transition:transform .35s var(--ease),box-shadow .35s,border-color .25s;
     }
-    .certs-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.5rem;
-    }
-    .certs-title em { font-style: italic; font-weight: 400; color: var(--blue); }
-    .certs-pretitle {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 0.75rem;
-    }
-    .certs-divider {
-      width: 48px; height: 3px;
-      background: var(--blue);
-      border-radius: 2px;
-      margin: 1.5rem 0 3.5rem;
-    }
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-    }
-    .cert-tile {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s;
-    }
-    .cert-tile:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-    .cert-tile img { width: 60px; height: 60px; object-fit: contain; margin: 0 auto 1rem; }
-    .cert-tile__name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
-    .cert-tile__desc { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+    .cert-tile:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.1);border-color:rgba(27,75,154,.15)}
+    .cert-tile img{width:58px;height:58px;object-fit:contain;margin:0 auto 1.1rem}
+    .cert-tile__name{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--ink)}
+    .cert-tile__desc{font-size:.72rem;color:var(--muted);line-height:1.55}
 
-    /* ════════════════════════════════════
-       CTA — FULL BLEED
-    ════════════════════════════════════ */
-    .cta-section {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(6rem, 12vw, 12rem) clamp(2rem, 6vw, 6rem);
-      background: var(--blue);
-      text-align: center;
+    /* ─── CTA ────────────────────────────────────── */
+    .cta-wrap{
+      position:relative;overflow:hidden;
+      padding:clamp(7rem,14vw,16rem) clamp(2rem,6vw,6rem);
+      background:var(--blue);text-align:center;
     }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -40%; right: -5%;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-      pointer-events: none;
+    .cta-wrap::before,.cta-wrap::after{
+      content:'';position:absolute;border-radius:50%;pointer-events:none;
     }
-    .cta-section::after {
-      content: '';
-      position: absolute;
-      bottom: -50%; left: -10%;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.03);
-      pointer-events: none;
+    .cta-wrap::before{width:800px;height:800px;background:rgba(255,255,255,.04);top:-50%;right:-10%}
+    .cta-wrap::after{width:500px;height:500px;background:rgba(255,255,255,.03);bottom:-60%;left:-8%}
+    .cta-ghost{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      font-family:'Playfair Display',serif;font-size:clamp(8rem,18vw,22rem);
+      font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.055);
+      white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.06em;
     }
-    /* Ghost title behind CTA */
-    .cta-ghost {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(8rem, 16vw, 18rem);
-      font-weight: 900;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.06);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
+    .cta-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+    .cta-kicker{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:1.5rem}
+    .cta-h{
+      font-family:'Playfair Display',serif;font-weight:900;
+      font-size:clamp(3rem,7.5vw,8rem);line-height:.88;letter-spacing:-.04em;
+      color:#fff;margin-bottom:1.5rem;
     }
-    .cta-inner { position: relative; z-index: 2; }
-    .cta-pretitle {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 1.5rem;
-    }
-    .cta-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      font-size: clamp(3rem, 6.5vw, 7rem);
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
-    .cta-title em { font-style: italic; font-weight: 400; color: rgba(255,255,255,0.6); }
-    .cta-sub {
-      font-size: clamp(1rem, 1.5vw, 1.15rem);
-      color: rgba(255,255,255,0.55);
-      line-height: 1.75;
-      max-width: 520px;
-      margin: 0 auto 3rem;
-    }
-    .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .btn-pill--white {
-      background: #fff;
-      color: var(--blue);
-    }
-    .btn-pill--white:hover {
-      background: #F0F5FF;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.15);
-    }
-    .btn-pill--glass {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      border: 1.5px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(8px);
-    }
-    .btn-pill--glass:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-    }
+    .cta-h em{font-style:italic;font-weight:400;color:rgba(255,255,255,.55)}
+    .cta-sub{font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.5);line-height:1.8;max-width:500px;margin:0 auto 3rem}
+    .cta-acts{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
 
-    /* ════════════════════════════════════
-       FOOTER
-    ════════════════════════════════════ */
-    .footer {
-      background: #fff;
-      border-top: 1px solid var(--border);
-      padding: clamp(4rem, 7vw, 7rem) 0 2.5rem;
+    /* ─── FOOTER ──────────────────────────────────── */
+    .foot{background:#fff;border-top:1px solid var(--border);padding:clamp(5rem,8vw,8rem) 0 2.5rem}
+    .foot__inner{max-width:1300px;margin:0 auto;padding:0 clamp(2rem,6vw,6rem)}
+    .foot__top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(2rem,5vw,6rem);margin-bottom:4rem}
+    .foot__logo img{height:44px;margin-bottom:1.5rem}
+    .foot__desc{font-size:.9rem;color:var(--muted);line-height:1.82;max-width:280px;margin-bottom:2rem}
+    .foot__soc{display:flex;gap:10px}
+    .foot__soc a{
+      width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,.12);
+      display:flex;align-items:center;justify-content:center;
+      font-size:11px;font-weight:700;color:var(--muted);
+      transition:background .2s,color .2s,border-color .2s;
     }
-    .footer__inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 clamp(2rem, 6vw, 6rem);
-    }
-    .footer__top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem);
-      margin-bottom: 4rem;
-    }
-    .footer__logo img { height: 44px; margin-bottom: 1.5rem; }
-    .footer__desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 280px;
-      margin-bottom: 2rem;
-    }
-    .footer__social { display: flex; gap: 10px; }
-    .footer__social a {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.12);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; color: var(--muted);
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .footer__social a:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
-    .footer__col-title {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-    }
-    .footer__links { list-style: none; }
-    .footer__links li { margin-bottom: 10px; }
-    .footer__links a {
-      font-size: 0.88rem;
-      color: var(--muted);
-      transition: color 0.2s, padding-left 0.2s;
-      display: inline-block;
-    }
-    .footer__links a:hover { color: var(--blue); padding-left: 4px; }
-    .footer__bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer__copy { font-size: 0.8rem; color: var(--muted); }
-    .footer__legal { display: flex; gap: 2rem; }
-    .footer__legal a { font-size: 0.8rem; color: var(--muted); transition: color 0.2s; }
-    .footer__legal a:hover { color: var(--blue); }
+    .foot__soc a:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .foot__col-h{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:1.5rem}
+    .foot__links{list-style:none}
+    .foot__links li{margin-bottom:10px}
+    .foot__links a{font-size:.88rem;color:var(--muted);transition:color .2s,padding-left .2s;display:inline-block}
+    .foot__links a:hover{color:var(--blue);padding-left:4px}
+    .foot__bottom{border-top:1px solid var(--border);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .foot__copy{font-size:.78rem;color:var(--ink-4)}
+    .foot__legal{display:flex;gap:2rem}
+    .foot__legal a{font-size:.78rem;color:var(--ink-4);transition:color .2s}
+    .foot__legal a:hover{color:var(--blue)}
 
-    /* ════════════════════════════════════
-       GSAP REVEAL UTILITY
-    ════════════════════════════════════ */
-    .gsap-hidden { opacity: 0; }
-
-    /* ════════════════════════════════════
-       RESPONSIVE
-    ════════════════════════════════════ */
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero__visual { height: 380px; }
-      .hero__copy { text-align: center; align-items: center; }
-      .hero__sub { margin: 0 auto 2.5rem; }
-      .hero__trust { justify-content: center; }
-      .split-section__inner { grid-template-columns: 1fr; }
-      .split-section__img-grid { display: none; }
-      .split-section__stats { grid-template-columns: repeat(4, 1fr); }
-      .globe-header { grid-template-columns: 1fr; }
-      .globe-numbers { grid-template-columns: repeat(2, 1fr); }
-      .footer__top { grid-template-columns: 1fr 1fr; }
-      .certs-grid { grid-template-columns: repeat(4, 1fr); }
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero__copy{align-items:center;text-align:center;padding:clamp(2rem,5vw,4rem)}
+      .hero__sub{margin:0 auto clamp(2rem,4vw,3rem)}
+      .hero__trust{justify-content:center}
+      .hero__stage{min-height:480px}
+      .pcluster{width:clamp(280px,80vw,480px);height:480px}
+      .split__inner{grid-template-columns:1fr}
+      .split__mosaic{display:none}
+      .split__grid{grid-template-columns:repeat(4,1fr)}
+      .globe__head{grid-template-columns:1fr}
+      .globe__nums{grid-template-columns:repeat(2,1fr)}
+      .foot__top{grid-template-columns:1fr 1fr}
+      .certs__grid{grid-template-columns:repeat(4,1fr)}
     }
-    @media (max-width: 768px) {
-      :root { --nav-h: 60px; }
-      .gn__links, .gn__cta { display: none; }
-      .gn__toggle { display: flex; }
-      .hero__title .t-word-xl { font-size: clamp(4rem, 15vw, 8rem); }
-      .hero__stat-card--b { display: none; }
-      .taste-header { flex-direction: column; align-items: flex-start; }
-      .split-section__stats { grid-template-columns: 1fr 1fr; }
-      .globe-numbers { grid-template-columns: 1fr 1fr; }
-      .certs-grid { grid-template-columns: 1fr 1fr; }
-      .footer__top { grid-template-columns: 1fr; }
-      .hero__prod-thumb { display: none; }
+    @media(max-width:768px){
+      :root{--nav-h:62px}
+      .gn__links,.gn__cta{display:none}
+      .gn__toggle{display:flex}
+      .pcluster__left,.pcluster__right,.pcluster__accent{display:none}
+      .pcluster__main{width:80%;position:relative;top:auto;left:auto;transform:none;animation:pFloat0 8s ease-in-out infinite}
+      @keyframes pFloat0{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+      .pcluster{display:flex;align-items:center;justify-content:center;height:auto}
+      .pstat--b{display:none}
+      .globe__nums{grid-template-columns:1fr 1fr}
+      .certs__grid{grid-template-columns:1fr 1fr}
+      .foot__top{grid-template-columns:1fr}
+      .split__grid{grid-template-columns:1fr 1fr}
     }
-    @media (max-width: 480px) {
-      .hero__actions { flex-direction: column; }
-      .cta-actions { flex-direction: column; align-items: center; }
+    @media(max-width:480px){
+      .hero__actions{flex-direction:column;width:100%}
+      .pill{width:100%;justify-content:center}
+      .cta-acts{flex-direction:column;align-items:center}
     }
   </style>
+  <link rel="stylesheet" href="premium.css?v=2" />
 </head>
 <body>
 
-<!-- ════════════════════════════════════
-     GLASSMORPHISM NAV
-════════════════════════════════════ -->
+<!-- ═══════ LOADER ═══════ -->
+<div id="loader" aria-hidden="true">
+  <img src="https://gulf-union.com/images/logo.png" alt="" class="loader__logo"/>
+  <div class="loader__bar-wrap"><div class="loader__bar"></div></div>
+  <span class="loader__label">Loading Experience</span>
+</div>
+
+<!-- ═══════ SCROLL PROGRESS ═══════ -->
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ═══════ GLASSMORPHISM NAV ═══════ -->
 <nav class="gn" id="gn">
-  <a href="index.html" class="gn__logo" aria-label="Gulf Union Foods Co. — Home">
-    <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. full-color logo" />
+  <a href="index.html" class="gn__logo" aria-label="Gulf Union Foods Co.">
+    <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." />
   </a>
-
   <ul class="gn__links" role="list">
-    <li><a href="about.html"  class="gn__link">Our Heritage</a></li>
-    <li><a href="brands.html" class="gn__link">The Portfolio</a></li>
-    <li><a href="about.html#responsibility" class="gn__link">Responsibility</a></li>
-    <li><a href="contact.html" class="gn__link">Connect</a></li>
+    <li><a href="about.html"  class="gn__link">Who We Are</a></li>
+    <li><a href="brands.html" class="gn__link">Our Brands</a></li>
+    <li><a href="about.html#responsibility" class="gn__link">Sustainability</a></li>
+    <li><a href="contact.html" class="gn__link">Careers</a></li>
+    <li><a href="contact.html" class="gn__link">Contact Us</a></li>
   </ul>
-
-  <a href="contact.html" class="gn__cta">Partner With Us</a>
+  <a href="#" class="gn__cta" style="background:transparent; color:var(--ink); border: 1px solid var(--border);">عربي</a>
   <button class="gn__toggle" id="gnToggle" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <div class="gn__mobile" id="gnMobile" aria-hidden="true">
-  <ul role="list">
+  <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">Our Heritage</a></li>
-    <li><a href="brands.html">The Portfolio</a></li>
+    <li><a href="about.html">Who We Are</a></li>
+    <li><a href="brands.html">Our Brands</a></li>
     <li><a href="original.html">Original®</a></li>
-    <li><a href="brands.html#klasse">KLASSE</a></li>
-    <li><a href="brands.html#cobra">COBRA</a></li>
-    <li><a href="about.html#responsibility">Responsibility</a></li>
-    <li><a href="contact.html">Connect</a></li>
+    <li><a href="about.html#responsibility">Sustainability</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="#">عربي</a></li>
   </ul>
 </div>
 
 
-<!-- ════════════════════════════════════
-     HERO — ASYMMETRIC EDITORIAL
-════════════════════════════════════ -->
-<section class="hero" id="hero" aria-labelledby="hero-heading">
-  <div class="hero__orb hero__orb--a" aria-hidden="true"></div>
-  <div class="hero__orb hero__orb--b" aria-hidden="true"></div>
-  <div class="hero__orb hero__orb--c" aria-hidden="true"></div>
-  <div class="hero__dotgrid"          aria-hidden="true"></div>
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero" aria-labelledby="h-title">
+  <div class="hero__dots" aria-hidden="true"></div>
+  <div class="hero__ambient hero__ambient--a" aria-hidden="true"></div>
+  <div class="hero__ambient hero__ambient--b" aria-hidden="true"></div>
+  <div class="hero__ambient hero__ambient--c" aria-hidden="true"></div>
 
-  <!-- LEFT: Copy -->
+  <!-- LEFT: copy -->
   <div class="hero__copy">
-    <div class="hero__eyebrow" id="hero-eyebrow">
+    <div class="hero__eyebrow" id="h-eyebrow">
       <span class="hero__eyebrow-pulse" aria-hidden="true"></span>
       <span class="hero__eyebrow-text">Est. 1995 · Kingdom of Saudi Arabia</span>
     </div>
 
-    <h1 class="hero__title" id="hero-heading">
-      <span class="line"><span class="line-inner t-word-sm t-blue">Crafting</span></span>
-      <span class="line"><span class="line-inner t-word-xl">Moments</span></span>
-      <span class="line"><span class="line-inner t-word-lg t-outline">That</span>&nbsp;<span class="line-inner t-word-lg">Last.</span></span>
+    <h1 class="hero__title" id="h-title">
+      <span class="title-row"><span class="title-word">Welcome</span></span>
+      <span class="title-row"><span class="title-word">To <span class="title-word blue">Gulf Union</span></span></span>
     </h1>
 
-    <p class="hero__sub" id="hero-sub">
-      Seven iconic brands. 500 million liters per year. 42+ countries, one unwavering standard — the Gulf's most trusted FMCG company.
+    <p class="hero__sub" id="h-sub">
+      Where quality meets passion, and taste meets innovation. Discover a world of products crafted to elevate everyday moments.
     </p>
 
-    <div class="hero__actions" id="hero-actions">
-      <a href="brands.html" class="btn-pill btn-pill--solid">
-        Explore the Portfolio <span class="arrow">→</span>
-      </a>
-      <a href="about.html" class="btn-pill btn-pill--ghost">
-        Our Story
-      </a>
+    <div class="hero__actions" id="h-acts">
+      <a href="brands.html" class="pill pill--solid">Our Brands <span class="arrow">→</span></a>
+      <a href="about.html"  class="pill pill--ghost">Who We Are</a>
     </div>
 
-    <div class="hero__trust" id="hero-trust">
-      <div class="hero__badge-sm">
+    <div class="hero__trust" id="h-trust">
+      <div class="trust-badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         ISO 22000 Certified
       </div>
-      <div class="hero__badge-sm">
+      <div class="trust-badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         Halal Certified
       </div>
-      <div class="hero__badge-sm">
+      <div class="trust-badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         USFDA Approved
       </div>
     </div>
   </div>
 
-  <!-- RIGHT: Visual -->
-  <div class="hero__visual">
-    <div class="hero__frame">
-      <div class="hero__bg-text" aria-hidden="true">GUFC</div>
+  <!-- RIGHT: Product cluster stage -->
+  <div class="hero__stage">
+    <span class="hero__ghost" aria-hidden="true">GUFC</span>
+    <div class="pcluster" id="pcluster">
 
-      <!-- Main product render — Original® flagship -->
-      <img
-        id="hero-product"
-        src="https://gulf-union.com/images/boriginal%20grp.png"
-        alt="Original® premium juice product family — a stunning arrangement of amber glass bottles and vibrant cartons, photographed under warm studio lighting with shallow depth of field and subtle condensation droplets catching a single overhead spotlight. The products are arranged asymmetrically against a pure white background to create a sense of luxurious negative space."
-        class="hero__product-main"
-        onerror="this.src='original-hero.jpg';"
-      />
-
-      <!-- Secondary product accent — COBRA can -->
-      <img
-        src="https://gulf-union.com/images/bcobra%20grp.png"
-        alt="COBRA energy drink metallic cans arranged in a dynamic diagonal formation, lit from below with deep red-to-black gradient to convey power and intensity."
-        class="hero__prod-thumb hero__prod-thumb--1"
-        onerror="this.style.display='none';"
-        loading="lazy"
-      />
-
-      <!-- Third product accent — KLASSE bottle -->
-      <img
+      <!-- Secondary left — KLASSE -->
+      <img id="prod-left"
         src="https://gulf-union.com/images/bklasse%20grp.png"
-        alt="KLASSE premium malt beverage bottles with sweeping golden backlight and warm amber tones evoking European brewing heritage."
-        class="hero__prod-thumb hero__prod-thumb--2"
-        onerror="this.style.display='none';"
-        loading="lazy"
-      />
+        alt="KLASSE premium malt beverage bottles arranged in a dramatic side-lit composition — German heritage branding with warm amber tones and premium embossed label detail."
+        class="pcluster__left"
+        onerror="this.style.display='none';" loading="lazy"/>
+
+      <!-- Main — Original® -->
+      <img id="prod-main"
+        src="https://gulf-union.com/images/boriginal%20grp.png"
+        alt="Original® premium juice family — crystal-clear PET bottles and vibrant cartons arranged symmetrically under a single warm overhead studio spotlight, with subtle condensation droplets catching the light against a pure white background."
+        class="pcluster__main"
+        onerror="this.src='original-hero.jpg';"/>
+
+      <!-- Top-right accent — COBRA can -->
+      <img id="prod-accent"
+        src="https://gulf-union.com/images/bcobra%20grp.png"
+        alt="COBRA energy drink metallic can with dramatic red gel backlight and specular highlights on the embossed surface, evoking explosive energy and power."
+        class="pcluster__accent"
+        onerror="this.style.display='none';" loading="lazy"/>
+
+      <!-- Bottom right — Captain -->
+      <img id="prod-right"
+        src="https://gulf-union.com/images/bcaptain%20grp.png"
+        alt="Captain juice beverage bottles with tropical fruit accents, photographed under warm natural daylight to convey fun, freshness, and youthful energy."
+        class="pcluster__right"
+        onerror="this.style.display='none';" loading="lazy"/>
 
       <!-- Floating stat cards -->
-      <div class="hero__stat-card hero__stat-card--a" aria-hidden="true">
-        <span class="hero__stat-icon">🌍</span>
+      <div class="pstat pstat--a" id="pstat-a" aria-hidden="true">
+        <span class="pstat__ico">🌍</span>
         <div>
-          <div class="hero__stat-num">42<span style="font-size:1rem;color:var(--gold);">+</span></div>
-          <div class="hero__stat-lbl">Export<br/>Countries</div>
+          <div class="pstat__num">42<span style="font-size:1rem;color:var(--gold)">+</span></div>
+          <div class="pstat__lbl">Export<br/>Countries</div>
         </div>
       </div>
-      <div class="hero__stat-card hero__stat-card--b" aria-hidden="true">
+      <div class="pstat pstat--b" id="pstat-b" aria-hidden="true">
         <div>
-          <div class="hero__stat-num">500M<span style="font-size:1rem;color:var(--gold);">+</span></div>
-          <div class="hero__stat-lbl">Liters<br/>Per Year</div>
+          <div class="pstat__num">500M<span style="font-size:1rem;color:var(--gold)">+</span></div>
+          <div class="pstat__lbl">Liters<br/>Per Year</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Wave divider to ticker -->
-  <div class="hero__curve" aria-hidden="true">
+  <div class="hero__wave" aria-hidden="true">
     <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0 80 C360 0 1080 0 1440 80 L1440 80 L0 80 Z" fill="#0A0A0A"/>
+      <path d="M0 80 C360 0 1080 0 1440 80 L1440 80 L0 80 Z" fill="#080A0F"/>
     </svg>
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════
-     SCROLL TICKER
-════════════════════════════════════ -->
+<!-- ═══════ TICKER ═══════ -->
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Gulf Union Foods</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">Original®</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">KLASSE</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">COBRA</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Captain</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">Splash</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Ori</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">Al Qobtan</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Est. 1995</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">42+ Countries</span><span class="ticker-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Gulf Union Foods Co.</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">Original®</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">KLASSE</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">COBRA</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Captain</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">Splash</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Ori</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">Al Qobtan</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Est. 1995</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">42+ Countries</span><span class="tick-dot"></span></div>
     <!-- duplicate -->
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Gulf Union Foods</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">Original®</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">KLASSE</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">COBRA</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Captain</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">Splash</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Ori</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">Al Qobtan</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text ticker-text--lit">Est. 1995</span><span class="ticker-dot"></span></div>
-    <div class="ticker-item"><span class="ticker-text">42+ Countries</span><span class="ticker-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Gulf Union Foods Co.</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">Original®</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">KLASSE</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">COBRA</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Captain</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">Splash</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Ori</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">Al Qobtan</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text tick-text--lit">Est. 1995</span><span class="tick-dot"></span></div>
+    <div class="tick-item"><span class="tick-text">42+ Countries</span><span class="tick-dot"></span></div>
   </div>
 </div>
 
 
-<!-- ════════════════════════════════════
-     THE TASTE — BRAND CAROUSEL
-════════════════════════════════════ -->
-<section class="taste-section" id="taste" aria-labelledby="taste-title">
-
-  <div class="taste-header">
-    <h2 class="taste-header__title" id="taste-title">
-      <span class="gsap-hidden" id="taste-t1">The</span><br/>
-      <span class="gsap-hidden" id="taste-t2"><em class="italic">Taste</em></span>
-    </h2>
-    <p class="taste-header__sub gsap-hidden" id="taste-sub">
-      Seven distinct brands. Each one crafted for a different moment, a different palate — unified by an unwavering standard of quality.
+<!-- ═══════ THE TASTE — BRAND CAROUSEL ═══════ -->
+<section class="taste" id="taste" aria-labelledby="taste-h">
+  <div class="taste__head">
+    <div>
+      <span class="taste__kicker" id="taste-kicker">Our Brands</span>
+      <h2 class="taste__h" id="taste-h">
+        Explore<br/><em>Products</em>
+      </h2>
+    </div>
+    <p class="taste__sub" id="taste-sub">
+      Seven distinct brands. Each crafted for a different moment and palate — unified by an unwavering standard of excellence.
     </p>
   </div>
 
-  <div class="carousel-outer" id="brandCarousel" role="region" aria-label="Brand portfolio carousel">
+  <div class="carousel-outer" id="carousel" role="region" aria-label="Brand portfolio">
     <div class="carousel-track">
 
       <!-- 01 Original® -->
-      <a href="original.html"
-         class="brand-card"
-         data-taste="original"
-         aria-label="Original® — The Taste of Quality">
-        <div class="brand-card__strip bc-original"></div>
-        <div class="brand-card__bg" style="background:linear-gradient(135deg,#EEF3FB,#fff);"></div>
-        <div class="brand-card__content">
-          <div class="brand-card__num">01</div>
-          <div class="brand-card__name">Original<sup style="font-size:0.45em;position:relative;top:-0.6em;">®</sup></div>
-          <div class="brand-card__tagline">The Taste of Quality</div>
-          <span class="brand-card__cta">Explore <span class="brand-card__cta-arrow">→</span></span>
+      <a href="original.html" class="bc" data-taste="original" aria-label="Original® — The Taste of Quality">
+        <div class="bc__strip bs-orig"></div>
+        <div class="bc__bg" style="background:linear-gradient(135deg,#EEF3FB,#fff)"></div>
+        <div class="bc__content">
+          <div class="bc__num">01</div>
+          <div class="bc__name">Original<sup style="font-size:.42em;position:relative;top:-.6em">®</sup></div>
+          <div class="bc__tag">The Taste of Quality</div>
+          <span class="bc__cta">Discover <span class="bc__cta-arrow">→</span></span>
         </div>
-        <img
-          src="https://gulf-union.com/images/boriginal%20grp.png"
-          alt="Original® juice family — cold-pressed amber juice filling a crystal-clear glass bottle, backlit with warm golden studio light creating a luminous halo effect. Condensation beads catch the light on the glass surface, evoking freshness and premium quality."
-          class="brand-card__product"
-          onerror="this.src='original-hero.jpg';"
-        />
+        <img src="https://gulf-union.com/images/boriginal%20grp.png"
+          alt="Original® premium juice bottles — cold-pressed citrus and tropical varieties in crystal PET, backlit with warm studio golden-hour light, condensation beads glinting on the bottle surface."
+          class="bc__prod" onerror="this.src='original-hero.jpg';"/>
       </a>
 
       <!-- 02 KLASSE -->
-      <a href="brands.html#klasse"
-         class="brand-card"
-         data-taste="klasse"
-         aria-label="KLASSE — True German Craft">
-        <div class="brand-card__strip bc-klasse"></div>
-        <div class="brand-card__bg" style="background:linear-gradient(135deg,#F5F5F5,#fff);"></div>
-        <div class="brand-card__content">
-          <div class="brand-card__num">02</div>
-          <div class="brand-card__name">KLASSE</div>
-          <div class="brand-card__tagline">True German Craft</div>
-          <span class="brand-card__cta">Explore <span class="brand-card__cta-arrow">→</span></span>
+      <a href="brands.html#klasse" class="bc" data-taste="klasse" aria-label="KLASSE — True German Craft">
+        <div class="bc__strip bs-kl"></div>
+        <div class="bc__bg" style="background:linear-gradient(135deg,#F0F0EE,#fff)"></div>
+        <div class="bc__content">
+          <div class="bc__num">02</div>
+          <div class="bc__name">KLASSE</div>
+          <div class="bc__tag">True German Craft</div>
+          <span class="bc__cta">Discover <span class="bc__cta-arrow">→</span></span>
         </div>
-        <img
-          src="https://gulf-union.com/images/bklasse%20grp.png"
-          alt="KLASSE premium malt beverage bottles arranged in a sophisticated flat-lay composition on a dark slate surface, lit with a single warm side-light to emphasize bottle curves and the amber liquid within."
-          class="brand-card__product"
-          onerror="this.style.display='none';"
-          loading="lazy"
-        />
+        <img src="https://gulf-union.com/images/bklasse%20grp.png"
+          alt="KLASSE premium malt beverage dark-glass bottles on a cool slate surface, lit with a precise two-point studio setup casting clean specular highlights."
+          class="bc__prod" onerror="this.style.display='none';" loading="lazy"/>
       </a>
 
       <!-- 03 COBRA -->
-      <a href="brands.html#cobra"
-         class="brand-card"
-         data-taste="cobra"
-         aria-label="COBRA — Unleash the Force">
-        <div class="brand-card__strip bc-cobra"></div>
-        <div class="brand-card__bg" style="background:linear-gradient(135deg,#FFF2F2,#fff);"></div>
-        <div class="brand-card__content">
-          <div class="brand-card__num">03</div>
-          <div class="brand-card__name">COBRA</div>
-          <div class="brand-card__tagline">Unleash the Force</div>
-          <span class="brand-card__cta">Explore <span class="brand-card__cta-arrow">→</span></span>
+      <a href="brands.html#cobra" class="bc" data-taste="cobra" aria-label="COBRA — Unleash the Force">
+        <div class="bc__strip bs-co"></div>
+        <div class="bc__bg" style="background:linear-gradient(135deg,#FFF2F2,#fff)"></div>
+        <div class="bc__content">
+          <div class="bc__num">03</div>
+          <div class="bc__name">COBRA</div>
+          <div class="bc__tag">Unleash the Force</div>
+          <span class="bc__cta">Discover <span class="bc__cta-arrow">→</span></span>
         </div>
-        <img
-          src="https://gulf-union.com/images/bcobra%20grp.png"
-          alt="COBRA energy drink metallic cans photographed against a jet-black background with a dramatic single-point red neon backlight, creating intense specular highlights on the can surface and a subtle red mist atmospheric effect suggesting explosive energy."
-          class="brand-card__product"
-          onerror="this.style.display='none';"
-          loading="lazy"
-        />
+        <img src="https://gulf-union.com/images/bcobra%20grp.png"
+          alt="COBRA energy drink metallic cans in a diagonal power formation against jet-black background with a single red neon backlight creating dramatic specular reflections and atmospheric energy mist."
+          class="bc__prod" onerror="this.style.display='none';" loading="lazy"/>
       </a>
 
       <!-- 04 Captain -->
-      <a href="brands.html#captain"
-         class="brand-card"
-         data-taste="captain"
-         aria-label="Captain — Every Drop, Pure Fun">
-        <div class="brand-card__strip bc-captain"></div>
-        <div class="brand-card__bg" style="background:linear-gradient(135deg,#EDFAF4,#fff);"></div>
-        <div class="brand-card__content">
-          <div class="brand-card__num">04</div>
-          <div class="brand-card__name">Captain</div>
-          <div class="brand-card__tagline">Every Drop, Pure Fun</div>
-          <span class="brand-card__cta">Explore <span class="brand-card__cta-arrow">→</span></span>
+      <a href="brands.html#captain" class="bc" data-taste="captain" aria-label="Captain — Every Drop, Pure Fun">
+        <div class="bc__strip bs-ca"></div>
+        <div class="bc__bg" style="background:linear-gradient(135deg,#EDFAF4,#fff)"></div>
+        <div class="bc__content">
+          <div class="bc__num">04</div>
+          <div class="bc__name">Captain</div>
+          <div class="bc__tag">Every Drop, Pure Fun</div>
+          <span class="bc__cta">Discover <span class="bc__cta-arrow">→</span></span>
         </div>
-        <img
-          src="https://gulf-union.com/images/bcaptain%20grp.png"
-          alt="Captain beverage bottles in a playful composition with bright tropical fruits (mangoes, oranges, pineapples) arranged around them, lit with soft diffused daylight to convey freshness, fun, and natural ingredients."
-          class="brand-card__product"
-          onerror="this.style.display='none';"
-          loading="lazy"
-        />
+        <img src="https://gulf-union.com/images/bcaptain%20grp.png"
+          alt="Captain beverage bottles surrounded by vibrant tropical fruit — mangoes, pineapples, and oranges — in a bright diffused daylight flat-lay composition evoking freshness and natural ingredients."
+          class="bc__prod" onerror="this.style.display='none';" loading="lazy"/>
       </a>
 
       <!-- 05 Splash -->
-      <a href="brands.html#splash"
-         class="brand-card"
-         data-taste="splash"
-         aria-label="Splash — Fizz Up Your World">
-        <div class="brand-card__strip bc-splash"></div>
-        <div class="brand-card__bg" style="background:linear-gradient(135deg,#EDF5FF,#fff);"></div>
-        <div class="brand-card__content">
-          <div class="brand-card__num">05</div>
-          <div class="brand-card__name">Splash</div>
-          <div class="brand-card__tagline">Fizz Up Your World</div>
-          <span class="brand-card__cta">Explore <span class="brand-card__cta-arrow">→</span></span>
+      <a href="brands.html#splash" class="bc" data-taste="splash" aria-label="Splash — Fizz Up Your World">
+        <div class="bc__strip bs-sp"></div>
+        <div class="bc__bg" style="background:linear-gradient(135deg,#EDF5FF,#fff)"></div>
+        <div class="bc__content">
+          <div class="bc__num">05</div>
+          <div class="bc__name">Splash</div>
+          <div class="bc__tag">Fizz Up Your World</div>
+          <span class="bc__cta">Discover <span class="bc__cta-arrow">→</span></span>
         </div>
-        <img
-          src="https://gulf-union.com/images/bsplash%20grp.png"
-          alt="Splash sparkling beverage cans bursting with a freeze-frame water splash effect, photographed against a pure white background with vibrant cyan-blue backlight creating a translucent water crown at the moment of impact."
-          class="brand-card__product"
-          onerror="this.style.display='none';"
-          loading="lazy"
-        />
+        <img src="https://gulf-union.com/images/bsplash%20grp.png"
+          alt="Splash sparkling beverage cans captured in a freeze-frame water splash against pure white, with cyan-blue backlight creating a translucent liquid crown effect at the moment of impact."
+          class="bc__prod" onerror="this.style.display='none';" loading="lazy"/>
       </a>
 
       <!-- 06 Ori -->
-      <a href="brands.html#ori"
-         class="brand-card"
-         data-taste="ori"
-         aria-label="Ori — Your Flavor, Your Vibe">
-        <div class="brand-card__strip bc-ori"></div>
-        <div class="brand-card__bg" style="background:linear-gradient(135deg,#F8F0FF,#fff);"></div>
-        <div class="brand-card__content">
-          <div class="brand-card__num">06</div>
-          <div class="brand-card__name">Ori</div>
-          <div class="brand-card__tagline">Your Flavor, Your Vibe</div>
-          <span class="brand-card__cta">Explore <span class="brand-card__cta-arrow">→</span></span>
+      <a href="brands.html#ori" class="bc" data-taste="ori" aria-label="Ori — Your Flavor, Your Vibe">
+        <div class="bc__strip bs-or"></div>
+        <div class="bc__bg" style="background:linear-gradient(135deg,#F8F0FF,#fff)"></div>
+        <div class="bc__content">
+          <div class="bc__num">06</div>
+          <div class="bc__name">Ori</div>
+          <div class="bc__tag">Your Flavor, Your Vibe</div>
+          <span class="bc__cta">Discover <span class="bc__cta-arrow">→</span></span>
         </div>
-        <img
-          src="https://gulf-union.com/images/bOri%20grp.png"
-          alt="Ori beverage bottles captured in a dynamic overhead flat-lay on a iridescent holographic surface, lit with diffused pastel rainbow light creating prismatic reflections that celebrate the brand's expressive, youthful identity."
-          class="brand-card__product"
-          onerror="this.style.display='none';"
-          loading="lazy"
-        />
+        <img src="https://gulf-union.com/images/bOri%20grp.png"
+          alt="Ori beverage bottles in an overhead flat-lay on an iridescent holographic surface, lit with diffused pastel rainbow light creating prismatic reflections."
+          class="bc__prod" onerror="this.style.display='none';" loading="lazy"/>
       </a>
 
       <!-- 07 Al Qobtan -->
-      <a href="brands.html#alqobtan"
-         class="brand-card"
-         data-taste="alqobtan"
-         aria-label="Al Qobtan — A Choice That Knows">
-        <div class="brand-card__strip bc-alqobtan"></div>
-        <div class="brand-card__bg" style="background:linear-gradient(135deg,#FBF6ED,#fff);"></div>
-        <div class="brand-card__content">
-          <div class="brand-card__num">07</div>
-          <div class="brand-card__name">Al Qobtan</div>
-          <div class="brand-card__tagline">A Choice That Knows</div>
-          <span class="brand-card__cta">Explore <span class="brand-card__cta-arrow">→</span></span>
+      <a href="brands.html#alqobtan" class="bc" data-taste="alqobtan" aria-label="Al Qobtan — A Choice That Knows">
+        <div class="bc__strip bs-aq"></div>
+        <div class="bc__bg" style="background:linear-gradient(135deg,#FBF6ED,#fff)"></div>
+        <div class="bc__content">
+          <div class="bc__num">07</div>
+          <div class="bc__name">Al Qobtan</div>
+          <div class="bc__tag">A Choice That Knows</div>
+          <span class="bc__cta">Discover <span class="bc__cta-arrow">→</span></span>
         </div>
-        <img
-          src="https://gulf-union.com/images/bal%20qobtan%20grp.png"
-          alt="Al Qobtan traditional beverage bottles on an aged wood surface with warm golden-hour light streaming from a low angle, casting long warm shadows and highlighting the richly textured labels to evoke deep regional heritage."
-          class="brand-card__product"
-          onerror="this.style.display='none';"
-          loading="lazy"
-        />
+        <img src="https://gulf-union.com/images/bal%20qobtan%20grp.png"
+          alt="Al Qobtan traditional beverage bottles on aged warm wood, golden-hour light streaming at a low angle casting long warm shadows and highlighting richly textured label."
+          class="bc__prod" onerror="this.style.display='none';" loading="lazy"/>
       </a>
-
     </div>
   </div>
 
-  <div style="text-align:center;margin-top:3rem;">
-    <a href="brands.html" class="btn-pill btn-pill--ghost">
-      View Full Portfolio <span class="arrow">→</span>
-    </a>
+  <div class="taste__foot">
+    <a href="brands.html" class="pill pill--ghost">View Full Portfolio <span class="arrow">→</span></a>
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════
-     EDITORIAL SPLIT — OUR STORY
-════════════════════════════════════ -->
-<section class="split-section" aria-labelledby="split-title">
-  <div class="split-section__ghost-num" aria-hidden="true">30</div>
-  <div class="split-section__inner">
-    <!-- Left: Text -->
+<!-- ═══════ DARK EDITORIAL SPLIT ═══════ -->
+<section class="split" aria-labelledby="split-h">
+  <span class="split__ghost" aria-hidden="true">30</span>
+  <div class="split__inner">
     <div>
-      <p class="split-section__pretitle gsap-hidden" id="split-pre">Our Heritage</p>
-      <h2 class="split-section__title gsap-hidden" id="split-title">
+      <p class="split__kicker" id="split-kicker">Our Heritage</p>
+      <h2 class="split__h" id="split-h">
         Thirty Years<br/>of <em>Crafted</em><br/>Excellence
       </h2>
-      <p class="split-section__body gsap-hidden" id="split-body">
-        Gulf Union Foods Co. was founded in 1995 in the Kingdom of Saudi Arabia with a bold vision: to redefine the regional beverage landscape through quality, innovation, and trust. From our first factory in 1999 to four state-of-the-art facilities today — every step has been guided by unwavering standards.
+      <p class="split__body" id="split-body">
+        Established in 1995 in the Kingdom of Saudi Arabia, GUFC was built on a simple, powerful belief: that the Gulf deserved world-class beverages — crafted locally, meeting the highest international standards. From our first factory in 1999 to four state-of-the-art facilities today, every step has been guided by an unwavering commitment to quality, innovation, and the communities we serve.
       </p>
-      <div class="split-section__stats gsap-hidden" id="split-stats">
-        <div class="split-stat">
-          <div class="split-stat__num"><span class="count-up" data-target="500">0</span>M<span>+</span></div>
-          <div class="split-stat__label">Liters Per Year</div>
+      <div class="split__grid" id="split-grid">
+        <div class="split__stat">
+          <div class="split__stat-num"><span class="count-up" data-target="500">0</span>M<span>+</span></div>
+          <div class="split__stat-lbl">Liters Per Year</div>
         </div>
-        <div class="split-stat">
-          <div class="split-stat__num"><span class="count-up" data-target="42">0</span><span>+</span></div>
-          <div class="split-stat__label">Export Countries</div>
+        <div class="split__stat">
+          <div class="split__stat-num"><span class="count-up" data-target="42">0</span><span>+</span></div>
+          <div class="split__stat-lbl">Export Countries</div>
         </div>
-        <div class="split-stat">
-          <div class="split-stat__num"><span class="count-up" data-target="4">0</span></div>
-          <div class="split-stat__label">World-Class Factories</div>
+        <div class="split__stat">
+          <div class="split__stat-num"><span class="count-up" data-target="4">0</span></div>
+          <div class="split__stat-lbl">World-Class Factories</div>
         </div>
-        <div class="split-stat">
-          <div class="split-stat__num"><span class="count-up" data-target="1300">0</span><span>+</span></div>
-          <div class="split-stat__label">Team Members</div>
+        <div class="split__stat">
+          <div class="split__stat-num"><span class="count-up" data-target="1300">0</span><span>+</span></div>
+          <div class="split__stat-lbl">Team Members</div>
         </div>
       </div>
-      <div style="margin-top:3rem;" class="gsap-hidden" id="split-cta">
-        <a href="about.html" class="btn-pill btn-pill--white" style="background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.25);">
-          Discover Our Story <span class="arrow">→</span>
-        </a>
-      </div>
+      <a href="about.html" id="split-cta"
+        class="pill"
+        style="background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);">
+        Discover Our Story <span class="arrow">→</span>
+      </a>
     </div>
 
-    <!-- Right: Image grid -->
-    <div class="split-section__img-grid gsap-hidden" id="split-imgs">
-      <div class="split-img-item split-img-item--tall">
-        <img
-          src="https://gulf-union.com/images/boriginal%20grp.png"
-          alt="Original® complete product family arranged in a tall editorial still-life, dramatically lit from a single overhead source with a dark gradient background fading to black at the bottom, creating a dramatic product silhouette."
-          loading="lazy"
-          onerror="this.src='original-hero.jpg';"
-        />
+    <!-- Right: product mosaic -->
+    <div class="split__mosaic" id="split-mosaic">
+      <div class="split__mitem split__mitem--tall">
+        <img src="https://gulf-union.com/images/boriginal%20grp.png"
+          alt="Original® full product family — dramatic tall editorial still-life lit from overhead, dark gradient background fading to black." loading="lazy" onerror="this.src='original-hero.jpg';"/>
       </div>
-      <div class="split-img-item">
-        <img
-          src="https://gulf-union.com/images/bcobra%20grp.png"
-          alt="COBRA energy drink can with ultra-close macro lens capturing the embossed logo details and metallic surface texture under a red gel spot-light."
-          loading="lazy"
-          onerror="this.style.display='none';"
-        />
+      <div class="split__mitem">
+        <img src="https://gulf-union.com/images/bcobra%20grp.png"
+          alt="COBRA energy can macro close-up under red gel spotlit." loading="lazy" onerror="this.style.display='none';"/>
       </div>
-      <div class="split-img-item">
-        <img
-          src="https://gulf-union.com/images/bklasse%20grp.png"
-          alt="KLASSE malt beverage bottle isolated on a cool-toned surface with a precise two-light studio setup, creating clean specular highlights that emphasize premium packaging quality."
-          loading="lazy"
-          onerror="this.style.display='none';"
-        />
+      <div class="split__mitem">
+        <img src="https://gulf-union.com/images/bklasse%20grp.png"
+          alt="KLASSE malt bottle under cool two-light studio setup." loading="lazy" onerror="this.style.display='none';"/>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════
-     GLOBAL FOOTPRINT
-════════════════════════════════════ -->
-<section class="globe-section" aria-labelledby="globe-title">
-  <div class="globe-inner">
-    <div class="globe-header">
-      <h2 class="globe-header__title gsap-hidden" id="globe-title">
-        Tasted<br/><span>Across</span><br/>42+ Nations
-      </h2>
-      <p class="globe-header__body gsap-hidden" id="globe-body">
-        From the Arabian Peninsula to five continents, GUFC products reach 42+ countries every single day. Our world-class logistics and partner network ensures consistent quality — wherever in the world you are.
+<!-- ═══════ GLOBAL FOOTPRINT ═══════ -->
+<section class="globe" aria-labelledby="globe-h">
+  <div class="globe__inner">
+    <div class="globe__head">
+      <div>
+        <span class="globe__kicker" id="globe-kicker">Global Footprint</span>
+        <h2 class="globe__h" id="globe-h">
+          Tasted<br/><span class="outline">Across</span><br/>42+ Nations
+        </h2>
+      </div>
+      <p class="globe__body" id="globe-body">
+        From the Arabian Peninsula to five continents — GUFC products cross international borders every single day. Our world-class logistics and partner network delivers consistent quality to 42+ markets worldwide, making us one of the region's most significant FMCG exporters.
       </p>
     </div>
 
-    <!-- Animated counter row -->
-    <div class="globe-numbers gsap-hidden" id="globe-nums">
-      <div class="globe-num-item">
-        <div class="globe-num-item__num">
-          <span class="count-up" data-target="42">0</span><span class="globe-num-item__suf">+</span>
-        </div>
-        <div class="globe-num-item__label">Countries</div>
+    <div class="globe__nums" id="globe-nums">
+      <div class="globe__num">
+        <div class="globe__num-val"><span class="count-up" data-target="42">0</span><span>+</span></div>
+        <div class="globe__num-lbl">Countries</div>
       </div>
-      <div class="globe-num-item">
-        <div class="globe-num-item__num">
-          <span class="count-up" data-target="5">0</span>
-        </div>
-        <div class="globe-num-item__label">Continents</div>
+      <div class="globe__num">
+        <div class="globe__num-val"><span class="count-up" data-target="5">0</span></div>
+        <div class="globe__num-lbl">Continents</div>
       </div>
-      <div class="globe-num-item">
-        <div class="globe-num-item__num">
-          <span class="count-up" data-target="4">0</span>
-        </div>
-        <div class="globe-num-item__label">Factories</div>
+      <div class="globe__num">
+        <div class="globe__num-val"><span class="count-up" data-target="4">0</span></div>
+        <div class="globe__num-lbl">Factories</div>
       </div>
-      <div class="globe-num-item">
-        <div class="globe-num-item__num">
-          <span class="count-up" data-target="30">0</span><span class="globe-num-item__suf">+</span>
-        </div>
-        <div class="globe-num-item__label">Yrs Exporting</div>
+      <div class="globe__num">
+        <div class="globe__num-val"><span class="count-up" data-target="30">0</span><span>+</span></div>
+        <div class="globe__num-lbl">Yrs Exporting</div>
       </div>
     </div>
 
-    <!-- SVG World Map -->
-    <div class="globe-map-wrap gsap-hidden" id="globe-map">
-      <svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;" aria-label="World map showing GUFC's 42+ export markets with animated pulse dots on key countries">
+    <div class="globe__map" id="globe-map">
+      <svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;" aria-label="World map — GUFC exports to 42+ countries. Pulsing blue dots mark Saudi Arabia headquarters and key Gulf markets. Gold dots mark export territories across Africa, Asia, Europe, and the Americas.">
         <rect width="1200" height="520" fill="#EEF3FB"/>
         <!-- Continents -->
         <path d="M60 75 L195 65 L235 105 L245 158 L216 215 L175 266 L138 278 L98 258 L68 218 L52 156Z" fill="#D6E2F5" stroke="#C2D3EE" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1599,167 +1032,94 @@
         <path d="M636 52 L916 42 L956 108 L940 202 L876 246 L786 252 L706 232 L660 197 L638 155Z" fill="#D6E2F5" stroke="#C2D3EE" stroke-width="1.5" stroke-linejoin="round"/>
         <path d="M836 226 L924 215 L965 256 L963 306 L916 321 L866 312 L834 275Z" fill="#D6E2F5" stroke="#C2D3EE" stroke-width="1.5"/>
         <path d="M860 350 L972 338 L1012 382 L1002 436 L946 456 L876 444 L844 412 L834 374Z" fill="#D6E2F5" stroke="#C2D3EE" stroke-width="1.5" stroke-linejoin="round"/>
-
-        <!-- HQ PULSE — Saudi Arabia -->
-        <circle cx="632" cy="193" r="7" fill="#1B4B9A" opacity="0.9"/>
-        <circle cx="632" cy="193" r="7" fill="#1B4B9A" opacity="0">
-          <animate attributeName="r" from="7" to="26" dur="2.4s" repeatCount="indefinite" begin="0s"/>
-          <animate attributeName="opacity" from="0.5" to="0" dur="2.4s" repeatCount="indefinite" begin="0s"/>
-        </circle>
-        <circle cx="632" cy="193" r="7" fill="#1B4B9A" opacity="0">
-          <animate attributeName="r" from="7" to="26" dur="2.4s" repeatCount="indefinite" begin="0.8s"/>
-          <animate attributeName="opacity" from="0.3" to="0" dur="2.4s" repeatCount="indefinite" begin="0.8s"/>
-        </circle>
-
-        <!-- GCC markets -->
-        <circle cx="658" cy="198" r="5" fill="#1B4B9A" opacity="0.85"/>
-        <circle cx="618" cy="183" r="4" fill="#1B4B9A" opacity="0.8"/>
-        <circle cx="643" cy="198" r="4" fill="#1B4B9A" opacity="0.8"/>
-        <circle cx="650" cy="191" r="3" fill="#1B4B9A" opacity="0.75"/>
-        <circle cx="668" cy="208" r="4" fill="#1B4B9A" opacity="0.8"/>
-
-        <!-- Middle East -->
-        <circle cx="597" cy="172" r="3" fill="#C9921A" opacity="0.8"/>
-        <circle cx="591" cy="166" r="3" fill="#C9921A" opacity="0.75"/>
-        <circle cx="558" cy="188" r="4" fill="#C9921A" opacity="0.75"/>
-        <circle cx="616" cy="168" r="4" fill="#C9921A" opacity="0.8"/>
-        <circle cx="641" cy="230" r="4" fill="#C9921A" opacity="0.7"/>
-
+        <!-- HQ pulse -->
+        <circle cx="632" cy="193" r="7" fill="#1B4B9A" opacity=".9"/>
+        <circle cx="632" cy="193" r="7" fill="#1B4B9A" opacity="0"><animate attributeName="r" from="7" to="28" dur="2.4s" repeatCount="indefinite" begin="0s"/><animate attributeName="opacity" from=".5" to="0" dur="2.4s" repeatCount="indefinite" begin="0s"/></circle>
+        <circle cx="632" cy="193" r="7" fill="#1B4B9A" opacity="0"><animate attributeName="r" from="7" to="28" dur="2.4s" repeatCount="indefinite" begin=".8s"/><animate attributeName="opacity" from=".3" to="0" dur="2.4s" repeatCount="indefinite" begin=".8s"/></circle>
+        <!-- GCC -->
+        <circle cx="658" cy="198" r="5" fill="#1B4B9A" opacity=".85"/><circle cx="618" cy="183" r="4" fill="#1B4B9A" opacity=".8"/>
+        <circle cx="643" cy="198" r="4" fill="#1B4B9A" opacity=".8"/><circle cx="650" cy="191" r="3" fill="#1B4B9A" opacity=".75"/>
+        <circle cx="668" cy="208" r="4" fill="#1B4B9A" opacity=".8"/>
+        <!-- Levant / Egypt -->
+        <circle cx="597" cy="172" r="3" fill="#C9921A" opacity=".8"/><circle cx="591" cy="166" r="3" fill="#C9921A" opacity=".75"/>
+        <circle cx="558" cy="188" r="4" fill="#C9921A" opacity=".75"/><circle cx="616" cy="168" r="4" fill="#C9921A" opacity=".8"/>
+        <circle cx="641" cy="230" r="4" fill="#C9921A" opacity=".7"/>
         <!-- Africa -->
-        <circle cx="488" cy="163" r="4" fill="#C9921A" opacity="0.65"/>
-        <circle cx="518" cy="153" r="3" fill="#C9921A" opacity="0.6"/>
-        <circle cx="508" cy="293" r="4" fill="#C9921A" opacity="0.6"/>
-        <circle cx="486" cy="283" r="3" fill="#C9921A" opacity="0.55"/>
-        <circle cx="566" cy="316" r="4" fill="#C9921A" opacity="0.6"/>
-        <circle cx="578" cy="293" r="3" fill="#C9921A" opacity="0.55"/>
-        <circle cx="558" cy="258" r="3" fill="#C9921A" opacity="0.6"/>
-        <circle cx="533" cy="413" r="4" fill="#C9921A" opacity="0.6"/>
-
-        <!-- Asia -->
-        <circle cx="694" cy="170" r="4" fill="#C9921A" opacity="0.6"/>
-        <circle cx="728" cy="198" r="4" fill="#C9921A" opacity="0.6"/>
-        <circle cx="860" cy="266" r="3" fill="#C9921A" opacity="0.55"/>
-        <circle cx="872" cy="278" r="3" fill="#C9921A" opacity="0.55"/>
-
+        <circle cx="488" cy="163" r="4" fill="#C9921A" opacity=".65"/><circle cx="518" cy="153" r="3" fill="#C9921A" opacity=".6"/>
+        <circle cx="508" cy="293" r="4" fill="#C9921A" opacity=".6"/><circle cx="486" cy="283" r="3" fill="#C9921A" opacity=".55"/>
+        <circle cx="566" cy="316" r="4" fill="#C9921A" opacity=".6"/><circle cx="578" cy="293" r="3" fill="#C9921A" opacity=".55"/>
+        <circle cx="558" cy="258" r="3" fill="#C9921A" opacity=".6"/><circle cx="533" cy="413" r="4" fill="#C9921A" opacity=".6"/>
+        <!-- Asia / Pacific -->
+        <circle cx="694" cy="170" r="4" fill="#C9921A" opacity=".6"/><circle cx="728" cy="198" r="4" fill="#C9921A" opacity=".6"/>
+        <circle cx="860" cy="266" r="3" fill="#C9921A" opacity=".55"/><circle cx="872" cy="278" r="3" fill="#C9921A" opacity=".55"/>
+        <circle cx="928" cy="393" r="4" fill="#C9921A" opacity=".45"/>
         <!-- Europe -->
-        <circle cx="494" cy="98" r="3" fill="#C9921A" opacity="0.5"/>
-        <circle cx="520" cy="100" r="3" fill="#C9921A" opacity="0.5"/>
-        <circle cx="506" cy="108" r="3" fill="#C9921A" opacity="0.5"/>
-
+        <circle cx="494" cy="98" r="3" fill="#C9921A" opacity=".5"/><circle cx="520" cy="100" r="3" fill="#C9921A" opacity=".5"/>
+        <circle cx="506" cy="108" r="3" fill="#C9921A" opacity=".5"/>
         <!-- Americas -->
-        <circle cx="128" cy="166" r="4" fill="#C9921A" opacity="0.45"/>
-        <circle cx="118" cy="136" r="3" fill="#C9921A" opacity="0.4"/>
-
-        <!-- Australia -->
-        <circle cx="928" cy="393" r="4" fill="#C9921A" opacity="0.45"/>
-
+        <circle cx="128" cy="166" r="4" fill="#C9921A" opacity=".45"/>
         <!-- Legend -->
         <circle cx="40" cy="476" r="5" fill="#1B4B9A"/>
-        <text x="52" y="480" font-size="11" fill="#6B6B6B" font-family="Inter,sans-serif" font-weight="500">Headquarters &amp; Key Markets</text>
-        <circle cx="240" cy="476" r="5" fill="#C9921A"/>
-        <text x="252" y="480" font-size="11" fill="#6B6B6B" font-family="Inter,sans-serif" font-weight="500">Export Markets (42+ Countries)</text>
+        <text x="52" y="480" font-size="11" fill="#6B6B6B" font-family="Inter,sans-serif" font-weight="500">KSA Headquarters &amp; Core Markets</text>
+        <circle cx="260" cy="476" r="5" fill="#C9921A"/>
+        <text x="272" y="480" font-size="11" fill="#6B6B6B" font-family="Inter,sans-serif" font-weight="500">Export Markets (42+ Countries)</text>
       </svg>
     </div>
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════
-     CERTIFICATIONS
-════════════════════════════════════ -->
-<section class="certs-section" aria-labelledby="certs-title">
-  <div class="certs-inner">
-    <p class="certs-pretitle gsap-hidden" id="certs-pre">Quality Assurance</p>
-    <h2 class="certs-title gsap-hidden" id="certs-title">
+<!-- ═══════ CERTIFICATIONS ═══════ -->
+<section class="certs" aria-labelledby="certs-h">
+  <div class="certs__inner">
+    <span class="certs__kicker" id="certs-kicker">Quality Assurance</span>
+    <h2 class="certs__h" id="certs-h">
       Certified to the<br/><em>Highest Standards</em>
     </h2>
-    <div class="certs-divider gsap-hidden" id="certs-div"></div>
-
-    <div class="certs-grid">
-      <div class="cert-tile gsap-hidden" id="cert-1">
-        <img src="https://gulf-union.com/images/cert5.png" alt="ISO 22000 Food Safety Management System certification seal" loading="lazy"/>
-        <div class="cert-tile__name">ISO 22000</div>
-        <div class="cert-tile__desc">Food Safety Management System</div>
-      </div>
-      <div class="cert-tile gsap-hidden" id="cert-2">
-        <img src="https://gulf-union.com/images/cert8.png" alt="ISO 9001 Quality Management System certification seal" loading="lazy"/>
-        <div class="cert-tile__name">ISO 9001</div>
-        <div class="cert-tile__desc">Quality Management System</div>
-      </div>
-      <div class="cert-tile gsap-hidden" id="cert-3">
-        <img src="https://gulf-union.com/images/cert6.png" alt="ISO 45001 Occupational Health and Safety certification seal" loading="lazy"/>
-        <div class="cert-tile__name">ISO 45001</div>
-        <div class="cert-tile__desc">Occupational Health &amp; Safety</div>
-      </div>
-      <div class="cert-tile gsap-hidden" id="cert-4">
-        <img src="https://gulf-union.com/images/cert4.png" alt="ISO 14001 Environmental Management certification seal" loading="lazy"/>
-        <div class="cert-tile__name">ISO 14001</div>
-        <div class="cert-tile__desc">Environmental Management</div>
-      </div>
-      <div class="cert-tile gsap-hidden" id="cert-5">
-        <img src="https://gulf-union.com/images/cert3.png" alt="Halal certification seal confirming all products meet Islamic dietary requirements" loading="lazy"/>
-        <div class="cert-tile__name">Halal</div>
-        <div class="cert-tile__desc">Halal Certification</div>
-      </div>
-      <div class="cert-tile gsap-hidden" id="cert-6">
-        <img src="https://gulf-union.com/images/cert2.png" alt="USFDA US Food and Drug Administration registration seal" loading="lazy"/>
-        <div class="cert-tile__name">USFDA</div>
-        <div class="cert-tile__desc">US Food &amp; Drug Administration</div>
-      </div>
-      <div class="cert-tile gsap-hidden" id="cert-7">
-        <img src="https://gulf-union.com/images/cert1.png" alt="FSSC 22000 Food Safety System Certification seal" loading="lazy"/>
-        <div class="cert-tile__name">FSSC 22000</div>
-        <div class="cert-tile__desc">Food Safety System Cert.</div>
-      </div>
-      <div class="cert-tile gsap-hidden" id="cert-8">
-        <img src="https://gulf-union.com/images/cert9.png" alt="HACCP Hazard Analysis and Critical Control Points certification seal" loading="lazy"/>
-        <div class="cert-tile__name">HACCP</div>
-        <div class="cert-tile__desc">Hazard Analysis Critical Control</div>
-      </div>
+    <div class="certs__div"></div>
+    <div class="certs__grid">
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert5.png" alt="ISO 22000" loading="lazy"/><div class="cert-tile__name">ISO 22000</div><div class="cert-tile__desc">Food Safety Management System</div></div>
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert8.png" alt="ISO 9001" loading="lazy"/><div class="cert-tile__name">ISO 9001</div><div class="cert-tile__desc">Quality Management System</div></div>
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert6.png" alt="ISO 45001" loading="lazy"/><div class="cert-tile__name">ISO 45001</div><div class="cert-tile__desc">Occupational Health &amp; Safety</div></div>
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert4.png" alt="ISO 14001" loading="lazy"/><div class="cert-tile__name">ISO 14001</div><div class="cert-tile__desc">Environmental Management</div></div>
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert3.png" alt="Halal" loading="lazy"/><div class="cert-tile__name">Halal</div><div class="cert-tile__desc">Halal Certification</div></div>
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert2.png" alt="USFDA" loading="lazy"/><div class="cert-tile__name">USFDA</div><div class="cert-tile__desc">US Food &amp; Drug Administration</div></div>
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert1.png" alt="FSSC 22000" loading="lazy"/><div class="cert-tile__name">FSSC 22000</div><div class="cert-tile__desc">Food Safety System Certification</div></div>
+      <div class="cert-tile"><img src="https://gulf-union.com/images/cert9.png" alt="HACCP" loading="lazy"/><div class="cert-tile__name">HACCP</div><div class="cert-tile__desc">Hazard Analysis Critical Control</div></div>
     </div>
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════
-     FULL BLEED CTA
-════════════════════════════════════ -->
-<section class="cta-section" aria-labelledby="cta-title">
-  <div class="cta-ghost" aria-hidden="true">GUFC</div>
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-wrap" aria-labelledby="cta-h">
+  <span class="cta-ghost" aria-hidden="true">GUFC</span>
   <div class="cta-inner">
-    <p class="cta-pretitle gsap-hidden" id="cta-pre">Become a Partner</p>
-    <h2 class="cta-title gsap-hidden" id="cta-title">
-      Partner With the<br/><em>Gulf's Leading</em><br/>FMCG Brand
+    <p class="cta-kicker" id="cta-kicker">Become a Partner</p>
+    <h2 class="cta-h" id="cta-h">
+      Partner With<br/>the Gulf's<br/><em>Leading FMCG</em>
     </h2>
-    <p class="cta-sub gsap-hidden" id="cta-sub">
-      Whether you're a distributor, retailer, or investor — we'd love to build something extraordinary together. Our trade team is ready.
+    <p class="cta-sub" id="cta-sub">
+      Whether you're a distributor, retailer, or investor — our trade team is ready to build something extraordinary together.
     </p>
-    <div class="cta-actions gsap-hidden" id="cta-actions">
-      <a href="contact.html" class="btn-pill btn-pill--white btn-pill--solid" style="background:#fff;color:var(--blue);">
-        Contact Our Trade Team <span class="arrow">→</span>
-      </a>
-      <a href="brands.html" class="btn-pill btn-pill--glass">
-        Explore The Portfolio
-      </a>
+    <div class="cta-acts" id="cta-acts">
+      <a href="contact.html" class="pill pill--white">Contact Our Trade Team <span class="arrow">→</span></a>
+      <a href="brands.html" class="pill pill--glass">Explore The Portfolio</a>
     </div>
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════
-     FOOTER
-════════════════════════════════════ -->
-<footer class="footer" role="contentinfo">
-  <div class="footer__inner">
-    <div class="footer__top">
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="foot" role="contentinfo">
+  <div class="foot__inner">
+    <div class="foot__top">
       <div>
-        <a href="index.html" class="footer__logo" aria-label="Gulf Union Foods Co.">
-          <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co. logo" />
+        <a href="index.html" class="foot__logo" aria-label="Gulf Union Foods Co.">
+          <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." />
         </a>
-        <p class="footer__desc">
-          Crafting moments since 1995. A leading FMCG powerhouse in the Kingdom of Saudi Arabia — 500M+ liters annually, 42+ markets, 7 iconic brands.
-        </p>
-        <div class="footer__social">
+        <p class="foot__desc">Crafting moments since 1995. A leading FMCG powerhouse — 500M+ liters annually, 42+ markets, 7 iconic brands, all from the Kingdom of Saudi Arabia.</p>
+        <div class="foot__soc">
           <a href="https://www.linkedin.com/company/gulf-union-foods-company/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
           <a href="https://www.facebook.com/OriginalJuiceAR/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
           <a href="https://www.instagram.com/originaljuicear/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
@@ -1767,20 +1127,18 @@
           <a href="https://www.youtube.com/@OriginalJuiceAR" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
         </div>
       </div>
-
       <div>
-        <div class="footer__col-title">Discover</div>
-        <ul class="footer__links">
+        <div class="foot__col-h">Discover</div>
+        <ul class="foot__links">
           <li><a href="about.html">Our Heritage</a></li>
           <li><a href="about.html#responsibility">Responsibility</a></li>
           <li><a href="contact.html">Newsroom</a></li>
           <li><a href="contact.html">Careers</a></li>
         </ul>
       </div>
-
       <div>
-        <div class="footer__col-title">The Portfolio</div>
-        <ul class="footer__links">
+        <div class="foot__col-h">The Portfolio</div>
+        <ul class="foot__links">
           <li><a href="original.html">Original®</a></li>
           <li><a href="brands.html#klasse">KLASSE</a></li>
           <li><a href="brands.html#cobra">COBRA</a></li>
@@ -1790,25 +1148,22 @@
           <li><a href="brands.html#alqobtan">Al Qobtan</a></li>
         </ul>
       </div>
-
       <div>
-        <div class="footer__col-title">Connect</div>
-        <ul class="footer__links">
+        <div class="foot__col-h">Connect</div>
+        <ul class="foot__links">
           <li><a href="tel:+966920022205">+966 9200 22205</a></li>
           <li><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></li>
           <li><a href="contact.html">Send a Message</a></li>
           <li><a href="contact.html">Partner With Us</a></li>
         </ul>
-        <div style="margin-top:1.5rem;font-size:0.72rem;color:#bbb;line-height:1.8;border:1px solid var(--border);border-radius:10px;padding:0.75rem 1rem;">
-          🇸🇦 Kingdom of Saudi Arabia<br/>
-          ISO 22000 · Halal · USFDA
+        <div style="margin-top:1.5rem;font-size:.72rem;color:#bbb;line-height:1.8;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem">
+          🇸🇦 Kingdom of Saudi Arabia<br/>ISO 22000 · Halal · USFDA Approved
         </div>
       </div>
     </div>
-
-    <div class="footer__bottom">
-      <div class="footer__copy">© 2026 Gulf Union Foods Co. All rights reserved.</div>
-      <div class="footer__legal">
+    <div class="foot__bottom">
+      <div class="foot__copy">© 2026 Gulf Union Foods Co. All rights reserved.</div>
+      <div class="foot__legal">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
       </div>
@@ -1817,250 +1172,224 @@
 </footer>
 
 
-<!-- ════════════════════════════════════
-     SCRIPTS
-════════════════════════════════════ -->
+<!-- ═══════ SCRIPTS ═══════ -->
 <script>
-/* ── GSAP + ScrollTrigger registration ── */
-gsap.registerPlugin(ScrollTrigger);
+/* Wait for GSAP to load */
+window.addEventListener('load', function() {
+  if (typeof gsap === 'undefined') { initFallback(); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  init();
+});
 
-/* ════════ NAV ════════ */
-const gn = document.getElementById('gn');
+/* ── LOADER ─────────────────────────────────── */
+function hideLoader() {
+  setTimeout(() => document.getElementById('loader').classList.add('done'), 2000);
+}
+hideLoader();
+
+/* ── SCROLL PROGRESS ─────────────────────────── */
 window.addEventListener('scroll', () => {
-  gn.classList.toggle('scrolled', window.scrollY > 30);
+  const prog = document.getElementById('progress');
+  if (!prog) return;
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  prog.style.transform = 'scaleX(' + Math.min(pct, 1) + ')';
 }, { passive: true });
 
-/* Mobile nav */
+/* ── NAV ─────────────────────────────────────── */
+const gnEl = document.getElementById('gn');
+window.addEventListener('scroll', () => { gnEl && gnEl.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+
 const gnToggle = document.getElementById('gnToggle');
 const gnMobile = document.getElementById('gnMobile');
-gnToggle.addEventListener('click', () => {
+gnToggle && gnToggle.addEventListener('click', () => {
   const open = gnToggle.classList.toggle('open');
   gnMobile.classList.toggle('open', open);
   gnToggle.setAttribute('aria-expanded', open);
   gnMobile.setAttribute('aria-hidden', !open);
   document.body.style.overflow = open ? 'hidden' : '';
 });
-gnMobile.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    gnToggle.classList.remove('open');
-    gnMobile.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-});
+gnMobile && gnMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  gnToggle.classList.remove('open');
+  gnMobile.classList.remove('open');
+  document.body.style.overflow = '';
+}));
 document.addEventListener('click', e => {
-  if (!gnToggle.contains(e.target) && !gnMobile.contains(e.target) && gnMobile.classList.contains('open')) {
+  if (gnToggle && gnMobile && !gnToggle.contains(e.target) && !gnMobile.contains(e.target) && gnMobile.classList.contains('open')) {
     gnToggle.classList.remove('open');
     gnMobile.classList.remove('open');
     document.body.style.overflow = '';
   }
 });
 
-/* ════════ HERO ENTRANCE ANIMATIONS (Framer-Motion equivalent) ════════ */
-const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+/* ── MAIN GSAP INIT ───────────────────────────── */
+function init() {
+  /* ─── HERO entrance — CINEMATIC SEQUENCE ─── */
+  const heroTl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
-/* 1. Eyebrow fades in */
-heroTl.from('#hero-eyebrow', { opacity: 0, y: 20, duration: 0.8 }, 0.2);
+  /* 1. Eyebrow fades + rises */
+  heroTl.to('#h-eyebrow', { opacity:1, y:0, duration:.8 }, .2);
 
-/* 2. Title lines — liquid-style stagger reveal */
-heroTl.from('.hero__title .line-inner', {
-  y: '110%',           /* slides up from below (line-clip effect) */
-  opacity: 0,
-  duration: 1.1,
-  stagger: 0.12,
-  ease: 'expo.out'
-}, 0.4);
+  /* 2. Words rise from behind line mask (Framer Motion-style) */
+  heroTl.to('.title-word', {
+    y:'0%', duration:1.2, stagger:.1, ease:'expo.out'
+  }, .5);
 
-/* 3. Subtitle and CTA */
-heroTl.from('#hero-sub',     { opacity: 0, y: 28, duration: 0.8 }, 1.0);
-heroTl.from('#hero-actions', { opacity: 0, y: 22, duration: 0.7 }, 1.2);
-heroTl.from('#hero-trust',   { opacity: 0, y: 16, duration: 0.6 }, 1.4);
+  /* 3. Products float in from below with scale */
+  heroTl.to('#prod-main', {
+    opacity:1, y:0, scale:1, duration:1.3, ease:'expo.out'
+  }, .6);
+  heroTl.to('#prod-left', {
+    opacity:.88, duration:1.0, ease:'expo.out'
+  }, .85);
+  heroTl.to('#prod-right', {
+    opacity:.82, duration:1.0, ease:'expo.out'
+  }, .95);
+  heroTl.to('#prod-accent', {
+    opacity:.8, duration:.9, ease:'expo.out'
+  }, 1.05);
 
-/* 4. Product image — smooth floating entrance (Framer Motion floatIn variant) */
-heroTl.from('#hero-product', {
-  opacity: 0,
-  y: 60,
-  scale: 0.92,
-  rotate: 3,
-  duration: 1.4,
-  ease: 'expo.out'
-}, 0.5);
+  /* 4. Copy fades */
+  heroTl.to('#h-sub',   { opacity:1, y:0, duration:.8 }, 1.1);
+  heroTl.to('#h-acts',  { opacity:1, y:0, duration:.7 }, 1.3);
+  heroTl.to('#h-trust', { opacity:1, y:0, duration:.6 }, 1.5);
 
-/* Stat cards */
-heroTl.from('.hero__stat-card--a', { opacity: 0, x: -30, duration: 0.8, ease: 'power3.out' }, 1.2);
-heroTl.from('.hero__stat-card--b', { opacity: 0, x:  30, duration: 0.8, ease: 'power3.out' }, 1.4);
-heroTl.from('.hero__prod-thumb--1', { opacity: 0, x: -20, duration: 0.8 }, 1.3);
-heroTl.from('.hero__prod-thumb--2', { opacity: 0, x:  20, duration: 0.8 }, 1.5);
+  /* 5. Stat cards */
+  heroTl.to('#pstat-a', { opacity:1, duration:.7 }, 1.3);
+  heroTl.to('#pstat-b', { opacity:1, duration:.7 }, 1.55);
 
-/* ════════ SCROLL REVEAL — GSAP ScrollTrigger ════════ */
-/* Generic utility: reveal elements as they enter viewport */
-function reveal(selector, vars = {}, triggerEl) {
-  gsap.from(selector, {
-    scrollTrigger: {
-      trigger: triggerEl || selector,
-      start: 'top 82%',
-      toggleActions: 'play none none none'
-    },
-    opacity: 0,
-    y: 48,
-    duration: 0.9,
-    ease: 'power3.out',
-    ...vars
+  /* ─── GENERIC SCROLL REVEAL util ─── */
+  const sr = (sel, vars={}, trigger) => gsap.from(sel, {
+    scrollTrigger:{ trigger:trigger||sel, start:'top 82%', toggleActions:'play none none none' },
+    opacity:0, y:44, duration:.9, ease:'power3.out', ...vars
+  });
+  const srLeft  = (sel, trigger) => gsap.from(sel, {
+    scrollTrigger:{ trigger:trigger||sel, start:'top 82%', toggleActions:'play none none none' },
+    opacity:0, x:-50, duration:1, ease:'power3.out'
+  });
+  const srRight = (sel, trigger) => gsap.from(sel, {
+    scrollTrigger:{ trigger:trigger||sel, start:'top 82%', toggleActions:'play none none none' },
+    opacity:0, x:50, duration:1, ease:'power3.out'
+  });
+
+  /* ─── TASTE section ─── */
+  gsap.from('#taste-kicker', { scrollTrigger:{ trigger:'#taste', start:'top 80%' }, opacity:0, y:20, duration:.7 });
+  gsap.from('.taste__h', {
+    scrollTrigger:{ trigger:'#taste', start:'top 78%' },
+    y:'80%', opacity:0, duration:1.2, ease:'expo.out'
+  });
+  sr('#taste-sub', { delay:.1 }, '#taste');
+  gsap.from('.bc', {
+    scrollTrigger:{ trigger:'#carousel', start:'top 88%' },
+    opacity:0, y:60, duration:.75, stagger:.1, ease:'power3.out'
+  });
+
+  /* ─── SPLIT (dark) ─── */
+  srLeft('#split-kicker', '#split-kicker');
+  gsap.from('#split-h', {
+    scrollTrigger:{ trigger:'#split-h', start:'top 80%' },
+    opacity:0, y:60, duration:1.1, ease:'expo.out'
+  });
+  sr('#split-body', { delay:.1 }, '#split-h');
+  sr('#split-grid', { delay:.2 }, '#split-h');
+  sr('#split-cta',  { delay:.3 }, '#split-h');
+  srRight('#split-mosaic', '#split-mosaic');
+
+  /* ─── GLOBE ─── */
+  srLeft('#globe-h', '#globe-h');
+  srRight('#globe-body', '#globe-body');
+  sr('#globe-nums', { delay:.05 }, '#globe-nums');
+  sr('#globe-map', { delay:.1 }, '#globe-map');
+
+  /* ─── CERTS ─── */
+  sr('#certs-kicker', {}, '#certs-kicker');
+  sr('#certs-h', { delay:.05 }, '#certs-kicker');
+  gsap.from('.cert-tile', {
+    scrollTrigger:{ trigger:'.certs__grid', start:'top 84%' },
+    opacity:0, y:32, scale:.95, duration:.6, stagger:.065, ease:'power3.out'
+  });
+
+  /* ─── CTA ─── */
+  sr('#cta-kicker', {}, '#cta-kicker');
+  sr('#cta-h', { delay:.06 }, '#cta-kicker');
+  sr('#cta-sub', { delay:.12 }, '#cta-kicker');
+  sr('#cta-acts', { delay:.18 }, '#cta-kicker');
+
+  /* ─── Hero parallax (subtle) ─── */
+  gsap.to('#pcluster', {
+    scrollTrigger:{ trigger:'#hero', scrub:1.5 },
+    y: 60, ease:'none'
+  });
+  gsap.to('.hero__dots', {
+    scrollTrigger:{ trigger:'#hero', scrub:2 },
+    y: 30, ease:'none'
   });
 }
 
-function revealLeft(selector, triggerEl) {
-  gsap.from(selector, {
-    scrollTrigger: { trigger: triggerEl || selector, start: 'top 82%', toggleActions: 'play none none none' },
-    opacity: 0, x: -50, duration: 1, ease: 'power3.out'
-  });
+/* ── FALLBACK (no GSAP) ──────────────────────── */
+function initFallback() {
+  document.getElementById('h-eyebrow').style.opacity = '1';
+  document.getElementById('h-eyebrow').style.transform = 'none';
+  document.querySelectorAll('.title-word').forEach(w => w.style.transform = 'none');
+  ['h-sub','h-acts','h-trust','pstat-a','pstat-b','prod-main','prod-left','prod-right','prod-accent']
+    .forEach(id => { const el = document.getElementById(id); if(el){el.style.opacity='1';el.style.transform='none';}});
 }
 
-function revealRight(selector, triggerEl) {
-  gsap.from(selector, {
-    scrollTrigger: { trigger: triggerEl || selector, start: 'top 82%', toggleActions: 'play none none none' },
-    opacity: 0, x: 50, duration: 1, ease: 'power3.out'
-  });
-}
-
-/* Taste section — liquid-style headline */
-gsap.from('#taste-t1', {
-  scrollTrigger: { trigger: '#taste', start: 'top 75%' },
-  y: '100%', opacity: 0, duration: 1.1, ease: 'expo.out'
-});
-gsap.from('#taste-t2', {
-  scrollTrigger: { trigger: '#taste', start: 'top 75%' },
-  y: '100%', opacity: 0, duration: 1.1, ease: 'expo.out', delay: 0.14
-});
-reveal('#taste-sub', { delay: 0.2 }, '#taste');
-
-/* Brand cards stagger */
-gsap.from('.brand-card', {
-  scrollTrigger: { trigger: '#brandCarousel', start: 'top 85%' },
-  opacity: 0,
-  y: 60,
-  duration: 0.8,
-  stagger: 0.1,
-  ease: 'power3.out'
-});
-
-/* Split section */
-reveal('#split-pre', {}, '#split-pre');
-gsap.from('#split-title', {
-  scrollTrigger: { trigger: '#split-title', start: 'top 80%' },
-  opacity: 0, y: 60, duration: 1.1, ease: 'expo.out'
-});
-reveal('#split-body',  { delay: 0.15 }, '#split-title');
-reveal('#split-stats', { delay: 0.2  }, '#split-title');
-reveal('#split-cta',   { delay: 0.3  }, '#split-title');
-revealRight('#split-imgs', '#split-imgs');
-
-/* Globe section */
-revealLeft('#globe-title', '#globe-title');
-revealRight('#globe-body', '#globe-body');
-reveal('#globe-nums', { delay: 0.1 }, '#globe-nums');
-reveal('#globe-map',  { delay: 0.2 }, '#globe-map');
-
-/* Certs */
-reveal('#certs-pre', {}, '#certs-pre');
-reveal('#certs-title', { delay: 0.05 }, '#certs-pre');
-reveal('#certs-div',   { delay: 0.1  }, '#certs-pre');
-gsap.from([
-  '#cert-1','#cert-2','#cert-3','#cert-4',
-  '#cert-5','#cert-6','#cert-7','#cert-8'
-], {
-  scrollTrigger: { trigger: '.certs-grid', start: 'top 82%' },
-  opacity: 0, y: 36, scale: 0.94,
-  duration: 0.6,
-  stagger: 0.07,
-  ease: 'power3.out'
-});
-
-/* CTA section */
-reveal('#cta-pre',     {}, '#cta-pre');
-reveal('#cta-title',   { delay: 0.08 }, '#cta-pre');
-reveal('#cta-sub',     { delay: 0.16 }, '#cta-pre');
-reveal('#cta-actions', { delay: 0.24 }, '#cta-pre');
-
-/* ════════ COUNT-UP ════════ */
+/* ── COUNT-UP ────────────────────────────────── */
 function countUp(el) {
   const target = parseInt(el.dataset.target, 10);
-  const dur    = 2000;
-  const ease   = t => 1 - Math.pow(1 - t, 3);
-  const t0     = performance.now();
-  const step   = now => {
-    const p = Math.min((now - t0) / dur, 1);
+  const t0 = performance.now();
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  (function step(now) {
+    const p = Math.min((now - t0) / 2200, 1);
     el.textContent = Math.round(ease(p) * target).toLocaleString();
     if (p < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
+  })(t0);
 }
+const cuIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ countUp(e.target); cuIO.unobserve(e.target); } });
+}, { threshold:.5 });
+document.querySelectorAll('.count-up').forEach(el => cuIO.observe(el));
 
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); io.unobserve(e.target); } });
-}, { threshold: 0.5 });
-document.querySelectorAll('.count-up').forEach(el => io.observe(el));
-
-/* ════════ BRAND CAROUSEL — COLOR TRANSITION ════════ */
+/* ── BRAND CAROUSEL — colour transition ─────── */
 const tasteSection = document.getElementById('taste');
-const brandCards   = document.querySelectorAll('.brand-card[data-taste]');
-const classByBrand = {
-  original: 'taste-bg-original',
-  klasse:   'taste-bg-klasse',
-  cobra:    'taste-bg-cobra',
-  captain:  'taste-bg-captain',
-  splash:   'taste-bg-splash',
-  ori:      'taste-bg-ori',
-  alqobtan: 'taste-bg-alqobtan'
+const tasteMap = {
+  original:'bg-original', klasse:'bg-klasse', cobra:'bg-cobra',
+  captain:'bg-captain', splash:'bg-splash', ori:'bg-ori', alqobtan:'bg-alqobtan'
 };
-const allBgClasses = Object.values(classByBrand);
-
-brandCards.forEach(card => {
+const allBg = Object.values(tasteMap);
+document.querySelectorAll('.bc[data-taste]').forEach(card => {
   card.addEventListener('mouseenter', () => {
-    allBgClasses.forEach(c => tasteSection.classList.remove(c));
-    tasteSection.classList.add(classByBrand[card.dataset.taste]);
+    allBg.forEach(c => tasteSection.classList.remove(c));
+    tasteSection.classList.add(tasteMap[card.dataset.taste]);
   });
-  card.addEventListener('mouseleave', () => {
-    allBgClasses.forEach(c => tasteSection.classList.remove(c));
-  });
+  card.addEventListener('mouseleave', () => allBg.forEach(c => tasteSection.classList.remove(c)));
 });
 
-/* ════════ DRAG-TO-SCROLL CAROUSEL ════════ */
-const carousel = document.getElementById('brandCarousel');
-let isDown = false, startX = 0, scrollLeft = 0;
-
-carousel.addEventListener('mousedown', e => {
-  isDown = true;
-  carousel.classList.add('grabbing');
-  startX = e.pageX - carousel.offsetLeft;
-  scrollLeft = carousel.scrollLeft;
+/* ── DRAG-TO-SCROLL CAROUSEL ─────────────────── */
+const outerEl = document.getElementById('carousel');
+let isDown=false, startX=0, scrollLeft=0;
+outerEl.addEventListener('mousedown', e => {
+  isDown=true; outerEl.classList.add('grab');
+  startX=e.pageX-outerEl.offsetLeft; scrollLeft=outerEl.scrollLeft;
 });
-carousel.addEventListener('mouseleave', () => { isDown = false; carousel.classList.remove('grabbing'); });
-carousel.addEventListener('mouseup',    () => { isDown = false; carousel.classList.remove('grabbing'); });
-carousel.addEventListener('mousemove',  e => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - carousel.offsetLeft;
-  carousel.scrollLeft = scrollLeft - (x - startX) * 1.5;
+['mouseleave','mouseup'].forEach(ev => outerEl.addEventListener(ev, () => { isDown=false; outerEl.classList.remove('grab'); }));
+outerEl.addEventListener('mousemove', e => {
+  if(!isDown) return; e.preventDefault();
+  outerEl.scrollLeft = scrollLeft - (e.pageX - outerEl.offsetLeft - startX)*1.5;
 });
+let tx=0;
+outerEl.addEventListener('touchstart', e => { tx=e.touches[0].pageX; }, { passive:true });
+outerEl.addEventListener('touchmove', e => {
+  outerEl.scrollLeft += (tx - e.touches[0].pageX)*.5; tx=e.touches[0].pageX;
+}, { passive:true });
 
-/* Touch support */
-let touchStartX = 0;
-carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].pageX; }, { passive: true });
-carousel.addEventListener('touchmove',  e => {
-  const diff = touchStartX - e.touches[0].pageX;
-  carousel.scrollLeft += diff * 0.5;
-  touchStartX = e.touches[0].pageX;
-}, { passive: true });
-
-/* ════════ SMOOTH ANCHOR SCROLL ════════ */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (!t) return;
-    e.preventDefault();
-    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
+/* ── SMOOTH ANCHOR SCROLL ────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if(!t) return; e.preventDefault();
+  t.scrollIntoView({ behavior:'smooth', block:'start' });
+}));
 </script>
+<script src="premium.js?v=2"></script>
 </body>
 </html>

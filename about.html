@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Heritage — Gulf Union Foods Co.</title>
+  <title>Who We Are — Gulf Union Foods Co.</title>
   <meta name="description" content="Discover the story of Gulf Union Foods Co. — founded in 1995, built on trust, quality, and a passion for great beverages. Our mission, vision, values, factories, and certifications." />
   <link rel="icon" href="https://gulf-union.com/images/fav.ico" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="premium.css?v=2" />
 </head>
 <body>
 
@@ -17,9 +18,9 @@
       <img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." />
     </a>
     <ul class="nav__links">
-      <li><a href="about.html" class="nav__link active">Our Heritage</a></li>
+      <li><a href="about.html" class="nav__link active">Who We Are</a></li>
       <li class="nav__item">
-        <a href="brands.html" class="nav__link">The Portfolio</a>
+        <a href="brands.html" class="nav__link">Our Brands</a>
         <ul class="nav__dropdown">
           <li><a href="original.html">Original®</a></li>
           <li><a href="brands.html#klasse">KLASSE</a></li>
@@ -30,10 +31,10 @@
           <li><a href="brands.html#alqobtan">Al Qobtan</a></li>
         </ul>
       </li>
-      <li><a href="#responsibility" class="nav__link">Responsibility</a></li>
-      <li><a href="contact.html" class="nav__link">Connect</a></li>
+      <li><a href="#Sustainability" class="nav__link">Sustainability</a></li>
+      <li><a href="contact.html" class="nav__link">Contact Us</a></li>
     </ul>
-    <a href="contact.html" class="nav__cta">Partner With Us</a>
+    <a href="contact.html" class="nav__cta">عربي</a>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -42,10 +43,10 @@
 <div class="nav__mobile" id="mobileNav">
   <ul class="nav__mobile-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">Our Heritage</a></li>
-    <li><a href="brands.html">The Portfolio</a></li>
-    <li><a href="#responsibility">Responsibility</a></li>
-    <li><a href="contact.html">Connect</a></li>
+    <li><a href="about.html">Who We Are</a></li>
+    <li><a href="brands.html">Our Brands</a></li>
+    <li><a href="#Sustainability">Sustainability</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
   </ul>
 </div>
 
@@ -60,7 +61,7 @@
     <div class="reveal">
       <span class="t-label" style="display:block;margin-bottom:0.75rem;">Since 1995</span>
       <h1 class="t-display t-3xl" id="about-title">
-        Our <span class="t-blue">Heritage</span>
+        Who <span class="t-blue">We Are</span>
       </h1>
       <div class="divider" style="margin-top:1.5rem;"></div>
       <p style="max-width:580px;color:var(--c-ink-2);font-size:1.1rem;line-height:1.85;margin-top:1.25rem;">
@@ -220,7 +221,7 @@
       <div class="reveal-right">
         <span class="t-label" style="display:block;margin-bottom:0.75rem;">Thirty Years of Excellence</span>
         <h2 class="t-display t-2xl" id="story-title" style="margin-bottom:1rem;">
-          Built on <em class="t-italic t-blue">Passion</em>,<br/>Proven by <em class="t-italic">Trust</em>
+          Built on Passion,<br/>Proven by Trust
         </h2>
         <div class="divider"></div>
         <p style="color:var(--c-ink-3);font-size:1.05rem;line-height:1.85;margin-top:1rem;margin-bottom:1rem;">
@@ -250,49 +251,218 @@
       <p class="t-muted" style="max-width:520px;margin-top:0.75rem;font-size:1.05rem;line-height:1.8;">
         Our state-of-the-art production facilities collectively produce 500M+ liters per year, operating to the highest international standards.
       </p>
+    <style>
+      .plant-showcase {
+        position: relative; width: 100%; min-height: 85vh; display: flex; align-items: center;
+        margin-top: 3rem; overflow: hidden; border-radius: var(--r-xl);
+      }
+      .ps-bg-wrap { position: absolute; inset: 0; z-index: 1; }
+      .ps-bg {
+        position: absolute; inset: 0; background-size: cover; background-position: center;
+        opacity: 0; visibility: hidden; transition: opacity 0.8s ease, transform 1.5s ease;
+        transform: scale(1.05);
+      }
+      .ps-bg.active { opacity: 1; visibility: visible; transform: scale(1); }
+      .ps-bg::after {
+        content:''; position:absolute; inset:0;
+        background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+      }
+      .ps-container {
+        position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto;
+        padding: 2rem; display: flex; justify-content: flex-end;
+      }
+      .ps-card {
+        background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px); border-radius: 24px;
+        padding: 2.5rem; width: 100%; max-width: 520px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.4);
+      }
+      .ps-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 2px solid var(--c-border); padding-bottom: 1rem; }
+      .ps-tab {
+        background: transparent; border: none; font-size: 1.1rem; font-weight: 700;
+        color: var(--c-ink-4); cursor: pointer; padding: 0.5rem 1rem; border-radius: 8px;
+        transition: all 0.3s;
+      }
+      .ps-tab:hover { color: var(--c-blue); background: var(--c-surface); }
+      .ps-tab.active { color: #fff; background: #c4161c; }
+      
+      .ps-content { display: none; animation: fadeIn 0.5s ease forwards; }
+      .ps-content.active { display: block; }
+      
+      .ps-pill {
+        display: inline-block; background: #c4161c; color: #fff; font-size: 0.75rem;
+        font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 6px; margin-bottom: 1rem;
+        text-transform: uppercase; letter-spacing: 0.1em;
+      }
+      .ps-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: #c4161c; margin-bottom: 1rem; line-height: 1; }
+      .ps-desc { font-size: 1rem; line-height: 1.7; color: var(--c-ink-2); margin-bottom: 1.5rem; }
+      .ps-meta { font-size: 0.95rem; color: var(--c-ink-2); margin-bottom: 0.25rem; }
+      .ps-meta strong { color: var(--c-ink); }
+      
+      .ps-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--c-border); }
+      .ps-lists strong { display: block; color: var(--c-ink); margin-bottom: 0.75rem; font-size: 0.95rem; }
+      .ps-lists ul { list-style: none; padding: 0; margin: 0; }
+      .ps-lists li {
+        font-size: 0.9rem; color: var(--c-ink-2); margin-bottom: 0.4rem;
+        position: relative; padding-left: 1.25rem;
+      }
+      .ps-lists li::before {
+        content: '✓'; position: absolute; left: 0; top: 0;
+        color: #10b981; font-weight: bold; font-size: 0.85rem;
+      }
+      
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      @media (max-width: 768px) {
+        .ps-container { justify-content: center; padding: 1rem; }
+        .ps-lists { grid-template-columns: 1fr; gap: 1rem; }
+        .ps-tabs { flex-wrap: wrap; }
+      }
+    </style>
+
+    <div class="plant-showcase reveal">
+      <div class="ps-bg-wrap">
+        <div class="ps-bg active" id="ps-bg-1" style="background-image: url('https://gulf-union.com/uploads/background/1_background.jpg');"></div>
+        <div class="ps-bg" id="ps-bg-2" style="background-image: url('https://gulf-union.com/images/whoback.jpg');"></div>
+        <div class="ps-bg" id="ps-bg-3" style="background-image: url('https://gulf-union.com/uploads/background/2_background_1.jpg');"></div>
+        <div class="ps-bg" id="ps-bg-4" style="background-image: url('https://gulf-union.com/images/whoback.jpg'); filter: hue-rotate(20deg) brightness(1.1);"></div>
+      </div>
+
+      <div class="ps-container">
+        <div class="ps-card">
+          <div class="ps-tabs">
+            <button class="ps-tab active" data-target="1">Plant 1</button>
+            <button class="ps-tab" data-target="2">Plant 2</button>
+            <button class="ps-tab" data-target="3">Plant 3</button>
+            <button class="ps-tab" data-target="4">Plant 4</button>
+          </div>
+          
+          <!-- Content 1 -->
+          <div class="ps-content active" id="ps-content-1">
+            <div class="ps-pill">Our Plants</div>
+            <h3 class="ps-title">Plant 1</h3>
+            <p class="ps-desc">Spread across 22,000 m², Plant 1 is GUFC's second biggest factory and is operated by a team of highly specialized operators and engineers that are fully committed and dedicated to produce Juice, Soft Drinks, Malt Beverages, and more, in PET, Glass & Cans.</p>
+            <div class="ps-meta"><strong>Size:</strong> 22,000 m²</div>
+            <div class="ps-meta"><strong>Production Lines:</strong> 6 Production Lines.</div>
+            
+            <div class="ps-lists">
+              <div>
+                <strong>Products:</strong>
+                <ul>
+                  <li>Juices & Drinks</li>
+                  <li>Juices with Chunks/Float</li>
+                  <li>Soft Drinks</li>
+                  <li>Malt Beverages</li>
+                  <li>Energy Drinks</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Pack Types:</strong>
+                <ul>
+                  <li>PET Bottles</li>
+                  <li>Glass Bottles</li>
+                  <li>Cans</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Content 2 -->
+          <div class="ps-content" id="ps-content-2">
+            <div class="ps-pill">Our Plants</div>
+            <h3 class="ps-title">Plant 2</h3>
+            <p class="ps-desc">At 38,000 m², Plant 2 is GUFC's biggest factory, specialized in Sparkling Drinks & Malt Beverages. It's also equipped with a state-of-the-art warehousing facility that can accommodate 2M cases of finished goods.</p>
+            <div class="ps-meta"><strong>Size:</strong> 38,000 m²</div>
+            <div class="ps-meta"><strong>Production Lines:</strong> 1 Production Line.</div>
+            
+            <div class="ps-lists">
+              <div>
+                <strong>Products:</strong>
+                <ul>
+                  <li>Sparkling Drinks</li>
+                  <li>Malt Beverages</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Pack Types:</strong>
+                <ul>
+                  <li>Glass Bottles</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content 3 -->
+          <div class="ps-content" id="ps-content-3">
+            <div class="ps-pill">Our Plants</div>
+            <h3 class="ps-title">Plant 3</h3>
+            <p class="ps-desc">Operated by a unit of top engineers and equipped with the best machinery. Plant 3 occupies 5,000 m² and produces PET preform & bottle plastic caps.</p>
+            <div class="ps-meta"><strong>Size:</strong> 5,000 m²</div>
+            <div class="ps-meta"><strong>Production Lines:</strong> 3 Production Lines.</div>
+            
+            <div class="ps-lists">
+              <div>
+                <strong>Products:</strong>
+                <ul>
+                  <li>PET Preforms</li>
+                  <li>Bottle's Plastic Caps</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content 4 -->
+          <div class="ps-content" id="ps-content-4">
+            <div class="ps-pill">Our Plants</div>
+            <h3 class="ps-title">Plant 4</h3>
+            <p class="ps-desc">Specialized in Carton packs production in different sizes and different juice content packaging via outstanding machinery and the best technology in the business. Plant 4 occupies 10,000 m².</p>
+            <div class="ps-meta"><strong>Size:</strong> 10,000 m²</div>
+            <div class="ps-meta"><strong>Production Lines:</strong> 7 Production Lines.</div>
+            
+            <div class="ps-lists">
+              <div>
+                <strong>Products:</strong>
+                <ul>
+                  <li>Juices & Drinks</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Pack Types:</strong>
+                <ul>
+                  <li>Carton Packs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
-    <div class="factories-grid">
-      <div class="factory-card reveal reveal-delay-1">
-        <div class="factory-card__accent"></div>
-        <div class="factory-card__num">01</div>
-        <div class="factory-card__loc">Kingdom of Saudi Arabia</div>
-        <div class="factory-card__title">Jeddah Flagship Plant</div>
-        <p class="factory-card__desc">Our first and largest facility — operational since 1999 — sets the benchmark for quality processes. Home to the Original® and KLASSE production lines.</p>
-      </div>
-      <div class="factory-card reveal reveal-delay-2">
-        <div class="factory-card__accent"></div>
-        <div class="factory-card__num">02</div>
-        <div class="factory-card__loc">Kingdom of Saudi Arabia</div>
-        <div class="factory-card__title">Riyadh Production Center</div>
-        <p class="factory-card__desc">Expanded capacity serving the central and eastern KSA markets. Specializing in energy drink and sparkling beverage production.</p>
-      </div>
-      <div class="factory-card reveal reveal-delay-3">
-        <div class="factory-card__accent"></div>
-        <div class="factory-card__num">03</div>
-        <div class="factory-card__loc">Kingdom of Saudi Arabia</div>
-        <div class="factory-card__title">Advanced Packaging Facility</div>
-        <p class="factory-card__desc">Dedicated packaging and quality control hub ensuring every SKU meets our exacting standards before reaching market shelves worldwide.</p>
-      </div>
-      <div class="factory-card reveal reveal-delay-4">
-        <div class="factory-card__accent"></div>
-        <div class="factory-card__num">04</div>
-        <div class="factory-card__loc">Kingdom of Saudi Arabia</div>
-        <div class="factory-card__title">Export &amp; Logistics Plant</div>
-        <p class="factory-card__desc">Purpose-built for international export operations — enabling the consistent supply chain that reaches 42+ countries across 5 continents.</p>
-      </div>
-    </div>
+    <script>
+      document.querySelectorAll('.ps-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active classes
+          document.querySelectorAll('.ps-tab, .ps-bg, .ps-content').forEach(el => el.classList.remove('active'));
+          // Add active to clicked tab
+          tab.classList.add('active');
+          // Add active to target bg and content
+          const target = tab.getAttribute('data-target');
+          document.getElementById('ps-bg-' + target).classList.add('active');
+          document.getElementById('ps-content-' + target).classList.add('active');
+        });
+      });
+    </script>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════
-     RESPONSIBILITY
+     Sustainability
 ══════════════════════════════════════════ -->
-<section class="section section--white" id="responsibility" aria-labelledby="resp-title">
+<section class="section section--white" id="Sustainability" aria-labelledby="resp-title">
   <div class="container">
     <div class="section-header reveal">
-      <span class="t-label">Responsibility</span>
+      <span class="t-label">Sustainability</span>
       <h2 class="t-display t-2xl" id="resp-title" style="margin-top:0.75rem;">
         Our Commitment to<br/><span class="t-blue">People &amp; Planet</span>
       </h2>
@@ -392,22 +562,22 @@
 
 
 <!-- ══════════════════════════════════════════
-     CONNECT CTA
+     Contact Us CTA
 ══════════════════════════════════════════ -->
-<section class="section connect-section" aria-labelledby="connect-title">
+<section class="section Contact Us-section" aria-labelledby="Contact Us-title">
   <div class="container">
-    <div class="connect-inner reveal-scale">
+    <div class="Contact Us-inner reveal-scale">
       <span class="t-label">Work With Us</span>
-      <h2 class="connect-title" id="connect-title">
+      <h2 class="Contact Us-title" id="Contact Us-title">
         Ready to <em>Partner</em><br/>With GUFC?
       </h2>
-      <p class="connect-subtitle">
+      <p class="Contact Us-subtitle">
         Whether you're a distributor, retailer, or investor — our doors are open.
       </p>
-      <div class="connect-actions">
+      <div class="Contact Us-actions">
         <a href="contact.html" class="btn btn--white btn--lg">Get in Touch</a>
         <a href="brands.html" class="btn btn--lg" style="background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.3);border-radius:50px;">
-          Explore The Portfolio →
+          Explore Our Brands →
         </a>
       </div>
     </div>
@@ -421,7 +591,7 @@
     <div class="footer__grid">
       <div>
         <a href="index.html" class="footer__logo"><img src="https://gulf-union.com/images/logo.png" alt="Gulf Union Foods Co." /></a>
-        <p class="footer__desc">Crafting moments since 1995. 500M+ liters annually, 42+ markets, 7 iconic brands.</p>
+        <p class="footer__desc">Where quality meets passion, and taste meets innovation. Discover a world of products crafted to elevate everyday moments.
         <div class="footer__social">
           <a href="https://www.linkedin.com/company/gulf-union-foods-company/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
           <a href="https://www.facebook.com/OriginalJuiceAR/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
@@ -432,14 +602,14 @@
       <div>
         <div class="footer__col-title">Discover</div>
         <ul class="footer__links">
-          <li><a href="about.html">Our Heritage</a></li>
-          <li><a href="#responsibility">Responsibility</a></li>
+          <li><a href="about.html">Who We Are</a></li>
+          <li><a href="#Sustainability">Sustainability</a></li>
           <li><a href="contact.html">Newsroom</a></li>
           <li><a href="contact.html">Careers</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">The Portfolio</div>
+        <div class="footer__col-title">Our Brands</div>
         <ul class="footer__links">
           <li><a href="original.html">Original®</a></li>
           <li><a href="brands.html#klasse">KLASSE</a></li>
@@ -451,11 +621,11 @@
         </ul>
       </div>
       <div>
-        <div class="footer__col-title">Connect</div>
+        <div class="footer__col-title">Contact Us</div>
         <ul class="footer__links">
           <li><a href="tel:+966920022205">+966 9200 22205</a></li>
           <li><a href="mailto:info@gulf-union.com">info@gulf-union.com</a></li>
-          <li><a href="contact.html">Partner With Us</a></li>
+          <li><a href="contact.html">عربي</a></li>
         </ul>
         <div style="margin-top:1.5rem;font-size:0.72rem;color:var(--c-ink-4);line-height:1.8;border:1px solid var(--c-border);border-radius:var(--r-md);padding:0.75rem 1rem;">
           🇸🇦 Kingdom of Saudi Arabia<br/>
@@ -474,5 +644,6 @@
 </footer>
 
 <script src="main.js"></script>
+<script src="premium.js?v=2"></script>
 </body>
 </html>
